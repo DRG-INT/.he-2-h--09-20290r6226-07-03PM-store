@@ -107,7 +107,7 @@ Ez a modell a kernel panik teljes kizárására törekszik:
 1. **Minimalizáld a panic() hívásokat** – csak a helyreállíthatatlan invariáns megsértésekor
 2. **Használj WARN_ON_ONCE()** – a visszanyerhető hibák naplózására
 3. **A lockdep-nek át kell mennie** – minden spinlock, mutex, rwlock ellenőrizve
-4. **Nincs goto a hibakezelési útvonalakon** – használj unwinding-et vagy cleanup helpert
+4. **Strukturált hibakezelés (unwinding)** – használj szabványos kernel `goto err_*` unwinding-et vagy `__cleanup` RAII helpert
 5. **Memóriafoglalásoknak legyen fallback-ük** – GFP_ATOMIC vagy elegáns leállás
 6. **Nincs blokkolás megszakítási kontextusban** – IRQ kezelőknek gyorsoknak kell lenniük
 7. **RCU grace periods korlátok** – nincs végtelen call_rcu() lánc

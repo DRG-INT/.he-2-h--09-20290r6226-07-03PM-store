@@ -94,11 +94,14 @@ dmesg | grep -i iommu
 
 ### 5.3 DMA Biztonsági Beállítások
 ```bash
-# IOMMU bekapcsolása
-echo 1 > /sys/kernel/iommu_groups/XX/enable
+# IOMMU csoportok és eszközök ellenőrzése
+ls -la /sys/kernel/iommu_groups/*/devices/
 
-# DMA korlátozások
-echo 0 > /sys/bus/pci/drivers/XXX/enable
+# PCI eszköz leválasztása a driverről (DMA letiltása eszközszinten)
+echo "0000:01:00.0" > /sys/bus/pci/drivers/<driver_nev>/unbind
+
+# VFIO driverhez rendelés izolált DMA-hoz
+echo "0000:01:00.0" > /sys/bus/pci/drivers/vfio-pci/bind
 ```
 
 ## 6. DMA és Eszközök

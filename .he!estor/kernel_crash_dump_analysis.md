@@ -49,12 +49,10 @@ sudo update-grub
 ### 3.3 kdump Indítás
 ```bash
 # Debian/Ubuntu
-sudo systemctl enable kdump
-sudo systemctl start kdump
+sudo systemctl enable --now kdump-tools
 
 # RHEL/CentOS/Fedora
-sudo systemctl enable kdump
-sudo systemctl start kdump
+sudo systemctl enable --now kdump
 ```
 
 ## 4. Crash Dump Elemzés

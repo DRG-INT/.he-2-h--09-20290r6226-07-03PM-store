@@ -44,7 +44,7 @@ A kernel hibakeresés az a folyamat, amely során a kernel hibáinak okát és m
 
 ### 3.3 Teljesítmény Hibakeresés
 1. **CPU profil készítése:** `perf top`, `perf record`
-2. **Memória profil készítése:** `valgrind --tool=massif`
+2. **Memória profil készítése:** `kmemleak`, `slabtop`, `perf kmem` (kernel-szintű) vagy `memleak-bpfcc`
 3. **I/O profil készítése:** `iostat`, `blktrace`
 4. **Hálózati profil készítése:** `tcpdump`, `wireshark`
 

@@ -1,0 +1,531 @@
+{
+  "repository": "DRG-INT/.he-2-h--09-20290r6226-07-03PM-store",
+  "description": ".he!💾?2űúh-ú09-20290r6226-07:03PM?🐿️₿store",
+  "dual_intelligence": {
+    "engine_1_static_deterministic": "Passed 100% (Multi-OS AST, Delimiters, Magic Bytes, Hashes)",
+    "engine_2_domain_cognitive": "Audited & Remediated (Kernel Vectors, QEMU safety, Seccomp BPF, Livepatch)"
+  },
+  "statistics": {
+    "total_artifacts": 70,
+    "linux_kernel_guides": 32,
+    "multios_practical_guides": 13,
+    "multios_architecture_guides": 13,
+    "architecture_visuals": 12,
+    "code_blocks": 178,
+    "languages": {
+      "unspecified": 7,
+      "bash": 162,
+      "c": 9
+    }
+  },
+  "categories": {
+    "Linux Core Panic & Crash Forensics (.he!estor)": [
+      ".he!estor/01_kernel_panic_taxonomy.md",
+      ".he!estor/kernel_crash_dump_analysis.md",
+      ".he!estor/kernel_panic_practical_handling.md",
+      ".he!estor/kernel_panic_monitoring_and_automation.html",
+      ".he!estor/kernel_panic_taxonomy_field_guide.html"
+    ],
+    "Linux Debugging & Tracing Toolchains (.he!estor)": [
+      ".he!estor/kernel_debugging_techniques.md",
+      ".he!estor/kernel_debugging_kgdb_kdb.md",
+      ".he!estor/kernel_qemu_gdb_debugging.md",
+      ".he!estor/kernel_logging_and_analysis.md",
+      ".he!estor/kernel_source_code_analysis.md"
+    ],
+    "Linux Subsystem Internals & Hardware (.he!estor)": [
+      ".he!estor/kernel_boot_process.md",
+      ".he!estor/kernel_boot_and_bootloader_debugging.md",
+      ".he!estor/kernel_memory_management.md",
+      ".he!estor/kernel_processes_and_threads.md",
+      ".he!estor/kernel_timing_and_scheduling.md",
+      ".he!estor/kernel_interrupt_handling.md",
+      ".he!estor/kernel_dma_management.md",
+      ".he!estor/kernel_iommu_management.md",
+      ".he!estor/kernel_device_management.md",
+      ".he!estor/kernel_filesystems.md",
+      ".he!estor/kernel_networking.md",
+      ".he!estor/kernel_power_management.md",
+      ".he!estor/kernel_modules_and_drivers.md"
+    ],
+    "Linux Security, Hardening & Live Patching (.he!estor)": [
+      ".he!estor/kernel_security_and_vulnerabilities.md",
+      ".he!estor/kernel_hardening.md",
+      ".he!estor/anti_cheat_kernel_alternatives.md",
+      ".he!estor/pattern_language_kernel_security.md",
+      ".he!estor/kernel_bug_hunting_and_responsible_disclosure.md",
+      ".he!estor/kernel_live_patching_and_zero_downtime.md"
+    ],
+    "Linux Lifecycle, Configuration & Versioning (.he!estor)": [
+      ".he!estor/kernel_configuration.md",
+      ".he!estor/kernel_performance_optimization.md",
+      ".he!estor/kernel_versioning_and_updates.md"
+    ],
+    "Multi-OS Practical Knowledge & Field Manuals (.mac!narumi)": [
+      ".mac!narumi/01_freedos_practical_knowledge.md",
+      ".mac!narumi/01_windows_nt_kernel_practical_knowledge.md",
+      ".mac!narumi/02_windows_nt_kernel_practical_knowledge.md",
+      ".mac!narumi/03_dos_practical_knowledge.md",
+      ".mac!narumi/04_plan9_practical_knowledge.md",
+      ".mac!narumi/05_inferno_practical_knowledge.md",
+      ".mac!narumi/06_haiku_practical_knowledge.md",
+      ".mac!narumi/07_reactos_practical_knowledge.md",
+      ".mac!narumi/08_openvms_practical_knowledge.md",
+      ".mac!narumi/09_syllable_practical_knowledge.md",
+      ".mac!narumi/10_menuetos_practical_knowledge.md",
+      ".mac!narumi/11_aros_practical_knowledge.md",
+      ".mac!narumi/12_genode_practical_knowledge.md"
+    ],
+    "Multi-OS Deep Dive Architectures (.macinarium-stellar)": [
+      ".macinarium-stellar/01_windows_nt_kernel_architecture.md",
+      ".macinarium-stellar/02_ibm_os2_architecture.md",
+      ".macinarium-stellar/03_beos_architecture.md",
+      ".macinarium-stellar/04_plan9_architecture.md",
+      ".macinarium-stellar/05_inferno_architecture.md",
+      ".macinarium-stellar/06_haiku_architecture.md",
+      ".macinarium-stellar/07_reactos_architecture.md",
+      ".macinarium-stellar/08_freedos_architecture.md",
+      ".macinarium-stellar/09_openvms_architecture.md",
+      ".macinarium-stellar/10_syllable_architecture.md",
+      ".macinarium-stellar/11_menuetos_architecture.md",
+      ".macinarium-stellar/12_aros_amigaos_clone_architecture.md",
+      ".macinarium-stellar/13_genode_os_framework.md"
+    ],
+    "Architecture Visual Blueprints & Infographics (.architech)": [
+      ".architech/-42751371_221310431.pdf-6.jpg",
+      ".architech/141341857_153581417.pdf-8.jpg",
+      ".architech/9e8225b1d096d452fb8649fb892b7929.jpg",
+      ".architech/Linux API.svg",
+      ".architech/Linux_kernel_map.png",
+      ".architech/OS-structure2.svg.webp",
+      ".architech/The-Architecture-of-Panic-How-to-Spot-the-Gears-of-Modern-Fear-2060245017.png",
+      ".architech/i.webp",
+      ".architech/ixtas.webp",
+      ".architech/maxresdefault.jpg",
+      ".architech/structure-of-unix-kernel-l.jpg",
+      ".architech/tereza.webp"
+    ]
+  },
+  "artifacts": {
+    ".he!estor/01_kernel_panic_taxonomy.md": {
+      "size_bytes": 11842,
+      "sha256": "fdd9bb67b52472dffb408c3f5656274337fb1fe6ad35060bc78e57ecc020fd46",
+      "type": "markdown",
+      "lines": 227
+    },
+    ".he!estor/anti_cheat_kernel_alternatives.md": {
+      "size_bytes": 7682,
+      "sha256": "c67f7518b623539ee634693d8a4fe46f76dcd06c57eba037bcba7b31d0c58cbb",
+      "type": "markdown",
+      "lines": 126
+    },
+    ".he!estor/kernel_boot_and_bootloader_debugging.md": {
+      "size_bytes": 6757,
+      "sha256": "2432a7eb7437bb17ce5d1a7e8ea111ee6321f0bd7a184d8895bbc67b63fc8cfd",
+      "type": "markdown",
+      "lines": 260
+    },
+    ".he!estor/kernel_boot_process.md": {
+      "size_bytes": 3471,
+      "sha256": "c5f32124ae06b8c59b71f9344a3ad1b50592b83c44cd5a2f1d8f744815269689",
+      "type": "markdown",
+      "lines": 90
+    },
+    ".he!estor/kernel_bug_hunting_and_responsible_disclosure.md": {
+      "size_bytes": 7215,
+      "sha256": "86bcf0343deb8aec07695e6c9a6349a5ed9138b791274365475e57c73b615374",
+      "type": "markdown",
+      "lines": 224
+    },
+    ".he!estor/kernel_configuration.md": {
+      "size_bytes": 5300,
+      "sha256": "b7b7d707453a8d5dc5cc26d6a9828aa150a9e45a8b82a0f1146eef7b8cabab3d",
+      "type": "markdown",
+      "lines": 186
+    },
+    ".he!estor/kernel_crash_dump_analysis.md": {
+      "size_bytes": 4099,
+      "sha256": "4787feaea953f07d70d9f78f0209e1cd6756f21af86570c46723202b3bbcc5c6",
+      "type": "markdown",
+      "lines": 158
+    },
+    ".he!estor/kernel_debugging_kgdb_kdb.md": {
+      "size_bytes": 7555,
+      "sha256": "8ace5d2b14b8366a2de0b274dd424b4f71cc952c60856b7262831a8ffc4d4d8a",
+      "type": "markdown",
+      "lines": 299
+    },
+    ".he!estor/kernel_debugging_techniques.md": {
+      "size_bytes": 4648,
+      "sha256": "5f79f5a676c80d771dbbcea154e6994fa9a3c59c12acbaa7c87a08bf7bdac334",
+      "type": "markdown",
+      "lines": 147
+    },
+    ".he!estor/kernel_device_management.md": {
+      "size_bytes": 6622,
+      "sha256": "3c8b543c730c737579f3f0b9517fe00bece077d784e07be6b49e0ba2d33ff08d",
+      "type": "markdown",
+      "lines": 228
+    },
+    ".he!estor/kernel_dma_management.md": {
+      "size_bytes": 6271,
+      "sha256": "3c3b48c28ebca332cbeb05105936061b76eb1408875de3ae467c7ed5c48d7330",
+      "type": "markdown",
+      "lines": 199
+    },
+    ".he!estor/kernel_filesystems.md": {
+      "size_bytes": 5502,
+      "sha256": "8e2afe53abafa18b74248d79d054137447478335c3303e0ecced560755df87c6",
+      "type": "markdown",
+      "lines": 179
+    },
+    ".he!estor/kernel_hardening.md": {
+      "size_bytes": 6892,
+      "sha256": "f06cb6b23411c003161bf63d13728e3b73b12600cba57ce8b6055ccd151d5c62",
+      "type": "markdown",
+      "lines": 217
+    },
+    ".he!estor/kernel_interrupt_handling.md": {
+      "size_bytes": 5138,
+      "sha256": "0200a28278a5c3f12f1cd28dfdb227bf24011e5b1bdde1ffeb1310de4113fd26",
+      "type": "markdown",
+      "lines": 176
+    },
+    ".he!estor/kernel_iommu_management.md": {
+      "size_bytes": 5539,
+      "sha256": "7ae7c768fed23ae8cc9a5f7c6e827e7e87c5374f9e04d29fd376f3b22f34e5e5",
+      "type": "markdown",
+      "lines": 186
+    },
+    ".he!estor/kernel_live_patching_and_zero_downtime.md": {
+      "size_bytes": 6598,
+      "sha256": "9d22a3f17fd9827b0b97f3915f6d84ef33efcb22b2e406d8d6ce3cc39b9c4737",
+      "type": "markdown",
+      "lines": 240
+    },
+    ".he!estor/kernel_logging_and_analysis.md": {
+      "size_bytes": 4989,
+      "sha256": "15213d6fee2a093c271c46ee50d0ed24e7e20d6265d8505d0c3e98234bea1513",
+      "type": "markdown",
+      "lines": 180
+    },
+    ".he!estor/kernel_memory_management.md": {
+      "size_bytes": 5888,
+      "sha256": "31d13486673b24075f76f1b8e8aad15c134e3377d87d67e4931178e7bc2dc1e8",
+      "type": "markdown",
+      "lines": 192
+    },
+    ".he!estor/kernel_modules_and_drivers.md": {
+      "size_bytes": 4667,
+      "sha256": "5f075b9cffcee8e0c24cfbcfda286f7a8f3d0b6c3cfc0a3d354f0fdeca0d0e46",
+      "type": "markdown",
+      "lines": 145
+    },
+    ".he!estor/kernel_networking.md": {
+      "size_bytes": 5459,
+      "sha256": "aaa92c4cd14699906405557c15c5d99118c82c77bf0d9133c3bdc1df1a68ef7e",
+      "type": "markdown",
+      "lines": 223
+    },
+    ".he!estor/kernel_panic_monitoring_and_automation.html": {
+      "size_bytes": 13685,
+      "sha256": "73cf5bed496ea045b222c75e64605790739ff657d338889fa8e034cb7deff29c",
+      "type": "html",
+      "lines": 279
+    },
+    ".he!estor/kernel_panic_practical_handling.md": {
+      "size_bytes": 2779,
+      "sha256": "82ea503132c59b3a0106410d89be5c45078af94b7e9702764a76fa2d6cca30d7",
+      "type": "markdown",
+      "lines": 77
+    },
+    ".he!estor/kernel_panic_taxonomy_field_guide.html": {
+      "size_bytes": 18371,
+      "sha256": "7f4fde7b0595c0ee4059cac1a7706c3f2497fe0c2b015d463c683f41c5a74d9d",
+      "type": "html",
+      "lines": 392
+    },
+    ".he!estor/kernel_performance_optimization.md": {
+      "size_bytes": 5013,
+      "sha256": "c6472e638fb5e3ff547c28c020af8dfa4caf96cb7512958a3d524fe2c688f47d",
+      "type": "markdown",
+      "lines": 154
+    },
+    ".he!estor/kernel_power_management.md": {
+      "size_bytes": 6699,
+      "sha256": "ea9f8ad9dec5c96d4aa9ead6f4abf7e8c09632459658f4222ac0b18758be7636",
+      "type": "markdown",
+      "lines": 199
+    },
+    ".he!estor/kernel_processes_and_threads.md": {
+      "size_bytes": 6115,
+      "sha256": "8cc0d6e3169475e9e2ddba511a30f617459e704a433220bf90f2a1c8a780abd7",
+      "type": "markdown",
+      "lines": 203
+    },
+    ".he!estor/kernel_qemu_gdb_debugging.md": {
+      "size_bytes": 5796,
+      "sha256": "5949578b2e2043f8b49979533c7e8f010ebb36b035d7d9d99e0555c2542952bb",
+      "type": "markdown",
+      "lines": 247
+    },
+    ".he!estor/kernel_security_and_vulnerabilities.md": {
+      "size_bytes": 4760,
+      "sha256": "3acadcab79149e1363e24b444a4f6a02b25e145bc73a6555149efa826beeb020",
+      "type": "markdown",
+      "lines": 131
+    },
+    ".he!estor/kernel_source_code_analysis.md": {
+      "size_bytes": 6322,
+      "sha256": "816741f9a6f8a7a82d6db78af79a130260847b3ed7ee57a79cf12c37336a8d3c",
+      "type": "markdown",
+      "lines": 248
+    },
+    ".he!estor/kernel_timing_and_scheduling.md": {
+      "size_bytes": 6842,
+      "sha256": "67d25a8875edd09d49e42d21544727ec247e1270338a9558c5a00c30735e201c",
+      "type": "markdown",
+      "lines": 200
+    },
+    ".he!estor/kernel_versioning_and_updates.md": {
+      "size_bytes": 4183,
+      "sha256": "12a19b51c2b1b21debc0aff90e37b8d8757b2df27d05c40fa11bda630c04d561",
+      "type": "markdown",
+      "lines": 117
+    },
+    ".he!estor/pattern_language_kernel_security.md": {
+      "size_bytes": 2950,
+      "sha256": "9e9599ef62f98f8740f76ef355b9e2eebc8313219edc175e3b987e1f6013e24b",
+      "type": "markdown",
+      "lines": 76
+    },
+    ".mac!narumi/01_freedos_practical_knowledge.md": {
+      "size_bytes": 2048,
+      "sha256": "76fac21cb7c41490a1ba7d882fe3824ea8896b35000ae60f52433a53a79592de",
+      "type": "markdown",
+      "lines": 43
+    },
+    ".mac!narumi/01_windows_nt_kernel_practical_knowledge.md": {
+      "size_bytes": 3069,
+      "sha256": "a52b0ed0a7d153b479e8155f9b365c0422359467abffb30564b5dbe47bd60fd6",
+      "type": "markdown",
+      "lines": 42
+    },
+    ".mac!narumi/02_windows_nt_kernel_practical_knowledge.md": {
+      "size_bytes": 3069,
+      "sha256": "a52b0ed0a7d153b479e8155f9b365c0422359467abffb30564b5dbe47bd60fd6",
+      "type": "markdown",
+      "lines": 42
+    },
+    ".mac!narumi/03_dos_practical_knowledge.md": {
+      "size_bytes": 2838,
+      "sha256": "329e5d2963d04b481b0ddfc14ef68dbf84cabf69368635c7d8b7f67bbe434798",
+      "type": "markdown",
+      "lines": 113
+    },
+    ".mac!narumi/04_plan9_practical_knowledge.md": {
+      "size_bytes": 2724,
+      "sha256": "47fea445e99a0677c904cae862587d37ca4ca3a0711a140d2d58d50005ff020f",
+      "type": "markdown",
+      "lines": 83
+    },
+    ".mac!narumi/05_inferno_practical_knowledge.md": {
+      "size_bytes": 2570,
+      "sha256": "302a6abc615b1f643c4bc7bada42055914b8f90f6e0e038be821089b6677f116",
+      "type": "markdown",
+      "lines": 82
+    },
+    ".mac!narumi/06_haiku_practical_knowledge.md": {
+      "size_bytes": 2867,
+      "sha256": "2fead089ab349a123df1e39545c8e08081b7398bffff3316b9dc63297aab52ea",
+      "type": "markdown",
+      "lines": 96
+    },
+    ".mac!narumi/07_reactos_practical_knowledge.md": {
+      "size_bytes": 3124,
+      "sha256": "abfb1dbbf7729417ad585bb0d042a0b3dfeb1d064164845ca82e80798176c584",
+      "type": "markdown",
+      "lines": 92
+    },
+    ".mac!narumi/08_openvms_practical_knowledge.md": {
+      "size_bytes": 2498,
+      "sha256": "570e885f1059026e0f8169f54709863b77d5ad380d889db7b0db598630e488af",
+      "type": "markdown",
+      "lines": 83
+    },
+    ".mac!narumi/09_syllable_practical_knowledge.md": {
+      "size_bytes": 2515,
+      "sha256": "7f8c40b4264fd7f0b8c1af34ac3d246b19e3aaad60a190b6412cf5acc5ee6495",
+      "type": "markdown",
+      "lines": 89
+    },
+    ".mac!narumi/10_menuetos_practical_knowledge.md": {
+      "size_bytes": 2397,
+      "sha256": "1a3f098352c91b6f43851b345c156cd657cbce75e3d24231e156a1c955b8c698",
+      "type": "markdown",
+      "lines": 80
+    },
+    ".mac!narumi/11_aros_practical_knowledge.md": {
+      "size_bytes": 2293,
+      "sha256": "daa637280144fd02a3238f1efe6267a86cd0fb7be95803e9f67edbd4dfb71d3b",
+      "type": "markdown",
+      "lines": 79
+    },
+    ".mac!narumi/12_genode_practical_knowledge.md": {
+      "size_bytes": 2604,
+      "sha256": "d6d0f54b6c59b1bf6739e797b415f5b8ab707caa66665953320a78b68a71c748",
+      "type": "markdown",
+      "lines": 92
+    },
+    ".macinarium-stellar/01_windows_nt_kernel_architecture.md": {
+      "size_bytes": 5903,
+      "sha256": "a629026cc32ffe9906637f6cab01eb580f7739d5942ca038be85b0930ea69d82",
+      "type": "markdown",
+      "lines": 220
+    },
+    ".macinarium-stellar/02_ibm_os2_architecture.md": {
+      "size_bytes": 3771,
+      "sha256": "e1aefbedd75402c816df2137b5b958fb79af0f57d9223ed0389719624f783ee2",
+      "type": "markdown",
+      "lines": 92
+    },
+    ".macinarium-stellar/03_beos_architecture.md": {
+      "size_bytes": 3663,
+      "sha256": "e8dda90e42350102835151523aadd19101c0c35c48dd6f7e5c913efda26a320e",
+      "type": "markdown",
+      "lines": 113
+    },
+    ".macinarium-stellar/04_plan9_architecture.md": {
+      "size_bytes": 3727,
+      "sha256": "e43040d50642123a319d6af36d1ba7f95ba41d2eec7ebaac99a5bb666b47d873",
+      "type": "markdown",
+      "lines": 100
+    },
+    ".macinarium-stellar/05_inferno_architecture.md": {
+      "size_bytes": 4114,
+      "sha256": "86437e202b22da0703f82c64ef2365ff69a89bb155c2d64434e2b6e963ade164",
+      "type": "markdown",
+      "lines": 109
+    },
+    ".macinarium-stellar/06_haiku_architecture.md": {
+      "size_bytes": 3684,
+      "sha256": "b0593385ef546dc4cd0c7255e8ba99f38908c9822e0d34e937974741af8386f8",
+      "type": "markdown",
+      "lines": 121
+    },
+    ".macinarium-stellar/07_reactos_architecture.md": {
+      "size_bytes": 3789,
+      "sha256": "a194e5a9f780749b3c3f37883900c583c767ba5c15df6c8aa509bb9ef0162e73",
+      "type": "markdown",
+      "lines": 120
+    },
+    ".macinarium-stellar/08_freedos_architecture.md": {
+      "size_bytes": 3377,
+      "sha256": "c36f5d08722796fb0d9457d35549d3dd8d8528a27860d24ea5d4af96e490ba11",
+      "type": "markdown",
+      "lines": 120
+    },
+    ".macinarium-stellar/09_openvms_architecture.md": {
+      "size_bytes": 3273,
+      "sha256": "159cfe43e683504e98a2e9b6c93fa312dbf884247442d633a3bfb95d349fe4cb",
+      "type": "markdown",
+      "lines": 125
+    },
+    ".macinarium-stellar/10_syllable_architecture.md": {
+      "size_bytes": 3030,
+      "sha256": "58696b3f9e74ec3669247323b2b03bd366002a1ff45356f72236679016544055",
+      "type": "markdown",
+      "lines": 119
+    },
+    ".macinarium-stellar/11_menuetos_architecture.md": {
+      "size_bytes": 3197,
+      "sha256": "e7a47a488acc778cab69129e04df0ddaf0fe901fbf99f23cfe1d3ffa0a2625ec",
+      "type": "markdown",
+      "lines": 123
+    },
+    ".macinarium-stellar/12_aros_amigaos_clone_architecture.md": {
+      "size_bytes": 3197,
+      "sha256": "5bf8c1ded1fb261a16779cf800b524b58102effd93dfba91e74c2d58dc429242",
+      "type": "markdown",
+      "lines": 122
+    },
+    ".macinarium-stellar/13_genode_os_framework.md": {
+      "size_bytes": 3174,
+      "sha256": "30f167b943ce560f2c373b326b807287668dd480df8c94e1b2606d09173f0d03",
+      "type": "markdown",
+      "lines": 116
+    },
+    ".architech/-42751371_221310431.pdf-6.jpg": {
+      "size_bytes": 31469,
+      "sha256": "263d6a5a7978457fdbac3de93f2b46713eac3453c837e48e5c645d7dbfead005",
+      "type": "binary",
+      "lines": null
+    },
+    ".architech/141341857_153581417.pdf-8.jpg": {
+      "size_bytes": 35534,
+      "sha256": "44e1594084f18fabe669d2b537defe87f394552047eeacea970559043fff4cd1",
+      "type": "binary",
+      "lines": null
+    },
+    ".architech/9e8225b1d096d452fb8649fb892b7929.jpg": {
+      "size_bytes": 65587,
+      "sha256": "3b3953180c46673211f6f89060ae1bc029913ccf3d1aefb6f059a3f998c72c48",
+      "type": "binary",
+      "lines": null
+    },
+    ".architech/Linux API.svg": {
+      "size_bytes": 68006,
+      "sha256": "499ab08393cdafd73ac22b5987064eb295d491285c7d8550c8697603d9ebcc00",
+      "type": "binary",
+      "lines": null
+    },
+    ".architech/Linux_kernel_map.png": {
+      "size_bytes": 340797,
+      "sha256": "10110e98fb6f3a4339e41d0b795571a2ab43c6609ed47a44827c8c74c8e10879",
+      "type": "binary",
+      "lines": null
+    },
+    ".architech/OS-structure2.svg.webp": {
+      "size_bytes": 43032,
+      "sha256": "bd9b16d9782d16bb2db055b1ffb5712f67f14f720430c2d02dcbf62f6b19e196",
+      "type": "binary",
+      "lines": null
+    },
+    ".architech/The-Architecture-of-Panic-How-to-Spot-the-Gears-of-Modern-Fear-2060245017.png": {
+      "size_bytes": 6365188,
+      "sha256": "cccc35930f3a9d5911a95ca73001faf7fa1cf887c3caeacd4a261fb3b6b18aeb",
+      "type": "binary",
+      "lines": null
+    },
+    ".architech/i.webp": {
+      "size_bytes": 52478,
+      "sha256": "76e44cfce6d6da540b4dc34e9b46046ee0682565aeafbce0871c2dfd01b7028d",
+      "type": "binary",
+      "lines": null
+    },
+    ".architech/ixtas.webp": {
+      "size_bytes": 58304,
+      "sha256": "0e38fde30c9f03f5d7c9091b2a816415e0546497ffc39651171820f9a6c21650",
+      "type": "binary",
+      "lines": null
+    },
+    ".architech/maxresdefault.jpg": {
+      "size_bytes": 70576,
+      "sha256": "3cc12550afe281312ee6da8c6239f816318fdd1e51a85deac1f2ddde091f509c",
+      "type": "binary",
+      "lines": null
+    },
+    ".architech/structure-of-unix-kernel-l.jpg": {
+      "size_bytes": 97559,
+      "sha256": "4eba6aac334e7e797348380fe02c1334b7c4ad8b68ed3d7382a881f7c65de153",
+      "type": "binary",
+      "lines": null
+    },
+    ".architech/tereza.webp": {
+      "size_bytes": 94558,
+      "sha256": "8adc444ad723e918cde646c21ab6ab7c308a90f99e9d265bc93b390a59a6dd6f",
+      "type": "binary",
+      "lines": null
+    }
+  }
+}

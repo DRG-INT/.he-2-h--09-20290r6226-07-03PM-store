@@ -133,13 +133,17 @@ mount -o noatime,nodiratime,logbufs=8 /dev/sda1 /mnt
 mount -o noatime,compress=zstd /dev/sda1 /mnt
 ```
 
-### 6.2 I/O Ütemező
+### 6.2 I/O Ütemező (blk-mq modern kerneleken)
 ```bash
-# SSD-hez
-echo noop > /sys/block/sda/queue/scheduler
+# NVMe / gyors SSD-hez (minimális overhead)
+echo none > /sys/block/sda/queue/scheduler
 
-# HDD-hez
-echo deadline > /sys/block/sda/queue/scheduler
+# SATA SSD / alacsony késleltetésű terheléshez
+echo mq-deadline > /sys/block/sda/queue/scheduler
+
+# HDD / fair queuing terheléshez
+echo bfq > /sys/block/sda/queue/scheduler
+# (Megjegyzés: a régebbi single-queue noop/deadline/cfq a Linux 5.0-ban kivezetésre került)
 ```
 
 ## 7. Fájlrendszer Biztonság

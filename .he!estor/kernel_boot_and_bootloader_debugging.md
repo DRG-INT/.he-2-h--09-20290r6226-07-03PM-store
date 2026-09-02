@@ -136,14 +136,14 @@ ls -lh /boot/initrd.img-$(uname -r)
 
 ### 6.3 Initramfs Hibakeresés
 ```bash
-# Initramfs kicsomagolása
-mkdir /tmp/initramfs
-cd /tmp/initramfs
-zcat /boot/initrd.img-$(uname -r) | cpio -idmv
+# Initramfs kicsomagolása modern több-szegmenses archívum esetén (Ubuntu/Debian/RHEL)
+mkdir -p /tmp/initramfs
+unmkinitramfs /boot/initrd.img-$(uname -r) /tmp/initramfs
+# (Klasszikus egy-szegmenses archívumokhoz: zcat /boot/initrd.img-$(uname -r) | cpio -idmv)
 
 # Elemzés
-ls -la
-cat init
+ls -la /tmp/initramfs/main/
+cat /tmp/initramfs/main/init
 ```
 
 ## 7. Kernel Panic a Boot Során

@@ -53,7 +53,7 @@ gdb vmlinux
 ### 3.2 Gyakori kgdb Parancsok
 ```bash
 # Breakpoint beállítása
-(gdb) break do_fork
+(gdb) break kernel_clone   # (régebbi kerneleken: do_fork)
 (gdb) break *0xffffffff810a3b2a
 
 # Folyamatok listázása
@@ -135,17 +135,20 @@ static void __exit my_exit(void) {
 }
 ```
 
-### 5.3 Jprobes
+### 5.3 Kprobes Modern Használata (Jprobes helyett)
+> *Megjegyzés:* A `jprobe` API a Linux 4.15-ben hivatalosan kivezetésre került. Modern kerneleken (5.x, 6.x) standard `kprobe`, `kretprobe` vagy eBPF használandó:
+
 ```c
 #include <linux/kprobes.h>
 
-static void jp_do_fork(struct pt_regs *regs, long clone_flags) {
-    printk(KERN_INFO "do_fork called with flags=%lx\n", clone_flags);
+static int kp_pre_handler(struct kprobe *p, struct pt_regs *regs) {
+    printk(KERN_INFO "kernel_clone meghívva (cím: %p)\n", p->addr);
+    return 0;
 }
 
-static struct jprobe jp = {
-    .kp.symbol_name = "do_fork",
-    .entry = jp_do_fork,
+static struct kprobe kp = {
+    .symbol_name = "kernel_clone", // régebbi kerneleken: _do_fork vagy do_fork
+    .pre_handler = kp_pre_handler,
 };
 ```
 
@@ -159,8 +162,8 @@ Az ftrace a kernel function tracer rendszere. Minden függvényhívás nyomon k�
 # Ftrace bekapcsolása
 echo function > /sys/kernel/debug/tracing/current_tracer
 
-# Egy konkrét függvény követése
-echo do_fork > /sys/kernel/debug/tracing/set_ftrace_filter
+# Egy konkrét függvény követése (modern kerneleken kernel_clone, régebben do_fork)
+echo kernel_clone > /sys/kernel/debug/tracing/set_ftrace_filter
 
 # Trace indítása
 echo 1 > /sys/kernel/debug/tracing/tracing_on
@@ -257,8 +260,8 @@ tcpconnect-bpfcc
 # Syscallok számlálása
 bpftrace -e 'tracepoint:syscalls:sys_enter_* { @[probe] = count(); }'
 
-# Egy konkrét függvény hívásának követése
-bpftrace -e 'kprobe:do_fork { @[pid] = count(); }'
+# Egy konkrét függvény hívásának követése (modern kerneleken kernel_clone)
+bpftrace -e 'kprobe:kernel_clone { @[pid] = count(); }'
 ```
 
 ## 10. Hibakeresési Stratégia

@@ -51,11 +51,11 @@ GRUB_CMDLINE_LINUX_DEFAULT="amd_iommu=on iommu=pt"
 GRUB_CMDLINE_LINUX_DEFAULT="intel_iommu=on iommu=pt dmar=on"
 ```
 
-### 4.2 Sysctl Paraméterek
+### 4.2 Szigorú IOMMU és DMAR Boot Paraméterek
 ```bash
-# /etc/sysctl.conf
-kernel.io_delay_type = 0
-kernel.io_delay_parameter = 0
+# /etc/default/grub (GRUB_CMDLINE_LINUX_DEFAULT)
+# Szigorú leképezés (strict TLB invalidation) DMA támadások ellen:
+GRUB_CMDLINE_LINUX_DEFAULT="intel_iommu=on iommu.strict=1 iommu=force"
 ```
 
 ### 4.3 IOMMU Ellenőrzés

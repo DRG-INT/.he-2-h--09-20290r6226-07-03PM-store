@@ -65,10 +65,10 @@ apparmor=1 security=apparmor
 
 ### 4.2 Konfiguráció
 ```bash
-# KASLR bekapcsolása
-echo 1 > /proc/sys/kernel/randomize_va_space
+# Userspace ASLR bekapcsolása (2 = full randomization: stack, mmap, heap)
+echo 2 > /proc/sys/kernel/randomize_va_space
 
-# KASLR ellenőrzése
+# KASLR (Kernel-szintű) boot paraméter ellenőrzése (kikapcsolás: nokaslr)
 dmesg | grep -i "kernel text base"
 cat /proc/kallsyms | head -1
 ```
@@ -77,21 +77,21 @@ cat /proc/kallsyms | head -1
 
 ### 5.1 Működés
 - Kernel és felhasználói lapozási táblák szétválasztása
-- Speculatív végrehajtás (Spectre/Meltdown) elleni védelem
+- Meltdown (Rogue Data Cache Load, Variant 3) elleni alapvető védelem
 - Kernel oldali adat eléréshez kernel lapozási táblák betöltése
 
 ### 5.2 Teljesítmény Hatás
 - 5-30% teljesítménycsökkenés (CPU és munkaterhelés függő)
-- CPU specifikus: Intel Core, AMD Ryzen
+- CPU specifikus: régebbi Intel processzorokon jelentősebb
 
 ### 5.3 Konfiguráció
 ```bash
-# KPTI bekapcsolása
-pti=on
+# KPTI boot paraméter
+pti=on   # vagy: pti=auto
 
-# KPTI ellenőrzése
+# KPTI ellenőrzése (Meltdown státusz)
 dmesg | grep -i "Kernel/User page tables isolation"
-cat /sys/devices/system/cpu/vulnerabilities/spectre_v2
+cat /sys/devices/system/cpu/vulnerabilities/meltdown
 ```
 
 ## 6. SMEP és SMAP
@@ -156,11 +156,11 @@ setcap CAP_NET_ADMIN+ep /usr/bin/ip
 // Csak read, write, exit syscall-ok engedélyezése
 struct sock_filter filter[] = {
     BPF_STMT(BPF_LD | BPF_W | BPF_ABS, offsetof(struct seccomp_data, nr)),
-    BPF_JUMP(BPF_JMP | BPF_JEQ | BPF_K, __NR_read, 0, 3),
-    BPF_JUMP(BPF_JMP | BPF_JEQ | BPF_K, __NR_write, 0, 2),
-    BPF_JUMP(BPF_JMP | BPF_JEQ | BPF_K, __NR_exit, 0, 1),
-    BPF_STMT(BPF_RET | BPF_K, SECCOMP_RET_KILL_THREAD),
-    BPF_STMT(BPF_RET | BPF_K, SECCOMP_RET_ALLOW),
+    BPF_JUMP(BPF_JMP | BPF_JEQ | BPF_K, __NR_read, 3, 0),  // ha egyezik -> ugrás ALLOW-ra (3 utasítás előre)
+    BPF_JUMP(BPF_JMP | BPF_JEQ | BPF_K, __NR_write, 2, 0), // ha egyezik -> ugrás ALLOW-ra (2 utasítás előre)
+    BPF_JUMP(BPF_JMP | BPF_JEQ | BPF_K, __NR_exit, 1, 0),  // ha egyezik -> ugrás ALLOW-ra (1 utasítás előre)
+    BPF_STMT(BPF_RET | BPF_K, SECCOMP_RET_KILL_PROCESS),   // nem engedélyezett syscall -> leállítás
+    BPF_STMT(BPF_RET | BPF_K, SECCOMP_RET_ALLOW),          // engedélyezett syscall -> továbbengedés
 };
 ```
 

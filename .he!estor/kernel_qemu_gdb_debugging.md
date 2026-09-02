@@ -33,7 +33,7 @@ qemu-system-x86_64 \
   -kernel /boot/vmlinuz-$(uname -r) \
   -initrd /boot/initrd.img-$(uname -r) \
   -append "root=/dev/sda1 console=ttyS0 kgdboc=ttyS0,115200 kgdbwait" \
-  -hda /dev/sda \
+  -hda kernel-debug.qcow2 \
   -serial stdio \
   -monitor telnet:127.0.0.1:4444,server,nowait \
   -s -S
@@ -158,9 +158,9 @@ dmesg | tail -50
 # QEMU-ban kernel panic triggered
 echo c > /proc/sysrq-trigger
 
-# Vagy
-echo 1 > /proc/sys/kernel/panic
-echo 0 > /proc/sys/kernel/panic_on_oops
+# Vagy: pánik kikényszerítése Oops esetén, 5 másodperces újraindítási késleltetéssel:
+echo 1 > /proc/sys/kernel/panic_on_oops
+echo 5 > /proc/sys/kernel/panic
 ```
 
 ### 6.2 Crash Dump Elemzése

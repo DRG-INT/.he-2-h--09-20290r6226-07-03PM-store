@@ -189,7 +189,7 @@ But: **adversarial ML** can mutate patterns to evade detection. The game is eter
 1. **Minimize panic() calls** - only for unrecoverable invariant violations
 2. **Use WARN_ON_ONCE()** for recoverable issues with logging
 3. **Lockdep must pass** - every spinlock, mutex, rwlock verified
-4. **No goto in error paths** - use unwinding or cleanup helpers
+4. **Structured unwinding in error paths** - use canonical kernel `goto err_*` unwinding or modern `__cleanup` helpers
 5. **Memory allocations must have fallbacks** - GFP_ATOMIC or fail gracefully
 6. **No blocking in interrupt context** - IRQ handlers must be fast
 7. **RCU grace periods bounded** - no infinite call_rcu() chains

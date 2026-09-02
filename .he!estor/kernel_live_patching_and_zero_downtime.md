@@ -21,11 +21,11 @@ A kernel live patching lehetővé teszi, hogy a futó kernelbe biztonsági javí
 - **Előny:** Open Source, szélesebb kernel támogatás
 - **Hátrány:** Komplexebb implementáció
 
-### 2.3 livepatch (Canonical/Ubuntu)
-- **Technológia:** ftrace és kexec kombináció
-- **Működés:** Függvényhívások átirányítása, kexec kernel újratöltés
-- **Előny:** Ubuntu integráció, Canonical támogatás
-- **Hátrány:** Csak Ubuntu rendszereken
+### 2.3 livepatch (Canonical/Ubuntu & Upstream)
+- **Technológia:** Upstream `CONFIG_LIVEPATCH` és ftrace trampolin
+- **Működés:** Függvényhívások atomikus átirányítása per-task verem konzisztenciával (nincs újraindítás vagy kexec)
+- **Előny:** Zero-downtime, Canonical és vállalati disztribúciós integráció
+- **Hátrány:** Függvény-szintű határok, adatstruktúra-változtatásokra korlátozottan alkalmas
 
 ## 3. Live Patching Működése
 

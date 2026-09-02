@@ -154,17 +154,22 @@ CONFIG_KCSAN=y
 
 ### 9.1 Patch Készítése
 ```c
-// Hibás kód
-void vulnerable_function(char *user_ptr) {
+// Hibás kód (felhasználói mutató közvetlen elérése ellenőrzés nélkül)
+long vulnerable_function(const char __user *user_ptr) {
     char buf[64];
-    strcpy(buf, user_ptr);  // Buffer overflow!
+    strcpy(buf, (const char *)user_ptr);  // Buffer overflow és SMAP sértés!
+    return 0;
 }
 
-// Javított kód
-void fixed_function(char *user_ptr, size_t len) {
+// Javított kód (méretellenőrzés és biztonságos copy_from_user)
+long fixed_function(const char __user *user_ptr, size_t len) {
     char buf[64];
-    if (len >= sizeof(buf)) return -EINVAL;
-    memcpy(buf, user_ptr, len);
+    if (len >= sizeof(buf))
+        return -EINVAL;
+    if (copy_from_user(buf, user_ptr, len))
+        return -EFAULT;
+    buf[len] = '\0';
+    return 0;
 }
 ```
 

@@ -104,9 +104,9 @@ net.ipv4.tcp_congestion_control = bbr
 echo 16777216 > /proc/sys/net/core/rmem_max
 echo 16777216 > /proc/sys/net/core/wmem_max
 
-# Socket buffer
-echo 16777216 > /proc/sys/net/ipv4/tcp_rmem
-echo 16777216 > /proc/sys/net/ipv4/tcp_wmem
+# Socket buffer (min default max)
+echo "4096 87380 16777216" > /proc/sys/net/ipv4/tcp_rmem
+echo "4096 65536 16777216" > /proc/sys/net/ipv4/tcp_wmem
 ```
 
 ### 5.3 IRQ Affinity

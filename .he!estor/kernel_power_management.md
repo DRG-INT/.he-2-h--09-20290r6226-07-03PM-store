@@ -77,10 +77,9 @@ MIN_SPEED="800MHz"
 
 ### 5.2 CPU Idle Konfiguráció
 ```bash
-# /etc/sysctl.conf
-kernel.nohz=1
-kernel.nohz_full=2-3
-kernel.rcu_nocbs=2-3
+# /etc/default/grub (GRUB_CMDLINE_LINUX_DEFAULT)
+# A nohz_full és rcu_nocbs kernel boot paraméterek (nem sysctl fájlok):
+GRUB_CMDLINE_LINUX_DEFAULT="quiet splash nohz_full=2-3 rcu_nocbs=2-3"
 ```
 
 ### 5.3 Perifériák Energiakezelése

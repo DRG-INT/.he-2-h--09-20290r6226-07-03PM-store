@@ -16,10 +16,11 @@ MAJOR.MINOR.PATCH-EXTRA
 - **PATCH (Javítás verzió):** Hibajavítások, biztonsági javítások
 - **EXTRA (Kiterjesztés):** Build szám, distro specifikus módosítások
 
-### 1.2 Stabil vs Fejlesztői Verziók
-- **Stabil (stable):** Páros MINOR szám (pl. 5.4, 5.10, 5.15)
-- **Fejlesztői (mainline):** Páratlan MINOR szám (pl. 5.17, 6.1)
-- **Long Term Support (LTS):** Hosszú ideig támogatott verziók (pl. 5.4, 5.10, 5.15)
+### 1.2 Modern Verziózási Modell (Linux 2.6+ óta)
+- **Mainline (Linus fa):** Minden új főverzió (pl. 6.1, 6.2, 6.6) hivatalos stabil kiadás. A korábbi (2.4 előtti) páros/páratlan felosztás már több mint két évtizede megszűnt.
+- **Stable (Pontkiadások):** Hivatalos hibajavító kiadások (pl. 6.1.1, 6.1.2), amelyeket a Stable csapat tart karban.
+- **Long Term Support (LTS):** Kijelölt verziók (pl. 5.15, 6.1, 6.6), amelyekhez több éven át biztosítanak biztonsági backportokat.
+- **Release Candidate (RC):** Fejlesztési időszakban közzétett tesztverziók (pl. 6.7-rc1).
 
 ## 2. Miért Frissítsd a Kernel-t?
 
