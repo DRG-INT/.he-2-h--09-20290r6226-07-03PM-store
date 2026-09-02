@@ -63,7 +63,7 @@
 | [`kernel_performance_optimization.md`](.he!estor/kernel_performance_optimization.md) | 5,013 | 154 | `c6472e638fb5e3ff...` | markdown |
 | [`kernel_versioning_and_updates.md`](.he!estor/kernel_versioning_and_updates.md) | 4,183 | 117 | `12a19b51c2b1b21d...` | markdown |
 
-### Multi-OS Practical Knowledge & Field Manuals (.mac!narumi) (23 items)
+### Multi-OS Practical Knowledge & Field Manuals (.mac!narumi) (24 items)
 
 | Module / Artifact | Size (Bytes) | Lines | SHA-256 Checksum (Prefix) | Type |
 | :--- | :---: | :---: | :--- | :---: |
@@ -86,6 +86,7 @@
 | [`16_windows_nt_process_and_thread_management_practical.md`](.mac!narumi/16_windows_nt_process_and_thread_management_practical.md) | 4,384 | 197 | `3e351d7701049f36...` | markdown |
 | [`17_windows_nt_security_practical.md`](.mac!narumi/17_windows_nt_security_practical.md) | 4,588 | 227 | `4aecdca7517a1bda...` | markdown |
 | [`18_windows_nt_driver_development_practical.md`](.mac!narumi/18_windows_nt_driver_development_practical.md) | 4,898 | 230 | `883eb13609f60443...` | markdown |
+| [`19_windows_nt_debugging_and_networking_practical.md`](.mac!narumi/19_windows_nt_debugging_and_networking_practical.md) | 2,975 | 148 | `e6ffb47f882d65ff...` | markdown |
 | [`31_voidlinux_practical_knowledge.md`](.mac!narumi/31_voidlinux_practical_knowledge.md) | 5,794 | 159 | `22654a71e7dfd622...` | markdown |
 | [`32_freebsd_practical_knowledge.md`](.mac!narumi/32_freebsd_practical_knowledge.md) | 4,988 | 159 | `ba7c8b7c1c23c493...` | markdown |
 | [`33_macos_practical_knowledge.md`](.mac!narumi/33_macos_practical_knowledge.md) | 4,701 | 115 | `8e07858e759678ba...` | markdown |
@@ -194,8 +195,8 @@
 
 | Verification Layer | Scope | Engine | Result |
 | :--- | :--- | :---: | :---: |
-| **Cryptographic Integrity** | 138 Artifacts (SHA-256) | Engine 1 (Deterministic) | ✅ 100% Passed |
-| **Markdown AST & Delimiters** | 83 Documents, 338 Code Fences | Engine 1 (Deterministic) | ✅ 0 Broken Fences |
+| **Cryptographic Integrity** | 139 Artifacts (SHA-256) | Engine 1 (Deterministic) | ✅ 100% Passed |
+| **Markdown AST & Delimiters** | 84 Documents, 350 Code Fences | Engine 1 (Deterministic) | ✅ 0 Broken Fences |
 | **HTML5 Semantic Tree** | Interactive Field Guides | Engine 1 (Deterministic) | ✅ 0 Unclosed Tags |
 | **Graphics Magic Signatures** | Blueprints (PNG/JPEG/WEBP/SVG) | Engine 1 (Deterministic) | ✅ All Valid Headers |
 | **Procfs / Sysfs Paths** | 29 /proc & 15 /sys paths | Engine 1 (Deterministic) | ✅ Valid Linux Targets |

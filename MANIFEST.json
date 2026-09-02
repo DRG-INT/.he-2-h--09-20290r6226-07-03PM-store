@@ -6,19 +6,19 @@
     "engine_2_domain_cognitive": "Audited & Remediated (Kernel Vectors, Void Linux, FreeBSD, Driver Architect, Defense Buses, TPM/WDT)"
   },
   "statistics": {
-    "total_artifacts": 138,
+    "total_artifacts": 139,
     "linux_kernel_guides": 32,
-    "multios_practical_guides": 23,
+    "multios_practical_guides": 24,
     "multios_architecture_guides": 28,
     "architecture_visuals": 53,
-    "code_blocks": 338,
+    "code_blocks": 350,
     "languages": {
       "unspecified": 27,
-      "bash": 192,
-      "c": 106,
+      "bash": 194,
+      "c": 107,
       "inf": 2,
-      "text": 7,
-      "cmd": 4
+      "cmd": 13,
+      "text": 7
     }
   },
   "categories": {
@@ -84,6 +84,7 @@
       ".mac!narumi/16_windows_nt_process_and_thread_management_practical.md",
       ".mac!narumi/17_windows_nt_security_practical.md",
       ".mac!narumi/18_windows_nt_driver_development_practical.md",
+      ".mac!narumi/19_windows_nt_debugging_and_networking_practical.md",
       ".mac!narumi/31_voidlinux_practical_knowledge.md",
       ".mac!narumi/32_freebsd_practical_knowledge.md",
       ".mac!narumi/33_macos_practical_knowledge.md",
@@ -803,6 +804,12 @@
       "sha256": "883eb13609f6044359313b71dc6b2ece98351bbf05a70d8d04ef743411b95be3",
       "type": "markdown",
       "lines": 230
+    },
+    ".mac!narumi/19_windows_nt_debugging_and_networking_practical.md": {
+      "size_bytes": 2975,
+      "sha256": "e6ffb47f882d65ffed7b406ad2a16e639fe0031319e117a3909531e90da13c2c",
+      "type": "markdown",
+      "lines": 148
     },
     ".mac!narumi/31_voidlinux_practical_knowledge.md": {
       "size_bytes": 5794,
