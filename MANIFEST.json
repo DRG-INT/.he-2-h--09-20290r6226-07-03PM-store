@@ -6,17 +6,19 @@
     "engine_2_domain_cognitive": "Audited & Remediated (Kernel Vectors, Void Linux, FreeBSD, Driver Architect, Defense Buses, TPM/WDT)"
   },
   "statistics": {
-    "total_artifacts": 123,
+    "total_artifacts": 138,
     "linux_kernel_guides": 32,
-    "multios_practical_guides": 15,
-    "multios_architecture_guides": 23,
+    "multios_practical_guides": 23,
+    "multios_architecture_guides": 28,
     "architecture_visuals": 53,
-    "code_blocks": 234,
+    "code_blocks": 338,
     "languages": {
-      "unspecified": 20,
-      "bash": 180,
-      "c": 30,
-      "text": 4
+      "unspecified": 27,
+      "bash": 192,
+      "c": 106,
+      "inf": 2,
+      "text": 7,
+      "cmd": 4
     }
   },
   "categories": {
@@ -76,8 +78,16 @@
       ".mac!narumi/10_menuetos_practical_knowledge.md",
       ".mac!narumi/11_aros_practical_knowledge.md",
       ".mac!narumi/12_genode_practical_knowledge.md",
-      ".mac!narumi/13_voidlinux_practical_knowledge.md",
-      ".mac!narumi/14_freebsd_practical_knowledge.md"
+      ".mac!narumi/13_windows_nt_object_manager_practical.md",
+      ".mac!narumi/14_windows_nt_io_system_practical.md",
+      ".mac!narumi/15_windows_nt_memory_manager_practical.md",
+      ".mac!narumi/16_windows_nt_process_and_thread_management_practical.md",
+      ".mac!narumi/17_windows_nt_security_practical.md",
+      ".mac!narumi/18_windows_nt_driver_development_practical.md",
+      ".mac!narumi/31_voidlinux_practical_knowledge.md",
+      ".mac!narumi/32_freebsd_practical_knowledge.md",
+      ".mac!narumi/33_macos_practical_knowledge.md",
+      ".mac!narumi/34_macos_9_2_2_practical_knowledge.md"
     ],
     "Multi-OS Deep Dive Architectures (.macinarium-stellar)": [
       ".macinarium-stellar/01_windows_nt_kernel_architecture.md",
@@ -97,12 +107,21 @@
       ".macinarium-stellar/15_windows_nt_io_system.md",
       ".macinarium-stellar/16_windows_nt_memory_manager.md",
       ".macinarium-stellar/17_windows_nt_process_and_thread_management.md",
-      ".macinarium-stellar/18_voidlinux_architecture_and_runit.md",
-      ".macinarium-stellar/19_freebsd_architecture_and_subsystems.md",
-      ".macinarium-stellar/20_driver_architect_universal_patterns.md",
-      ".macinarium-stellar/21_industrial_defense_bus_subsystems.md",
-      ".macinarium-stellar/22_hardware_root_of_trust_and_watchdogs.md",
-      ".macinarium-stellar/23_critical_infrastructure_application_interfaces.md"
+      ".macinarium-stellar/18_windows_nt_security.md",
+      ".macinarium-stellar/19_windows_nt_driver_development.md",
+      ".macinarium-stellar/20_windows_nt_debugging_and_networking.md",
+      ".macinarium-stellar/31_voidlinux_architecture_and_runit.md",
+      ".macinarium-stellar/32_freebsd_architecture_and_subsystems.md",
+      ".macinarium-stellar/33_driver_architect_universal_patterns.md",
+      ".macinarium-stellar/34_industrial_defense_bus_subsystems.md",
+      ".macinarium-stellar/35_hardware_root_of_trust_and_watchdogs.md",
+      ".macinarium-stellar/36_critical_infrastructure_application_interfaces.md",
+      ".macinarium-stellar/37_macos_xnu_kernel_architecture.md",
+      ".macinarium-stellar/38_classic_macos_9_2_2_architecture.md"
+    ],
+    "Strategic Disaster Recovery & Bare-Metal Imaging (Deepspace Copyrightd)": [
+      "Deepspace/.strategioc-intelligence/Copyrightd/2000s Macrium Reflect®/macrium_reflect_technical_specification_and_forensics.md",
+      "Deepspace/.strategioc-intelligence/Copyrightd/© Paramount Software UK Limited/enterprise_disaster_recovery_and_imaging_architecture.md"
     ],
     "Architecture Visual Blueprints & References (.architech)": [
       ".architech/.implicit/-42751371_221310431.pdf-6.jpg",
@@ -749,17 +768,65 @@
       "type": "markdown",
       "lines": 92
     },
-    ".mac!narumi/13_voidlinux_practical_knowledge.md": {
+    ".mac!narumi/13_windows_nt_object_manager_practical.md": {
+      "size_bytes": 3530,
+      "sha256": "1447f3cf9b6bac5b2bea13684244e2c11eb93d656a21a1830f6c3211d7e46188",
+      "type": "markdown",
+      "lines": 170
+    },
+    ".mac!narumi/14_windows_nt_io_system_practical.md": {
+      "size_bytes": 3635,
+      "sha256": "451aaf14e3cca2516419739f3269a943f05e4edaafa64e1d5144c143de70fb8b",
+      "type": "markdown",
+      "lines": 158
+    },
+    ".mac!narumi/15_windows_nt_memory_manager_practical.md": {
+      "size_bytes": 4041,
+      "sha256": "4b6e539d3d848fb462c6a082f7a2ef85c16b8726c70843426e02e1fb2e856812",
+      "type": "markdown",
+      "lines": 206
+    },
+    ".mac!narumi/16_windows_nt_process_and_thread_management_practical.md": {
+      "size_bytes": 4384,
+      "sha256": "3e351d7701049f368a1b829f8b8a84bd0aa40c969f0630fd5e747b3527e047da",
+      "type": "markdown",
+      "lines": 197
+    },
+    ".mac!narumi/17_windows_nt_security_practical.md": {
+      "size_bytes": 4588,
+      "sha256": "4aecdca7517a1bda9a85e8e9c857d2acaac8065a0c8d31194b09f9de1602c13c",
+      "type": "markdown",
+      "lines": 227
+    },
+    ".mac!narumi/18_windows_nt_driver_development_practical.md": {
+      "size_bytes": 4898,
+      "sha256": "883eb13609f6044359313b71dc6b2ece98351bbf05a70d8d04ef743411b95be3",
+      "type": "markdown",
+      "lines": 230
+    },
+    ".mac!narumi/31_voidlinux_practical_knowledge.md": {
       "size_bytes": 5794,
       "sha256": "22654a71e7dfd622d5b52e4a935e25bd358755a8db4ca7a533b02b20fd82441c",
       "type": "markdown",
       "lines": 159
     },
-    ".mac!narumi/14_freebsd_practical_knowledge.md": {
+    ".mac!narumi/32_freebsd_practical_knowledge.md": {
       "size_bytes": 4988,
       "sha256": "ba7c8b7c1c23c49369dbc8bc8d8d3b9ab8706aa277f115840a128e568764cabd",
       "type": "markdown",
       "lines": 159
+    },
+    ".mac!narumi/33_macos_practical_knowledge.md": {
+      "size_bytes": 4701,
+      "sha256": "8e07858e759678ba431d00dc0f5cbf1c18dbf0f2090a8c6ce80fbd642b65a3ca",
+      "type": "markdown",
+      "lines": 115
+    },
+    ".mac!narumi/34_macos_9_2_2_practical_knowledge.md": {
+      "size_bytes": 6012,
+      "sha256": "409b65fe04445109b800c30222f1f0489c8d4d51fb1e8fecee36ac0d3e6aed9b",
+      "type": "markdown",
+      "lines": 94
     },
     ".macinarium-stellar/01_windows_nt_kernel_architecture.md": {
       "size_bytes": 5903,
@@ -863,41 +930,83 @@
       "type": "markdown",
       "lines": 162
     },
-    ".macinarium-stellar/18_voidlinux_architecture_and_runit.md": {
+    ".macinarium-stellar/18_windows_nt_security.md": {
+      "size_bytes": 2882,
+      "sha256": "157f9895faa7054f26bb5bd6c2857ba85c2ad89453583517d981c60447de721f",
+      "type": "markdown",
+      "lines": 130
+    },
+    ".macinarium-stellar/19_windows_nt_driver_development.md": {
+      "size_bytes": 4684,
+      "sha256": "aa7c0b51808242662509bdbf1f6f731344c2d818ffedb4f8d998388ce94c8e22",
+      "type": "markdown",
+      "lines": 217
+    },
+    ".macinarium-stellar/20_windows_nt_debugging_and_networking.md": {
+      "size_bytes": 3675,
+      "sha256": "95396e16af871baf30b7a11690d64a370f9c4892fa89e0cff09a735f20b555cf",
+      "type": "markdown",
+      "lines": 202
+    },
+    ".macinarium-stellar/31_voidlinux_architecture_and_runit.md": {
       "size_bytes": 8471,
       "sha256": "0b3da07dd149f9e08fc23e7acc3bdcb52f4c38bf9783ce5673bd9f5525e707e2",
       "type": "markdown",
       "lines": 133
     },
-    ".macinarium-stellar/19_freebsd_architecture_and_subsystems.md": {
+    ".macinarium-stellar/32_freebsd_architecture_and_subsystems.md": {
       "size_bytes": 8675,
       "sha256": "1db3fdd8fbc8596d52bd3b3e2c46abb7aee9ca811d595682591d6ebf9be5739d",
       "type": "markdown",
       "lines": 152
     },
-    ".macinarium-stellar/20_driver_architect_universal_patterns.md": {
+    ".macinarium-stellar/33_driver_architect_universal_patterns.md": {
       "size_bytes": 9034,
       "sha256": "803434f3df44a6c1948df21b6fadef68ef069333e50823069df8a32813fad488",
       "type": "markdown",
       "lines": 164
     },
-    ".macinarium-stellar/21_industrial_defense_bus_subsystems.md": {
+    ".macinarium-stellar/34_industrial_defense_bus_subsystems.md": {
       "size_bytes": 7311,
       "sha256": "45ff0d4957cf6089a1750f8bd281a301affbfb9d88b493d794fa30827c8df065",
       "type": "markdown",
       "lines": 131
     },
-    ".macinarium-stellar/22_hardware_root_of_trust_and_watchdogs.md": {
+    ".macinarium-stellar/35_hardware_root_of_trust_and_watchdogs.md": {
       "size_bytes": 7648,
       "sha256": "325e7ac6df599d0441b49572dc1e18944806b91465be7a09f19c258919930d42",
       "type": "markdown",
       "lines": 125
     },
-    ".macinarium-stellar/23_critical_infrastructure_application_interfaces.md": {
+    ".macinarium-stellar/36_critical_infrastructure_application_interfaces.md": {
       "size_bytes": 7810,
       "sha256": "a96ed720620c87f1cf445eeeef6f11eec757ccef8ac211ded0e33cb2ef91726b",
       "type": "markdown",
       "lines": 127
+    },
+    ".macinarium-stellar/37_macos_xnu_kernel_architecture.md": {
+      "size_bytes": 7395,
+      "sha256": "915fb338fa5949cff4d8ddd3f3fd91079f68f1e53416d08b29649f88dd4ff462",
+      "type": "markdown",
+      "lines": 118
+    },
+    ".macinarium-stellar/38_classic_macos_9_2_2_architecture.md": {
+      "size_bytes": 8258,
+      "sha256": "d4e9cbaf79b10cfcf135d183ce1330b9b7a017fa4d324bb9a122e40a1ae193ec",
+      "type": "markdown",
+      "lines": 124
+    },
+    "Deepspace/.strategioc-intelligence/Copyrightd/2000s Macrium Reflect®/macrium_reflect_technical_specification_and_forensics.md": {
+      "size_bytes": 7839,
+      "sha256": "a95d99b578a62b49fde82df2e50b8a27d780d679c7c6576472bea885b7cbfb7d",
+      "type": "markdown",
+      "lines": 109
+    },
+    "Deepspace/.strategioc-intelligence/Copyrightd/© Paramount Software UK Limited/enterprise_disaster_recovery_and_imaging_architecture.md": {
+      "size_bytes": 7849,
+      "sha256": "bd4b1fe4e18c269dcfdee08aed9b14ab6452de7cf5466f2f2b668c668ad3e33b",
+      "type": "markdown",
+      "lines": 102
     }
   }
 }

@@ -63,7 +63,7 @@
 | [`kernel_performance_optimization.md`](.he!estor/kernel_performance_optimization.md) | 5,013 | 154 | `c6472e638fb5e3ff...` | markdown |
 | [`kernel_versioning_and_updates.md`](.he!estor/kernel_versioning_and_updates.md) | 4,183 | 117 | `12a19b51c2b1b21d...` | markdown |
 
-### Multi-OS Practical Knowledge & Field Manuals (.mac!narumi) (15 items)
+### Multi-OS Practical Knowledge & Field Manuals (.mac!narumi) (23 items)
 
 | Module / Artifact | Size (Bytes) | Lines | SHA-256 Checksum (Prefix) | Type |
 | :--- | :---: | :---: | :--- | :---: |
@@ -80,10 +80,18 @@
 | [`10_menuetos_practical_knowledge.md`](.mac!narumi/10_menuetos_practical_knowledge.md) | 2,397 | 80 | `1a3f098352c91b6f...` | markdown |
 | [`11_aros_practical_knowledge.md`](.mac!narumi/11_aros_practical_knowledge.md) | 2,293 | 79 | `daa637280144fd02...` | markdown |
 | [`12_genode_practical_knowledge.md`](.mac!narumi/12_genode_practical_knowledge.md) | 2,604 | 92 | `d6d0f54b6c59b1bf...` | markdown |
-| [`13_voidlinux_practical_knowledge.md`](.mac!narumi/13_voidlinux_practical_knowledge.md) | 5,794 | 159 | `22654a71e7dfd622...` | markdown |
-| [`14_freebsd_practical_knowledge.md`](.mac!narumi/14_freebsd_practical_knowledge.md) | 4,988 | 159 | `ba7c8b7c1c23c493...` | markdown |
+| [`13_windows_nt_object_manager_practical.md`](.mac!narumi/13_windows_nt_object_manager_practical.md) | 3,530 | 170 | `1447f3cf9b6bac5b...` | markdown |
+| [`14_windows_nt_io_system_practical.md`](.mac!narumi/14_windows_nt_io_system_practical.md) | 3,635 | 158 | `451aaf14e3cca251...` | markdown |
+| [`15_windows_nt_memory_manager_practical.md`](.mac!narumi/15_windows_nt_memory_manager_practical.md) | 4,041 | 206 | `4b6e539d3d848fb4...` | markdown |
+| [`16_windows_nt_process_and_thread_management_practical.md`](.mac!narumi/16_windows_nt_process_and_thread_management_practical.md) | 4,384 | 197 | `3e351d7701049f36...` | markdown |
+| [`17_windows_nt_security_practical.md`](.mac!narumi/17_windows_nt_security_practical.md) | 4,588 | 227 | `4aecdca7517a1bda...` | markdown |
+| [`18_windows_nt_driver_development_practical.md`](.mac!narumi/18_windows_nt_driver_development_practical.md) | 4,898 | 230 | `883eb13609f60443...` | markdown |
+| [`31_voidlinux_practical_knowledge.md`](.mac!narumi/31_voidlinux_practical_knowledge.md) | 5,794 | 159 | `22654a71e7dfd622...` | markdown |
+| [`32_freebsd_practical_knowledge.md`](.mac!narumi/32_freebsd_practical_knowledge.md) | 4,988 | 159 | `ba7c8b7c1c23c493...` | markdown |
+| [`33_macos_practical_knowledge.md`](.mac!narumi/33_macos_practical_knowledge.md) | 4,701 | 115 | `8e07858e759678ba...` | markdown |
+| [`34_macos_9_2_2_practical_knowledge.md`](.mac!narumi/34_macos_9_2_2_practical_knowledge.md) | 6,012 | 94 | `409b65fe04445109...` | markdown |
 
-### Multi-OS Deep Dive Architectures (.macinarium-stellar) (23 items)
+### Multi-OS Deep Dive Architectures (.macinarium-stellar) (28 items)
 
 | Module / Artifact | Size (Bytes) | Lines | SHA-256 Checksum (Prefix) | Type |
 | :--- | :---: | :---: | :--- | :---: |
@@ -104,12 +112,24 @@
 | [`15_windows_nt_io_system.md`](.macinarium-stellar/15_windows_nt_io_system.md) | 4,143 | 164 | `c63228a513894ff7...` | markdown |
 | [`16_windows_nt_memory_manager.md`](.macinarium-stellar/16_windows_nt_memory_manager.md) | 3,589 | 156 | `bd2a333cdc6623f6...` | markdown |
 | [`17_windows_nt_process_and_thread_management.md`](.macinarium-stellar/17_windows_nt_process_and_thread_management.md) | 3,863 | 162 | `fb048eca082e4297...` | markdown |
-| [`18_voidlinux_architecture_and_runit.md`](.macinarium-stellar/18_voidlinux_architecture_and_runit.md) | 8,471 | 133 | `0b3da07dd149f9e0...` | markdown |
-| [`19_freebsd_architecture_and_subsystems.md`](.macinarium-stellar/19_freebsd_architecture_and_subsystems.md) | 8,675 | 152 | `1db3fdd8fbc8596d...` | markdown |
-| [`20_driver_architect_universal_patterns.md`](.macinarium-stellar/20_driver_architect_universal_patterns.md) | 9,034 | 164 | `803434f3df44a6c1...` | markdown |
-| [`21_industrial_defense_bus_subsystems.md`](.macinarium-stellar/21_industrial_defense_bus_subsystems.md) | 7,311 | 131 | `45ff0d4957cf6089...` | markdown |
-| [`22_hardware_root_of_trust_and_watchdogs.md`](.macinarium-stellar/22_hardware_root_of_trust_and_watchdogs.md) | 7,648 | 125 | `325e7ac6df599d04...` | markdown |
-| [`23_critical_infrastructure_application_interfaces.md`](.macinarium-stellar/23_critical_infrastructure_application_interfaces.md) | 7,810 | 127 | `a96ed720620c87f1...` | markdown |
+| [`18_windows_nt_security.md`](.macinarium-stellar/18_windows_nt_security.md) | 2,882 | 130 | `157f9895faa7054f...` | markdown |
+| [`19_windows_nt_driver_development.md`](.macinarium-stellar/19_windows_nt_driver_development.md) | 4,684 | 217 | `aa7c0b5180824266...` | markdown |
+| [`20_windows_nt_debugging_and_networking.md`](.macinarium-stellar/20_windows_nt_debugging_and_networking.md) | 3,675 | 202 | `95396e16af871baf...` | markdown |
+| [`31_voidlinux_architecture_and_runit.md`](.macinarium-stellar/31_voidlinux_architecture_and_runit.md) | 8,471 | 133 | `0b3da07dd149f9e0...` | markdown |
+| [`32_freebsd_architecture_and_subsystems.md`](.macinarium-stellar/32_freebsd_architecture_and_subsystems.md) | 8,675 | 152 | `1db3fdd8fbc8596d...` | markdown |
+| [`33_driver_architect_universal_patterns.md`](.macinarium-stellar/33_driver_architect_universal_patterns.md) | 9,034 | 164 | `803434f3df44a6c1...` | markdown |
+| [`34_industrial_defense_bus_subsystems.md`](.macinarium-stellar/34_industrial_defense_bus_subsystems.md) | 7,311 | 131 | `45ff0d4957cf6089...` | markdown |
+| [`35_hardware_root_of_trust_and_watchdogs.md`](.macinarium-stellar/35_hardware_root_of_trust_and_watchdogs.md) | 7,648 | 125 | `325e7ac6df599d04...` | markdown |
+| [`36_critical_infrastructure_application_interfaces.md`](.macinarium-stellar/36_critical_infrastructure_application_interfaces.md) | 7,810 | 127 | `a96ed720620c87f1...` | markdown |
+| [`37_macos_xnu_kernel_architecture.md`](.macinarium-stellar/37_macos_xnu_kernel_architecture.md) | 7,395 | 118 | `915fb338fa5949cf...` | markdown |
+| [`38_classic_macos_9_2_2_architecture.md`](.macinarium-stellar/38_classic_macos_9_2_2_architecture.md) | 8,258 | 124 | `d4e9cbaf79b10cfc...` | markdown |
+
+### Strategic Disaster Recovery & Bare-Metal Imaging (Deepspace Copyrightd) (2 items)
+
+| Module / Artifact | Size (Bytes) | Lines | SHA-256 Checksum (Prefix) | Type |
+| :--- | :---: | :---: | :--- | :---: |
+| [`macrium_reflect_technical_specification_and_forensics.md`](Deepspace/.strategioc-intelligence/Copyrightd/2000s Macrium Reflect®/macrium_reflect_technical_specification_and_forensics.md) | 7,839 | 109 | `a95d99b578a62b49...` | markdown |
+| [`enterprise_disaster_recovery_and_imaging_architecture.md`](Deepspace/.strategioc-intelligence/Copyrightd/© Paramount Software UK Limited/enterprise_disaster_recovery_and_imaging_architecture.md) | 7,849 | 102 | `bd4b1fe4e18c269d...` | markdown |
 
 ### Architecture Visual Blueprints & References (.architech) (53 items)
 
@@ -174,8 +194,8 @@
 
 | Verification Layer | Scope | Engine | Result |
 | :--- | :--- | :---: | :---: |
-| **Cryptographic Integrity** | 123 Artifacts (SHA-256) | Engine 1 (Deterministic) | ✅ 100% Passed |
-| **Markdown AST & Delimiters** | 70 Documents, 234 Code Fences | Engine 1 (Deterministic) | ✅ 0 Broken Fences |
+| **Cryptographic Integrity** | 138 Artifacts (SHA-256) | Engine 1 (Deterministic) | ✅ 100% Passed |
+| **Markdown AST & Delimiters** | 83 Documents, 338 Code Fences | Engine 1 (Deterministic) | ✅ 0 Broken Fences |
 | **HTML5 Semantic Tree** | Interactive Field Guides | Engine 1 (Deterministic) | ✅ 0 Unclosed Tags |
 | **Graphics Magic Signatures** | Blueprints (PNG/JPEG/WEBP/SVG) | Engine 1 (Deterministic) | ✅ All Valid Headers |
 | **Procfs / Sysfs Paths** | 29 /proc & 15 /sys paths | Engine 1 (Deterministic) | ✅ Valid Linux Targets |

@@ -26,6 +26,7 @@ DOCS_DIR = ROOT_DIR / ".he!estor"
 NARUMI_DIR = ROOT_DIR / ".mac!narumi"
 STELLAR_DIR = ROOT_DIR / ".macinarium-stellar"
 ARCH_DIR = ROOT_DIR / ".architech"
+DEEPSPACE_DIR = ROOT_DIR / "Deepspace"
 MANIFEST_FILE = ROOT_DIR / "MANIFEST.json"
 
 class HTMLValidator(HTMLParser):
@@ -67,9 +68,10 @@ def audit_file_inventory():
     he_files = [p for p in DOCS_DIR.glob("*") if p.is_file() and not p.name.startswith(".DS_Store")]
     narumi_files = [p for p in NARUMI_DIR.glob("*.md") if p.is_file() and not p.name.startswith(".DS_Store")] if NARUMI_DIR.exists() else []
     stellar_files = [p for p in STELLAR_DIR.glob("*.md") if p.is_file() and not p.name.startswith(".DS_Store")] if STELLAR_DIR.exists() else []
+    deepspace_files = [p for p in DEEPSPACE_DIR.rglob("*.md") if p.is_file() and not p.name.startswith(".DS_Store")] if DEEPSPACE_DIR.exists() else []
     arch_files = [p for p in ARCH_DIR.rglob("*") if p.is_file() and not p.name.startswith(".DS_Store")] if ARCH_DIR.exists() else []
     
-    all_files = sorted(he_files + narumi_files + stellar_files + arch_files, key=lambda x: str(x))
+    all_files = sorted(he_files + narumi_files + stellar_files + deepspace_files + arch_files, key=lambda x: str(x))
     inventory = {}
     total_bytes = 0
     total_lines = 0
@@ -99,11 +101,11 @@ def audit_file_inventory():
 
 def audit_markdown_ast():
     print("[2/6] Auditing Markdown Structure, Headings & Code Fences across all folders...")
-    folders = [DOCS_DIR, NARUMI_DIR, STELLAR_DIR]
+    folders = [DOCS_DIR, NARUMI_DIR, STELLAR_DIR, DEEPSPACE_DIR]
     md_files = []
     for f in folders:
         if f.exists():
-            md_files.extend(sorted([p for p in f.glob("*.md") if p.is_file()]))
+            md_files.extend(sorted([p for p in f.rglob("*.md") if p.is_file()]))
 
     issues = []
     code_block_count = 0
@@ -242,6 +244,9 @@ def generate_manifest(inventory, languages):
         "Multi-OS Deep Dive Architectures (.macinarium-stellar)": sorted([
             os.path.relpath(str(p), str(ROOT_DIR)) for p in STELLAR_DIR.glob("*.md") if p.is_file()
         ]) if STELLAR_DIR.exists() else [],
+        "Strategic Disaster Recovery & Bare-Metal Imaging (Deepspace Copyrightd)": sorted([
+            os.path.relpath(str(p), str(ROOT_DIR)) for p in DEEPSPACE_DIR.rglob("*.md") if p.is_file()
+        ]) if DEEPSPACE_DIR.exists() else [],
         "Architecture Visual Blueprints & References (.architech)": sorted([
             os.path.relpath(str(p), str(ROOT_DIR)) for p in ARCH_DIR.rglob("*") if p.is_file() and not p.name.startswith(".DS_Store")
         ]) if ARCH_DIR.exists() else []
