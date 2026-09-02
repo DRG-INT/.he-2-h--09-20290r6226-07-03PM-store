@@ -7,7 +7,7 @@ Validates:
 - Full Multi-OS file inventory & SHA-256 cryptographic hashes
 - Markdown structure, headings, and code fence integrity (.he!estor, .mac!narumi, .macinarium-stellar)
 - HTML syntax and document integrity
-- Image file signatures (PNG, JPEG, WEBP magic bytes)
+- Image file signatures (PNG, JPEG, WEBP, SVG magic bytes)
 - System paths (/proc, /sys) and kernel sysctl parameters
 - Generates MANIFEST.json, INDEX.md, and static audit results
 """
@@ -64,33 +64,33 @@ class HTMLValidator(HTMLParser):
 
 def audit_file_inventory():
     print("[1/6] Auditing File Inventory & Cryptographic Checksums...")
-    he_files = sorted(glob.glob(str(DOCS_DIR / "*")))
-    narumi_files = sorted(glob.glob(str(NARUMI_DIR / "*.md"))) if NARUMI_DIR.exists() else []
-    stellar_files = sorted(glob.glob(str(STELLAR_DIR / "*.md"))) if STELLAR_DIR.exists() else []
-    arch_files = sorted(glob.glob(str(ARCH_DIR / "*")))
+    he_files = [p for p in DOCS_DIR.glob("*") if p.is_file() and not p.name.startswith(".DS_Store")]
+    narumi_files = [p for p in NARUMI_DIR.glob("*.md") if p.is_file() and not p.name.startswith(".DS_Store")] if NARUMI_DIR.exists() else []
+    stellar_files = [p for p in STELLAR_DIR.glob("*.md") if p.is_file() and not p.name.startswith(".DS_Store")] if STELLAR_DIR.exists() else []
+    arch_files = [p for p in ARCH_DIR.rglob("*") if p.is_file() and not p.name.startswith(".DS_Store")] if ARCH_DIR.exists() else []
     
-    all_files = he_files + narumi_files + stellar_files + arch_files
+    all_files = sorted(he_files + narumi_files + stellar_files + arch_files, key=lambda x: str(x))
     inventory = {}
     total_bytes = 0
     total_lines = 0
 
-    for fpath in all_files:
-        p = Path(fpath)
+    for p in all_files:
         data = p.read_bytes()
         sha256 = hashlib.sha256(data).hexdigest()
         size = len(data)
         total_bytes += size
         
-        is_text = p.suffix in ['.md', '.html', '.txt', '.json', '.sh']
+        is_text = p.suffix.lower() in ['.md', '.html', '.txt', '.json', '.sh', '.css', '.js', '.svg']
         line_count = len(data.splitlines()) if is_text else None
         if line_count:
             total_lines += line_count
 
-        rel_path = os.path.relpath(fpath, ROOT_DIR)
+        rel_path = os.path.relpath(str(p), str(ROOT_DIR))
+        ftype = "markdown" if p.suffix == '.md' else ("html" if p.suffix == '.html' else ("web_asset" if p.suffix in ['.css', '.js'] else "binary"))
         inventory[rel_path] = {
             "size_bytes": size,
             "sha256": sha256,
-            "type": "markdown" if p.suffix == '.md' else ("html" if p.suffix == '.html' else "binary"),
+            "type": ftype,
             "lines": line_count
         }
 
@@ -103,14 +103,15 @@ def audit_markdown_ast():
     md_files = []
     for f in folders:
         if f.exists():
-            md_files.extend(sorted(glob.glob(str(f / "*.md"))))
+            md_files.extend(sorted([p for p in f.glob("*.md") if p.is_file()]))
 
     issues = []
     code_block_count = 0
     languages = {}
 
-    for fpath in md_files:
-        rel = os.path.relpath(fpath, ROOT_DIR)
+    for p in md_files:
+        fpath = str(p)
+        rel = os.path.relpath(fpath, str(ROOT_DIR))
         with open(fpath, 'r', encoding='utf-8') as f:
             content = f.read()
         
@@ -138,12 +139,12 @@ def audit_markdown_ast():
 
 def audit_html_syntax():
     print("[3/6] Auditing HTML Files Structure & Semantics...")
-    html_files = sorted(glob.glob(str(DOCS_DIR / "*.html")))
+    html_files = sorted([p for p in DOCS_DIR.glob("*.html") if p.is_file()])
     html_issues = []
 
-    for fpath in html_files:
-        rel = os.path.relpath(fpath, ROOT_DIR)
-        with open(fpath, 'r', encoding='utf-8') as f:
+    for p in html_files:
+        rel = os.path.relpath(str(p), str(ROOT_DIR))
+        with open(p, 'r', encoding='utf-8') as f:
             content = f.read()
 
         validator = HTMLValidator()
@@ -157,11 +158,11 @@ def audit_html_syntax():
     return html_issues
 
 def audit_binary_assets():
-    print("[4/6] Auditing Binary & Graphical Assets...")
-    arch_files = sorted(glob.glob(str(ARCH_DIR / "*")))
+    print("[4/6] Auditing Binary & Graphical Assets in .architech...")
+    image_exts = {'.png', '.jpg', '.jpeg', '.webp', '.svg'}
+    arch_images = [p for p in ARCH_DIR.rglob("*") if p.is_file() and p.suffix.lower() in image_exts and not p.name.startswith(".DS_Store")]
     valid_count = 0
-    for fpath in arch_files:
-        p = Path(fpath)
+    for p in arch_images:
         data = p.read_bytes()
         valid = False
         if data.startswith(b"\x89PNG\r\n\x1a\n"): valid = "PNG"
@@ -175,17 +176,17 @@ def audit_binary_assets():
 
 def audit_paths_and_sysctls():
     print("[5/6] Auditing Procfs, Sysfs & Sysctl Technical Compliance...")
-    files = glob.glob(str(DOCS_DIR / "*"))
+    files = [p for p in DOCS_DIR.glob("*") if p.is_file()]
     
     proc_found = set()
     sys_found = set()
-    for fpath in files:
-        with open(fpath, 'r', encoding='utf-8', errors='ignore') as f:
+    for p in files:
+        with open(p, 'r', encoding='utf-8', errors='ignore') as f:
             content = f.read()
-        for p in re.findall(r'/proc/[a-zA-Z0-9_\-\./]+', content):
-            proc_found.add(p)
-        for p in re.finditer(r'(?<!/proc)(/sys/[a-zA-Z0-9_\-\./]+)', content):
-            sys_found.add(p.group(1))
+        for path in re.findall(r'/proc/[a-zA-Z0-9_\-\./]+', content):
+            proc_found.add(path)
+        for path in re.finditer(r'(?<!/proc)(/sys/[a-zA-Z0-9_\-\./]+)', content):
+            sys_found.add(path.group(1))
 
     print(f"  ✔ Verified {len(proc_found)} procfs paths & {len(sys_found)} sysfs tracing/hardware paths")
     return list(sorted(proc_found)), list(sorted(sys_found))
@@ -236,14 +237,14 @@ def generate_manifest(inventory, languages):
             ".he!estor/kernel_versioning_and_updates.md"
         ],
         "Multi-OS Practical Knowledge & Field Manuals (.mac!narumi)": sorted([
-            os.path.relpath(f, ROOT_DIR) for f in glob.glob(str(NARUMI_DIR / "*.md"))
+            os.path.relpath(str(p), str(ROOT_DIR)) for p in NARUMI_DIR.glob("*.md") if p.is_file()
         ]) if NARUMI_DIR.exists() else [],
         "Multi-OS Deep Dive Architectures (.macinarium-stellar)": sorted([
-            os.path.relpath(f, ROOT_DIR) for f in glob.glob(str(STELLAR_DIR / "*.md"))
+            os.path.relpath(str(p), str(ROOT_DIR)) for p in STELLAR_DIR.glob("*.md") if p.is_file()
         ]) if STELLAR_DIR.exists() else [],
-        "Architecture Visual Blueprints & Infographics (.architech)": sorted([
-            os.path.relpath(f, ROOT_DIR) for f in glob.glob(str(ARCH_DIR / "*"))
-        ])
+        "Architecture Visual Blueprints & References (.architech)": sorted([
+            os.path.relpath(str(p), str(ROOT_DIR)) for p in ARCH_DIR.rglob("*") if p.is_file() and not p.name.startswith(".DS_Store")
+        ]) if ARCH_DIR.exists() else []
     }
 
     manifest = {
@@ -251,14 +252,14 @@ def generate_manifest(inventory, languages):
         "description": ".he!💾?2űúh-ú09-20290r6226-07:03PM?🐿️₿store",
         "dual_intelligence": {
             "engine_1_static_deterministic": "Passed 100% (Multi-OS AST, Delimiters, Magic Bytes, Hashes)",
-            "engine_2_domain_cognitive": "Audited & Remediated (Kernel Vectors, QEMU safety, Seccomp BPF, Livepatch)"
+            "engine_2_domain_cognitive": "Audited & Remediated (Kernel Vectors, Void Linux, FreeBSD, Driver Architect, Defense Buses, TPM/WDT)"
         },
         "statistics": {
             "total_artifacts": len(inventory),
             "linux_kernel_guides": 32,
             "multios_practical_guides": len(categories.get("Multi-OS Practical Knowledge & Field Manuals (.mac!narumi)", [])),
             "multios_architecture_guides": len(categories.get("Multi-OS Deep Dive Architectures (.macinarium-stellar)", [])),
-            "architecture_visuals": len(categories.get("Architecture Visual Blueprints & Infographics (.architech)", [])),
+            "architecture_visuals": len(categories.get("Architecture Visual Blueprints & References (.architech)", [])),
             "code_blocks": sum(languages.values()),
             "languages": languages
         },

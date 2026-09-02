@@ -3,19 +3,20 @@
   "description": ".he!💾?2űúh-ú09-20290r6226-07:03PM?🐿️₿store",
   "dual_intelligence": {
     "engine_1_static_deterministic": "Passed 100% (Multi-OS AST, Delimiters, Magic Bytes, Hashes)",
-    "engine_2_domain_cognitive": "Audited & Remediated (Kernel Vectors, QEMU safety, Seccomp BPF, Livepatch)"
+    "engine_2_domain_cognitive": "Audited & Remediated (Kernel Vectors, Void Linux, FreeBSD, Driver Architect, Defense Buses, TPM/WDT)"
   },
   "statistics": {
-    "total_artifacts": 70,
+    "total_artifacts": 123,
     "linux_kernel_guides": 32,
-    "multios_practical_guides": 13,
-    "multios_architecture_guides": 13,
-    "architecture_visuals": 12,
-    "code_blocks": 178,
+    "multios_practical_guides": 15,
+    "multios_architecture_guides": 23,
+    "architecture_visuals": 53,
+    "code_blocks": 234,
     "languages": {
-      "unspecified": 7,
-      "bash": 162,
-      "c": 9
+      "unspecified": 20,
+      "bash": 180,
+      "c": 30,
+      "text": 4
     }
   },
   "categories": {
@@ -74,7 +75,9 @@
       ".mac!narumi/09_syllable_practical_knowledge.md",
       ".mac!narumi/10_menuetos_practical_knowledge.md",
       ".mac!narumi/11_aros_practical_knowledge.md",
-      ".mac!narumi/12_genode_practical_knowledge.md"
+      ".mac!narumi/12_genode_practical_knowledge.md",
+      ".mac!narumi/13_voidlinux_practical_knowledge.md",
+      ".mac!narumi/14_freebsd_practical_knowledge.md"
     ],
     "Multi-OS Deep Dive Architectures (.macinarium-stellar)": [
       ".macinarium-stellar/01_windows_nt_kernel_architecture.md",
@@ -89,24 +92,393 @@
       ".macinarium-stellar/10_syllable_architecture.md",
       ".macinarium-stellar/11_menuetos_architecture.md",
       ".macinarium-stellar/12_aros_amigaos_clone_architecture.md",
-      ".macinarium-stellar/13_genode_os_framework.md"
+      ".macinarium-stellar/13_genode_os_framework.md",
+      ".macinarium-stellar/14_windows_nt_object_manager.md",
+      ".macinarium-stellar/15_windows_nt_io_system.md",
+      ".macinarium-stellar/16_windows_nt_memory_manager.md",
+      ".macinarium-stellar/17_windows_nt_process_and_thread_management.md",
+      ".macinarium-stellar/18_voidlinux_architecture_and_runit.md",
+      ".macinarium-stellar/19_freebsd_architecture_and_subsystems.md",
+      ".macinarium-stellar/20_driver_architect_universal_patterns.md",
+      ".macinarium-stellar/21_industrial_defense_bus_subsystems.md",
+      ".macinarium-stellar/22_hardware_root_of_trust_and_watchdogs.md",
+      ".macinarium-stellar/23_critical_infrastructure_application_interfaces.md"
     ],
-    "Architecture Visual Blueprints & Infographics (.architech)": [
-      ".architech/-42751371_221310431.pdf-6.jpg",
-      ".architech/141341857_153581417.pdf-8.jpg",
-      ".architech/9e8225b1d096d452fb8649fb892b7929.jpg",
-      ".architech/Linux API.svg",
-      ".architech/Linux_kernel_map.png",
-      ".architech/OS-structure2.svg.webp",
+    "Architecture Visual Blueprints & References (.architech)": [
+      ".architech/.implicit/-42751371_221310431.pdf-6.jpg",
+      ".architech/.implicit/68747470733a2f2f646f63732e676f6f676c652e636f6d2f64726177696e67732f642f652f32504143582d317651357073373275615a63454a7a776e4a6250687a5566456542624e36434a30346a37686c3269334b32484861744e63736f79473274675832766e724e357878444b4c70354a6d35627a7a6d5a64762f.png",
+      ".architech/.implicit/9e8225b1d096d452fb8649fb892b7929.jpg",
+      ".architech/.implicit/Diagram_of_Mac_OS_X_architecture.svg.webp",
+      ".architech/.implicit/Favorite-MM-Features.png",
+      ".architech/.implicit/Linux API.svg",
+      ".architech/.implicit/Linux_kernel_map.png",
+      ".architech/.implicit/MacOS_Architecture.svg.webp",
+      ".architech/.implicit/OS-structure2.svg.webp",
+      ".architech/.implicit/anatomy-of-a-full-windows-driver-l.jpg",
+      ".architech/.implicit/audio-engine2.png",
+      ".architech/.implicit/capture-stack-architecture.png",
+      ".architech/.implicit/cellular-architecture.png",
+      ".architech/.implicit/ci.webp",
+      ".architech/.implicit/corba6-l.jpg",
+      ".architech/.implicit/device-driver-architecture-l.jpg",
+      ".architech/.implicit/driver-architecture-l.jpg",
+      ".architech/.implicit/hhi.webp",
+      ".architech/.implicit/i.webp",
+      ".architech/.implicit/mvc.jpg",
+      ".architech/.implicit/plat-874t_lovell1.png",
+      ".architech/.implicit/slide-2.jpg",
+      ".architech/.implicit/static-and-dynamic-v-v-l.jpg",
+      ".architech/.implicit/structure-of-unix-kernel-l.jpg",
+      ".architech/.implicit/the-windows-driver-model-l.jpg",
+      ".architech/.implicit/v4custuiarch.png",
+      ".architech/.implicit/windows-7-architecture-revisited-l.jpg",
+      ".architech/.implicit/windows-ce-architecture1-l.jpg",
+      ".architech/.implicit/xxi.webp",
+      ".architech/CDE_2012_on_Linux.png",
+      ".architech/Filesystem Hierarchy Standard - Wikipedia.html",
+      ".architech/Filesystem Hierarchy Standard - Wikipedia_files/Badge-cga_eKId.png",
+      ".architech/Filesystem Hierarchy Standard - Wikipedia_files/Badge-daf_eKId.png",
+      ".architech/Filesystem Hierarchy Standard - Wikipedia_files/Badge-endowment_eKId.png",
+      ".architech/Filesystem Hierarchy Standard - Wikipedia_files/Badge-monthly_eKId.png",
+      ".architech/Filesystem Hierarchy Standard - Wikipedia_files/Badge-one-time_eKId.png",
+      ".architech/Filesystem Hierarchy Standard - Wikipedia_files/Badge-workplace-giving_eKId.png",
+      ".architech/Filesystem Hierarchy Standard - Wikipedia_files/Candid-seal-platinum-2025_eKId.svg",
+      ".architech/Filesystem Hierarchy Standard - Wikipedia_files/Charity-navigator_eKId.png",
+      ".architech/Filesystem Hierarchy Standard - Wikipedia_files/OOjs_UI_icon_edit-ltr-progressive.svg_eKId.webp",
+      ".architech/Filesystem Hierarchy Standard - Wikipedia_files/Root_directory_hierarchy_on_Linux_screenshot_eKId.webp",
+      ".architech/Filesystem Hierarchy Standard - Wikipedia_files/enwiki-25_eKId.svg",
+      ".architech/Filesystem Hierarchy Standard - Wikipedia_files/load_002_eKId.css",
+      ".architech/Filesystem Hierarchy Standard - Wikipedia_files/load_eKId.css",
+      ".architech/Filesystem Hierarchy Standard - Wikipedia_files/load_eKId.js",
+      ".architech/Filesystem Hierarchy Standard - Wikipedia_files/mediawiki_compact_eKId.svg",
+      ".architech/Filesystem Hierarchy Standard - Wikipedia_files/poweredby_mediawiki_eKId.svg",
+      ".architech/Filesystem Hierarchy Standard - Wikipedia_files/wikimedia-button_eKId.svg",
+      ".architech/Filesystem Hierarchy Standard - Wikipedia_files/wikimedia_eKId.svg",
+      ".architech/Filesystem Hierarchy Standard - Wikipedia_files/wikipedia-tagline-en-25_eKId.svg",
+      ".architech/Filesystem Hierarchy Standard - Wikipedia_files/wikipedia-wordmark-en-25_eKId.svg",
       ".architech/The-Architecture-of-Panic-How-to-Spot-the-Gears-of-Modern-Fear-2060245017.png",
-      ".architech/i.webp",
-      ".architech/ixtas.webp",
-      ".architech/maxresdefault.jpg",
-      ".architech/structure-of-unix-kernel-l.jpg",
-      ".architech/tereza.webp"
+      ".architech/Unix_history-simple.svg.webp"
     ]
   },
   "artifacts": {
+    ".architech/.implicit/-42751371_221310431.pdf-6.jpg": {
+      "size_bytes": 31469,
+      "sha256": "263d6a5a7978457fdbac3de93f2b46713eac3453c837e48e5c645d7dbfead005",
+      "type": "binary",
+      "lines": null
+    },
+    ".architech/.implicit/68747470733a2f2f646f63732e676f6f676c652e636f6d2f64726177696e67732f642f652f32504143582d317651357073373275615a63454a7a776e4a6250687a5566456542624e36434a30346a37686c3269334b32484861744e63736f79473274675832766e724e357878444b4c70354a6d35627a7a6d5a64762f.png": {
+      "size_bytes": 191860,
+      "sha256": "fd5ea228a7f7f38c668bf7ff2c5c195848d2c54d5fc21e558768bea9ed99ac08",
+      "type": "binary",
+      "lines": null
+    },
+    ".architech/.implicit/9e8225b1d096d452fb8649fb892b7929.jpg": {
+      "size_bytes": 65587,
+      "sha256": "3b3953180c46673211f6f89060ae1bc029913ccf3d1aefb6f059a3f998c72c48",
+      "type": "binary",
+      "lines": null
+    },
+    ".architech/.implicit/Diagram_of_Mac_OS_X_architecture.svg.webp": {
+      "size_bytes": 215526,
+      "sha256": "b7c27c051abc754020a7dbafed1a708f06b89792b881528253281cac7a8afb6e",
+      "type": "binary",
+      "lines": null
+    },
+    ".architech/.implicit/Favorite-MM-Features.png": {
+      "size_bytes": 153792,
+      "sha256": "796eea3a5e1a750c33e2f14003bd36237e5b2505a5f40d728fe13ba9c39ecd21",
+      "type": "binary",
+      "lines": null
+    },
+    ".architech/.implicit/Linux API.svg": {
+      "size_bytes": 68006,
+      "sha256": "499ab08393cdafd73ac22b5987064eb295d491285c7d8550c8697603d9ebcc00",
+      "type": "binary",
+      "lines": 256
+    },
+    ".architech/.implicit/Linux_kernel_map.png": {
+      "size_bytes": 340797,
+      "sha256": "10110e98fb6f3a4339e41d0b795571a2ab43c6609ed47a44827c8c74c8e10879",
+      "type": "binary",
+      "lines": null
+    },
+    ".architech/.implicit/MacOS_Architecture.svg.webp": {
+      "size_bytes": 91842,
+      "sha256": "9e3bd7605230d4b220c5de9e0ced6f1fe710cece5f45350ba2325fab5c5fc2fd",
+      "type": "binary",
+      "lines": null
+    },
+    ".architech/.implicit/OS-structure2.svg.webp": {
+      "size_bytes": 43032,
+      "sha256": "bd9b16d9782d16bb2db055b1ffb5712f67f14f720430c2d02dcbf62f6b19e196",
+      "type": "binary",
+      "lines": null
+    },
+    ".architech/.implicit/anatomy-of-a-full-windows-driver-l.jpg": {
+      "size_bytes": 68157,
+      "sha256": "833a072d6c272523b1f3232ec74b86767e313339992f7cc40da5b62655db9156",
+      "type": "binary",
+      "lines": null
+    },
+    ".architech/.implicit/audio-engine2.png": {
+      "size_bytes": 82001,
+      "sha256": "7c2a685a7e4f92b8c13229591715b710d57af981b98477a8be69e54c330b84af",
+      "type": "binary",
+      "lines": null
+    },
+    ".architech/.implicit/capture-stack-architecture.png": {
+      "size_bytes": 135056,
+      "sha256": "2189dfdfc98ce0466c58442e21ee6a5776d2db5c4c84ad18ed4b52f89a2da7e5",
+      "type": "binary",
+      "lines": null
+    },
+    ".architech/.implicit/cellular-architecture.png": {
+      "size_bytes": 915314,
+      "sha256": "d27c64c41bd287aeee9872c1d69a1821b8fc52f242c67800fae4198e3899dc17",
+      "type": "binary",
+      "lines": null
+    },
+    ".architech/.implicit/ci.webp": {
+      "size_bytes": 80174,
+      "sha256": "923308abf6f507e5fcdca1d93606fd94990c46957afcf565deebeef2076f59f6",
+      "type": "binary",
+      "lines": null
+    },
+    ".architech/.implicit/corba6-l.jpg": {
+      "size_bytes": 91071,
+      "sha256": "372265072cef22326ada5090fbeb2999d81e52b92098296e64a9a2f5f4ce5401",
+      "type": "binary",
+      "lines": null
+    },
+    ".architech/.implicit/device-driver-architecture-l.jpg": {
+      "size_bytes": 116255,
+      "sha256": "f4a1a698c6b7b82ee9270957863bc157c338f6f7d632ba4285e245894d6831f6",
+      "type": "binary",
+      "lines": null
+    },
+    ".architech/.implicit/driver-architecture-l.jpg": {
+      "size_bytes": 89533,
+      "sha256": "cf1319ce135d1948e95a6cba24f322051af60454007f9cab701050866faccd9c",
+      "type": "binary",
+      "lines": null
+    },
+    ".architech/.implicit/hhi.webp": {
+      "size_bytes": 31672,
+      "sha256": "efb294ab76ebdcd351369d32832fee82891a122004af562de74ae2eec824fd86",
+      "type": "binary",
+      "lines": null
+    },
+    ".architech/.implicit/i.webp": {
+      "size_bytes": 52478,
+      "sha256": "76e44cfce6d6da540b4dc34e9b46046ee0682565aeafbce0871c2dfd01b7028d",
+      "type": "binary",
+      "lines": null
+    },
+    ".architech/.implicit/mvc.jpg": {
+      "size_bytes": 29743,
+      "sha256": "8f8a1f2f96fd836daad3fc768487a6ff1c7272d2580489899754553e592b540a",
+      "type": "binary",
+      "lines": null
+    },
+    ".architech/.implicit/plat-874t_lovell1.png": {
+      "size_bytes": 23993,
+      "sha256": "04105e08f54ab15407fb974b3d7bba307504237d34e94db252d2ab3ad3a4d996",
+      "type": "binary",
+      "lines": null
+    },
+    ".architech/.implicit/slide-2.jpg": {
+      "size_bytes": 125155,
+      "sha256": "dd61801030d9a2902b1e5ddf902e186ba9873e48a1d94c69118600ab4474a564",
+      "type": "binary",
+      "lines": null
+    },
+    ".architech/.implicit/static-and-dynamic-v-v-l.jpg": {
+      "size_bytes": 236198,
+      "sha256": "5b83558c32d5fda1fd5be2661776ffb4b63fafbdacbef13757cb25f0364cd72c",
+      "type": "binary",
+      "lines": null
+    },
+    ".architech/.implicit/structure-of-unix-kernel-l.jpg": {
+      "size_bytes": 97559,
+      "sha256": "4eba6aac334e7e797348380fe02c1334b7c4ad8b68ed3d7382a881f7c65de153",
+      "type": "binary",
+      "lines": null
+    },
+    ".architech/.implicit/the-windows-driver-model-l.jpg": {
+      "size_bytes": 79099,
+      "sha256": "f9217c5a00cf4288558e081c1ce8ae5b04bae5ab78aea1459944d055a1002cab",
+      "type": "binary",
+      "lines": null
+    },
+    ".architech/.implicit/v4custuiarch.png": {
+      "size_bytes": 23539,
+      "sha256": "28bb9ed8ebfdb60683b584e139b691c8b878fc832c27149e6a8f920677b7ba1f",
+      "type": "binary",
+      "lines": null
+    },
+    ".architech/.implicit/windows-7-architecture-revisited-l.jpg": {
+      "size_bytes": 68959,
+      "sha256": "760ef95d2a978e159334c763b7b1f990ecb54bcbb20dac7834af3130743a7044",
+      "type": "binary",
+      "lines": null
+    },
+    ".architech/.implicit/windows-ce-architecture1-l.jpg": {
+      "size_bytes": 98176,
+      "sha256": "9d8d270e2dc63cc9404f8e9c682f9e986ea9903e8f6e378df0fbb65dbd2d761c",
+      "type": "binary",
+      "lines": null
+    },
+    ".architech/.implicit/xxi.webp": {
+      "size_bytes": 16152,
+      "sha256": "28de4b303c3d7e71c5168128049523f05df8d77f01585cf0d215484ae42a76a3",
+      "type": "binary",
+      "lines": null
+    },
+    ".architech/CDE_2012_on_Linux.png": {
+      "size_bytes": 17198,
+      "sha256": "ece7c37b347070c225077c68f916eadf28bed005a191589fe67a744d98d0e1cb",
+      "type": "binary",
+      "lines": null
+    },
+    ".architech/Filesystem Hierarchy Standard - Wikipedia.html": {
+      "size_bytes": 658192,
+      "sha256": "365e3b02fe10582bc5070495c12d9fa6b16d6114652f292c551a901aaaf027ad",
+      "type": "html",
+      "lines": 7279
+    },
+    ".architech/Filesystem Hierarchy Standard - Wikipedia_files/Badge-cga_eKId.png": {
+      "size_bytes": 13396,
+      "sha256": "3bea7256332f0b99a423a660ffd9e8cc672d92815d1ace013b8b3d32ecc1df80",
+      "type": "binary",
+      "lines": null
+    },
+    ".architech/Filesystem Hierarchy Standard - Wikipedia_files/Badge-daf_eKId.png": {
+      "size_bytes": 23333,
+      "sha256": "ecc905cd5b4a1d6d916258b6563041aae6c97439522250c86bb7701b9a4711cc",
+      "type": "binary",
+      "lines": null
+    },
+    ".architech/Filesystem Hierarchy Standard - Wikipedia_files/Badge-endowment_eKId.png": {
+      "size_bytes": 24916,
+      "sha256": "65f33a9698829aba813dc10fad4f559bc3ff003c43c3ffe0f2445ca778960a68",
+      "type": "binary",
+      "lines": null
+    },
+    ".architech/Filesystem Hierarchy Standard - Wikipedia_files/Badge-monthly_eKId.png": {
+      "size_bytes": 27349,
+      "sha256": "ba81513ab594ae9d179def7fc143006ba407ef8812af794a98465746e349fa6e",
+      "type": "binary",
+      "lines": null
+    },
+    ".architech/Filesystem Hierarchy Standard - Wikipedia_files/Badge-one-time_eKId.png": {
+      "size_bytes": 23190,
+      "sha256": "97f12b40c66a0141af9acbef7f28fa19cfff3036d3be85b4a696a8604f572a3a",
+      "type": "binary",
+      "lines": null
+    },
+    ".architech/Filesystem Hierarchy Standard - Wikipedia_files/Badge-workplace-giving_eKId.png": {
+      "size_bytes": 17153,
+      "sha256": "e12e32ea3b75d610f6dbb5f158878283e0225f5f75374b699796832ddf3a22cc",
+      "type": "binary",
+      "lines": null
+    },
+    ".architech/Filesystem Hierarchy Standard - Wikipedia_files/Candid-seal-platinum-2025_eKId.svg": {
+      "size_bytes": 12503,
+      "sha256": "d39f5194ef5b51d743c30e7ec9b0f2b4d6d287be6a6ee12e25b42c69cf14ec53",
+      "type": "binary",
+      "lines": 50
+    },
+    ".architech/Filesystem Hierarchy Standard - Wikipedia_files/Charity-navigator_eKId.png": {
+      "size_bytes": 7051,
+      "sha256": "1bda44c525c5b4c48af87a3aa2d623fe0c601db187795c1dbd176eef2911d514",
+      "type": "binary",
+      "lines": null
+    },
+    ".architech/Filesystem Hierarchy Standard - Wikipedia_files/OOjs_UI_icon_edit-ltr-progressive.svg_eKId.webp": {
+      "size_bytes": 200,
+      "sha256": "659912e3ebc4dd65a4e0c8c75d0812b921715cb90d9d2387f1b57d6872593d5c",
+      "type": "binary",
+      "lines": null
+    },
+    ".architech/Filesystem Hierarchy Standard - Wikipedia_files/Root_directory_hierarchy_on_Linux_screenshot_eKId.webp": {
+      "size_bytes": 12612,
+      "sha256": "572928b7a782cc3b35c911a12444ea30b28fa3f62cbc3a4d7adf9218320b4b78",
+      "type": "binary",
+      "lines": null
+    },
+    ".architech/Filesystem Hierarchy Standard - Wikipedia_files/enwiki-25_eKId.svg": {
+      "size_bytes": 115918,
+      "sha256": "095fb188212ac25419535feb7aee7a6a7b2d58270ae42a168abf9942d1b44315",
+      "type": "binary",
+      "lines": 1
+    },
+    ".architech/Filesystem Hierarchy Standard - Wikipedia_files/load_002_eKId.css": {
+      "size_bytes": 6717,
+      "sha256": "776a17712cefe2a971dc7dad0b40560215c75f84c01cef34ae574c472a2cfe38",
+      "type": "web_asset",
+      "lines": 1
+    },
+    ".architech/Filesystem Hierarchy Standard - Wikipedia_files/load_eKId.css": {
+      "size_bytes": 208139,
+      "sha256": "bfe62386815592b48d4eac496349e73ad19e6644969cd33c987912151a949ecc",
+      "type": "web_asset",
+      "lines": 1
+    },
+    ".architech/Filesystem Hierarchy Standard - Wikipedia_files/load_eKId.js": {
+      "size_bytes": 69179,
+      "sha256": "740c488c9aed7d5893ec8df6c9bfca94b855e2f6beaaeaf6237fd900acd389a9",
+      "type": "web_asset",
+      "lines": 23
+    },
+    ".architech/Filesystem Hierarchy Standard - Wikipedia_files/mediawiki_compact_eKId.svg": {
+      "size_bytes": 3517,
+      "sha256": "d0b9c6e983d71f5c033beab214ce122f4a6dba1fd1173b344e3487afb0f730fa",
+      "type": "binary",
+      "lines": 30
+    },
+    ".architech/Filesystem Hierarchy Standard - Wikipedia_files/poweredby_mediawiki_eKId.svg": {
+      "size_bytes": 14576,
+      "sha256": "75444929595b7c4040288c822835ce3e8f82d7b67eb6b9a3546765ad74698ede",
+      "type": "binary",
+      "lines": 102
+    },
+    ".architech/Filesystem Hierarchy Standard - Wikipedia_files/wikimedia-button_eKId.svg": {
+      "size_bytes": 3256,
+      "sha256": "0c2aa872dd39b943efde8b4e444bd7c627e5ab740684356046bbb8a2248b57cd",
+      "type": "binary",
+      "lines": 12
+    },
+    ".architech/Filesystem Hierarchy Standard - Wikipedia_files/wikimedia_eKId.svg": {
+      "size_bytes": 742,
+      "sha256": "c989c591b888781ee3bf6ef2f4a273f1509310e0e238579c33602e0fd7b34d02",
+      "type": "binary",
+      "lines": 1
+    },
+    ".architech/Filesystem Hierarchy Standard - Wikipedia_files/wikipedia-tagline-en-25_eKId.svg": {
+      "size_bytes": 15219,
+      "sha256": "400508c091b4e9cd71f55512b8c871e08e4ad6ddfc54597c6ec0733d67d064ca",
+      "type": "binary",
+      "lines": 1
+    },
+    ".architech/Filesystem Hierarchy Standard - Wikipedia_files/wikipedia-wordmark-en-25_eKId.svg": {
+      "size_bytes": 9865,
+      "sha256": "169241aebac0b1222230274878e82c34fd51865f825c29516386810fcdbf6fc2",
+      "type": "binary",
+      "lines": 1
+    },
+    ".architech/The-Architecture-of-Panic-How-to-Spot-the-Gears-of-Modern-Fear-2060245017.png": {
+      "size_bytes": 6365188,
+      "sha256": "cccc35930f3a9d5911a95ca73001faf7fa1cf887c3caeacd4a261fb3b6b18aeb",
+      "type": "binary",
+      "lines": null
+    },
+    ".architech/Unix_history-simple.svg.webp": {
+      "size_bytes": 88704,
+      "sha256": "f870ab9ac4a937c4aee723624dea6ac32e90501e23d35f22039d5c3c561f383b",
+      "type": "binary",
+      "lines": null
+    },
     ".he!estor/01_kernel_panic_taxonomy.md": {
       "size_bytes": 11842,
       "sha256": "fdd9bb67b52472dffb408c3f5656274337fb1fe6ad35060bc78e57ecc020fd46",
@@ -377,6 +749,18 @@
       "type": "markdown",
       "lines": 92
     },
+    ".mac!narumi/13_voidlinux_practical_knowledge.md": {
+      "size_bytes": 5794,
+      "sha256": "22654a71e7dfd622d5b52e4a935e25bd358755a8db4ca7a533b02b20fd82441c",
+      "type": "markdown",
+      "lines": 159
+    },
+    ".mac!narumi/14_freebsd_practical_knowledge.md": {
+      "size_bytes": 4988,
+      "sha256": "ba7c8b7c1c23c49369dbc8bc8d8d3b9ab8706aa277f115840a128e568764cabd",
+      "type": "markdown",
+      "lines": 159
+    },
     ".macinarium-stellar/01_windows_nt_kernel_architecture.md": {
       "size_bytes": 5903,
       "sha256": "a629026cc32ffe9906637f6cab01eb580f7739d5942ca038be85b0930ea69d82",
@@ -455,77 +839,65 @@
       "type": "markdown",
       "lines": 116
     },
-    ".architech/-42751371_221310431.pdf-6.jpg": {
-      "size_bytes": 31469,
-      "sha256": "263d6a5a7978457fdbac3de93f2b46713eac3453c837e48e5c645d7dbfead005",
-      "type": "binary",
-      "lines": null
+    ".macinarium-stellar/14_windows_nt_object_manager.md": {
+      "size_bytes": 3473,
+      "sha256": "4fe3105fae8e0c134ce3be5fed70792194c264a94d65b23bb5fb8b1362c15764",
+      "type": "markdown",
+      "lines": 141
     },
-    ".architech/141341857_153581417.pdf-8.jpg": {
-      "size_bytes": 35534,
-      "sha256": "44e1594084f18fabe669d2b537defe87f394552047eeacea970559043fff4cd1",
-      "type": "binary",
-      "lines": null
+    ".macinarium-stellar/15_windows_nt_io_system.md": {
+      "size_bytes": 4143,
+      "sha256": "c63228a513894ff78db17ea8c85bea5744c990f31b4805c5d8a91ba7532b56a0",
+      "type": "markdown",
+      "lines": 164
     },
-    ".architech/9e8225b1d096d452fb8649fb892b7929.jpg": {
-      "size_bytes": 65587,
-      "sha256": "3b3953180c46673211f6f89060ae1bc029913ccf3d1aefb6f059a3f998c72c48",
-      "type": "binary",
-      "lines": null
+    ".macinarium-stellar/16_windows_nt_memory_manager.md": {
+      "size_bytes": 3589,
+      "sha256": "bd2a333cdc6623f6b94addba8d0927cc17b61a3ebfca2f94abb89b9977d2c77c",
+      "type": "markdown",
+      "lines": 156
     },
-    ".architech/Linux API.svg": {
-      "size_bytes": 68006,
-      "sha256": "499ab08393cdafd73ac22b5987064eb295d491285c7d8550c8697603d9ebcc00",
-      "type": "binary",
-      "lines": null
+    ".macinarium-stellar/17_windows_nt_process_and_thread_management.md": {
+      "size_bytes": 3863,
+      "sha256": "fb048eca082e42972f9cb4292a18b5a65dd11422f09431326648d8b1c9966ddb",
+      "type": "markdown",
+      "lines": 162
     },
-    ".architech/Linux_kernel_map.png": {
-      "size_bytes": 340797,
-      "sha256": "10110e98fb6f3a4339e41d0b795571a2ab43c6609ed47a44827c8c74c8e10879",
-      "type": "binary",
-      "lines": null
+    ".macinarium-stellar/18_voidlinux_architecture_and_runit.md": {
+      "size_bytes": 8471,
+      "sha256": "0b3da07dd149f9e08fc23e7acc3bdcb52f4c38bf9783ce5673bd9f5525e707e2",
+      "type": "markdown",
+      "lines": 133
     },
-    ".architech/OS-structure2.svg.webp": {
-      "size_bytes": 43032,
-      "sha256": "bd9b16d9782d16bb2db055b1ffb5712f67f14f720430c2d02dcbf62f6b19e196",
-      "type": "binary",
-      "lines": null
+    ".macinarium-stellar/19_freebsd_architecture_and_subsystems.md": {
+      "size_bytes": 8675,
+      "sha256": "1db3fdd8fbc8596d52bd3b3e2c46abb7aee9ca811d595682591d6ebf9be5739d",
+      "type": "markdown",
+      "lines": 152
     },
-    ".architech/The-Architecture-of-Panic-How-to-Spot-the-Gears-of-Modern-Fear-2060245017.png": {
-      "size_bytes": 6365188,
-      "sha256": "cccc35930f3a9d5911a95ca73001faf7fa1cf887c3caeacd4a261fb3b6b18aeb",
-      "type": "binary",
-      "lines": null
+    ".macinarium-stellar/20_driver_architect_universal_patterns.md": {
+      "size_bytes": 9034,
+      "sha256": "803434f3df44a6c1948df21b6fadef68ef069333e50823069df8a32813fad488",
+      "type": "markdown",
+      "lines": 164
     },
-    ".architech/i.webp": {
-      "size_bytes": 52478,
-      "sha256": "76e44cfce6d6da540b4dc34e9b46046ee0682565aeafbce0871c2dfd01b7028d",
-      "type": "binary",
-      "lines": null
+    ".macinarium-stellar/21_industrial_defense_bus_subsystems.md": {
+      "size_bytes": 7311,
+      "sha256": "45ff0d4957cf6089a1750f8bd281a301affbfb9d88b493d794fa30827c8df065",
+      "type": "markdown",
+      "lines": 131
     },
-    ".architech/ixtas.webp": {
-      "size_bytes": 58304,
-      "sha256": "0e38fde30c9f03f5d7c9091b2a816415e0546497ffc39651171820f9a6c21650",
-      "type": "binary",
-      "lines": null
+    ".macinarium-stellar/22_hardware_root_of_trust_and_watchdogs.md": {
+      "size_bytes": 7648,
+      "sha256": "325e7ac6df599d0441b49572dc1e18944806b91465be7a09f19c258919930d42",
+      "type": "markdown",
+      "lines": 125
     },
-    ".architech/maxresdefault.jpg": {
-      "size_bytes": 70576,
-      "sha256": "3cc12550afe281312ee6da8c6239f816318fdd1e51a85deac1f2ddde091f509c",
-      "type": "binary",
-      "lines": null
-    },
-    ".architech/structure-of-unix-kernel-l.jpg": {
-      "size_bytes": 97559,
-      "sha256": "4eba6aac334e7e797348380fe02c1334b7c4ad8b68ed3d7382a881f7c65de153",
-      "type": "binary",
-      "lines": null
-    },
-    ".architech/tereza.webp": {
-      "size_bytes": 94558,
-      "sha256": "8adc444ad723e918cde646c21ab6ab7c308a90f99e9d265bc93b390a59a6dd6f",
-      "type": "binary",
-      "lines": null
+    ".macinarium-stellar/23_critical_infrastructure_application_interfaces.md": {
+      "size_bytes": 7810,
+      "sha256": "a96ed720620c87f1cf445eeeef6f11eec757ccef8ac211ded0e33cb2ef91726b",
+      "type": "markdown",
+      "lines": 127
     }
   }
 }

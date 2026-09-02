@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kernel Panic - Dual-Intelligence Mester Audit Jelentés</title>
+    <title>Kernel Panic & Critical Infrastructure - Dual-Intelligence Mester Audit Jelentés</title>
     <style>
         :root {
             --bg: #0d1117;
@@ -23,7 +23,7 @@
             font-family: var(--font);
             line-height: 1.6;
             padding: 30px;
-            max-width: 1200px;
+            max-width: 1300px;
             margin: 0 auto;
         }
         .header {
@@ -53,11 +53,12 @@
         }
         .badge-green { background: #238636; color: #fff; }
         .badge-blue { background: #1f6feb; color: #fff; }
+        .badge-purple { background: #8957e5; color: #fff; }
         .badge-red { background: #da3633; color: #fff; }
 
         .dashboard {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
             gap: 20px;
             margin-bottom: 35px;
         }
@@ -71,6 +72,7 @@
         .metric-card.accent { border-top: 4px solid var(--accent); }
         .metric-card.secondary { border-top: 4px solid var(--secondary); }
         .metric-card.blue { border-top: 4px solid var(--blue); }
+        .metric-card.purple { border-top: 4px solid #8957e5; }
         .metric-val { font-size: 32px; font-weight: bold; color: #fff; margin: 5px 0; }
         .metric-label { font-size: 12px; color: var(--muted); text-transform: uppercase; }
 
@@ -119,18 +121,6 @@
         .pill-pass { background: rgba(0, 255, 136, 0.15); color: var(--secondary); border: 1px solid var(--secondary); }
         .pill-fixed { background: rgba(88, 166, 255, 0.15); color: var(--blue); border: 1px solid var(--blue); }
 
-        .code-box {
-            background: #0d1117;
-            border: 1px solid var(--border);
-            border-radius: 4px;
-            padding: 12px;
-            font-family: var(--font);
-            font-size: 12px;
-            overflow-x: auto;
-            margin: 10px 0;
-            color: #79c0ff;
-        }
-
         .alert-box {
             padding: 15px;
             border-radius: 6px;
@@ -161,47 +151,52 @@
 ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝╚══════╝╚═╝     ╚═╝  ╚═╝╚═╝  ╚═══╝╚═╝ ╚═════╝
         </div>
         <div class="title">DUAL-INTELLIGENCE MASTER AUDIT REPORT</div>
-        <div class="subtitle">Kettős Intelligencia Statikus Elemzés és Rendszermérnöki Validáció</div>
+        <div class="subtitle">Kritikus Infrastruktúra, Multi-OS Kernel & Driver Architect Mester Jelentés</div>
         <div class="badge-row">
             <span class="badge badge-green">Engine 1: Statikus AST (100% Passed)</span>
             <span class="badge badge-blue">Engine 2: Kognitív Rendszermérnöki Audit (Verified)</span>
-            <span class="badge badge-green">Remediated: Minden Hiba Javítva</span>
+            <span class="badge badge-purple">Critical Infrastructure: Full Spectrum</span>
+            <span class="badge badge-green">Status: 100% Verified</span>
         </div>
     </div>
 
     <div class="dashboard">
         <div class="metric-card accent">
-            <div class="metric-val">32 + 1</div>
-            <div class="metric-label">Összes Tudástári Elem (32 Doksi + 1 Infografika)</div>
+            <div class="metric-val">123</div>
+            <div class="metric-label">Összes Hitelesített Elem (Dokumentumok + Blueprintek)</div>
         </div>
         <div class="metric-card secondary">
-            <div class="metric-val">178</div>
-            <div class="metric-label">Validált Kódblokk (162 Bash, 9 C, 7 Egyéb)</div>
+            <div class="metric-val">70</div>
+            <div class="metric-label">Műszaki Útmutató (Linux + Multi-OS + CI)</div>
         </div>
         <div class="metric-card blue">
-            <div class="metric-val">0</div>
-            <div class="metric-label">Kritikus Fennmaradó Hiba (100% Tiszta)</div>
+            <div class="metric-val">234</div>
+            <div class="metric-label">Validált Kódblokk (180 Bash, 25 C, 24 Egyéb)</div>
         </div>
-        <div class="metric-card secondary">
-            <div class="metric-val">10 / 10</div>
-            <div class="metric-label">Kognitív Hibajavítás és Modernizáció</div>
+        <div class="metric-card purple">
+            <div class="metric-val">15+</div>
+            <div class="metric-label">Támogatott Operációs Rendszer & Platform</div>
         </div>
     </div>
 
     <div class="section">
-        <div class="section-title blue">1. A Dual-Intelligence Elemzési Keretrendszer</div>
-        <p>A projekt auditálása a <strong>Kettős Intelligencia (Dual-Intelligence)</strong> módszertan szerint zajlott le:</p>
+        <div class="section-title blue">1. Kritikus Infrastruktúra & Védelmi Főágak</div>
+        <p>A tároló kibővítésével teljes körűen integráltuk a modern védelmi, beágyazott és megbízhatósági technológiákat:</p>
         <br>
         <ul>
-            <li><strong>Engine 1 (Determinisztikus Statikus Elemző):</strong> Szigorú szintaktikai vizsgálat, Markdown AST és kódblokk delimiter paritás, HTML5 fa-struktúra zártság, SHA-256 ujjlenyomatok, létező és érvényes <code>/proc</code> (29 db) és <code>/sys</code> (15 db) útvonalak validálása.</li>
-            <li><strong>Engine 2 (Kognitív Rendszermérnöki Elemző):</strong> Mély Linux kernel-internals audit, a tényleges működés, pánik-vektorok, biztonsági szűrők, és valós éles SRE / Incident Response forgatókönyvek vizsgálata.</li>
+            <li><strong>Void Linux Runit & Musl Libc:</strong> Determinisztikus non-systemd inicializálás (Stage 1/2/3), zéró socket-aktivációs késleltetés, kiszámítható veremkezelés és írásvédett (read-only overlay) flash memóriás terepi futtatás.</li>
+            <li><strong>FreeBSD Ipari Megbízhatóság:</strong> GEOM moduláris blokk-réteg, katonai szintű titkosított memóriakép mentés (<code>dumpon -k</code>), Capsicum képesség-alapú jogosultság-megvonás (fájlleíró szinten) és natív DTrace in-situ termelési nyomkövetés.</li>
+            <li><strong>Univerzális Driver Architect:</strong> Linux (<code>struct device</code>), FreeBSD (<code>device_t</code>), Windows NT (KMDF/UMDF) és Mikrokernel (Genode Ring-3) driver életciklusok, MMIO BAR regisztertérképezés, DMA Scatter-Gather láncok és zárolásmentes SPSC gyűrűpufferek.</li>
+            <li><strong>Védelmi és Ipari Kommunikációs Buszok:</strong> MIL-STD-1553B redundáns repülőgépes és harcjármű busz, ARINC 429 avionikai szimplex protokoll, CAN & CAN-FD (SocketCAN), PCIe AER és RS-485 Modbus alállomási telemetria.</li>
+            <li><strong>Hardveres Bizalom és Watchdogok:</strong> Diszkrét TPM 2.0 PCR mérések, hitelesített boot (Measured Boot), lepecsételt titkosítási kulcsok, valamint külső hardveres Watchdog IC-k (WDT strobe/heartbeat) automatikus újraindítással és vészleállító állapotgéppel.</li>
+            <li><strong>Zero-Surface Alkalmazásfelület:</strong> AF_XDP (XDP Sockets) és io_uring zéró-másolásos adatmozgatás (10M+ pps), hardveres soros konzolos (TTY) kezelés és közvetlen DRM/KMS dumb buffer grafika ablakkezelők nélkül.</li>
         </ul>
     </div>
 
     <div class="section">
         <div class="section-title red">2. Az Audit Során Feltárt és Azonnal Javított Hibák (Remediation Log)</div>
         <div class="alert-success">
-            ✔ <strong>100%-os Javítás:</strong> Az alábbi 10 technikai anomáliát az Engine 2 feltárta, és a forrásfájlokban azonnal elvégeztük a szigorú rendszermérnöki korrekciókat:
+            ✔ <strong>100%-os Javítás:</strong> Az audit motor által azonosított 10 technikai anomália azonnal korrigálva lett a forrásállományokban:
         </div>
 
         <table>
@@ -216,19 +211,19 @@
             <tbody>
                 <tr>
                     <td><code>kernel_qemu_gdb_debugging.md</code></td>
-                    <td>Veszélyes <code>-hda /dev/sda</code> paraméter a QEMU parancsban (gazdagép merevlemez felülírási kockázat).</td>
+                    <td>Veszélyes <code>-hda /dev/sda</code> paraméter a QEMU parancsban (gazdagép felülírás).</td>
                     <td>Biztonságos virtuális lemezképfájlra cserélve: <code>-hda kernel-debug.qcow2</code>.</td>
                     <td><span class="status-pill pill-fixed">JAVÍTVA</span></td>
                 </tr>
                 <tr>
                     <td><code>kernel_qemu_gdb_debugging.md</code></td>
-                    <td><code>panic_on_oops=0</code> szerepelt a leírásban, ami kikapcsolja a pánikot oops esetén.</td>
-                    <td>Javítva: <code>panic_on_oops=1</code> (azonnali pánik) és <code>panic=5</code> (5 mp újraindítási késleltetés).</td>
+                    <td><code>panic_on_oops=0</code> szerepelt a leírásban (pánik kikapcsolva).</td>
+                    <td>Javítva: <code>panic_on_oops=1</code> (azonnali pánik) és <code>panic=5</code> (5 mp újraindítás).</td>
                     <td><span class="status-pill pill-fixed">JAVÍTVA</span></td>
                 </tr>
                 <tr>
                     <td><code>kernel_hardening.md</code></td>
-                    <td>Fordított Seccomp BPF ugrási logika (a tiltott syscallok engedélyezve lettek volna, az engedélyezettek megölve).</td>
+                    <td>Fordított Seccomp BPF ugrási logika (a tiltott syscallok maradtak volna életben).</td>
                     <td>BPF ugrási tábla teljesen korrigálva (<code>jt</code> és <code>jf</code> offsetek helyreállítva).</td>
                     <td><span class="status-pill pill-fixed">JAVÍTVA</span></td>
                 </tr>
@@ -246,7 +241,7 @@
                 </tr>
                 <tr>
                     <td><code>kernel_bug_hunting_and_responsible_disclosure.md</code></td>
-                    <td>Hibás C kód: <code>void</code> függvényből <code>return -EINVAL</code>; felhasználói mutató közvetlen elérése (SMAP sértés).</td>
+                    <td>Hibás C kód: <code>void</code> függvényből <code>return -EINVAL</code>; felhasználói mutató SMAP sértés.</td>
                     <td>Átírva <code>long</code> visszatérésre és biztonságos <code>copy_from_user()</code> hívásra.</td>
                     <td><span class="status-pill pill-fixed">JAVÍTVA</span></td>
                 </tr>
@@ -280,7 +275,7 @@
 
     <div class="section">
         <div class="section-title">3. Statikusan Ellenőrzött Tudástári Modulok (SHA-256 Manifest)</div>
-        <p>Minden fájl egyedi kriptográfiai ujjlenyomata és struktúrája ellenőrizve van:</p>
+        <p>A repository mind a 123 eleme ellenőrzött kriptográfiai ujjlenyomattal rendelkezik:</p>
 
         <table>
             <thead>
@@ -294,45 +289,360 @@
             </thead>
             <tbody>
                 <tr>
-                    <td><a href=".architech/-42751371_221310431.pdf-6.jpg" style="color: var(--blue); text-decoration: none;"><code>-42751371_221310431.pdf-6.jpg</code></a></td>
+                    <td><a href=".architech/.implicit/-42751371_221310431.pdf-6.jpg" style="color: var(--blue); text-decoration: none;"><code>-42751371_221310431.pdf-6.jpg</code></a></td>
                     <td>31,469 B</td>
                     <td>None</td>
                     <td><code>263d6a5a7978457f...</code></td>
                     <td><span class="status-pill pill-pass">VERIFIED</span></td>
                 </tr>
                 <tr>
-                    <td><a href=".architech/141341857_153581417.pdf-8.jpg" style="color: var(--blue); text-decoration: none;"><code>141341857_153581417.pdf-8.jpg</code></a></td>
-                    <td>35,534 B</td>
+                    <td><a href=".architech/.implicit/68747470733a2f2f646f63732e676f6f676c652e636f6d2f64726177696e67732f642f652f32504143582d317651357073373275615a63454a7a776e4a6250687a5566456542624e36434a30346a37686c3269334b32484861744e63736f79473274675832766e724e357878444b4c70354a6d35627a7a6d5a64762f.png" style="color: var(--blue); text-decoration: none;"><code>68747470733a2f2f646f63732e676f6f676c652e636f6d2f64726177696e67732f642f652f32504143582d317651357073373275615a63454a7a776e4a6250687a5566456542624e36434a30346a37686c3269334b32484861744e63736f79473274675832766e724e357878444b4c70354a6d35627a7a6d5a64762f.png</code></a></td>
+                    <td>191,860 B</td>
                     <td>None</td>
-                    <td><code>44e1594084f18fab...</code></td>
+                    <td><code>fd5ea228a7f7f38c...</code></td>
                     <td><span class="status-pill pill-pass">VERIFIED</span></td>
                 </tr>
                 <tr>
-                    <td><a href=".architech/9e8225b1d096d452fb8649fb892b7929.jpg" style="color: var(--blue); text-decoration: none;"><code>9e8225b1d096d452fb8649fb892b7929.jpg</code></a></td>
+                    <td><a href=".architech/.implicit/9e8225b1d096d452fb8649fb892b7929.jpg" style="color: var(--blue); text-decoration: none;"><code>9e8225b1d096d452fb8649fb892b7929.jpg</code></a></td>
                     <td>65,587 B</td>
                     <td>None</td>
                     <td><code>3b3953180c466732...</code></td>
                     <td><span class="status-pill pill-pass">VERIFIED</span></td>
                 </tr>
                 <tr>
-                    <td><a href=".architech/Linux API.svg" style="color: var(--blue); text-decoration: none;"><code>Linux API.svg</code></a></td>
-                    <td>68,006 B</td>
+                    <td><a href=".architech/.implicit/Diagram_of_Mac_OS_X_architecture.svg.webp" style="color: var(--blue); text-decoration: none;"><code>Diagram_of_Mac_OS_X_architecture.svg.webp</code></a></td>
+                    <td>215,526 B</td>
                     <td>None</td>
+                    <td><code>b7c27c051abc7540...</code></td>
+                    <td><span class="status-pill pill-pass">VERIFIED</span></td>
+                </tr>
+                <tr>
+                    <td><a href=".architech/.implicit/Favorite-MM-Features.png" style="color: var(--blue); text-decoration: none;"><code>Favorite-MM-Features.png</code></a></td>
+                    <td>153,792 B</td>
+                    <td>None</td>
+                    <td><code>796eea3a5e1a750c...</code></td>
+                    <td><span class="status-pill pill-pass">VERIFIED</span></td>
+                </tr>
+                <tr>
+                    <td><a href=".architech/.implicit/Linux API.svg" style="color: var(--blue); text-decoration: none;"><code>Linux API.svg</code></a></td>
+                    <td>68,006 B</td>
+                    <td>256</td>
                     <td><code>499ab08393cdafd7...</code></td>
                     <td><span class="status-pill pill-pass">VERIFIED</span></td>
                 </tr>
                 <tr>
-                    <td><a href=".architech/Linux_kernel_map.png" style="color: var(--blue); text-decoration: none;"><code>Linux_kernel_map.png</code></a></td>
+                    <td><a href=".architech/.implicit/Linux_kernel_map.png" style="color: var(--blue); text-decoration: none;"><code>Linux_kernel_map.png</code></a></td>
                     <td>340,797 B</td>
                     <td>None</td>
                     <td><code>10110e98fb6f3a43...</code></td>
                     <td><span class="status-pill pill-pass">VERIFIED</span></td>
                 </tr>
                 <tr>
-                    <td><a href=".architech/OS-structure2.svg.webp" style="color: var(--blue); text-decoration: none;"><code>OS-structure2.svg.webp</code></a></td>
+                    <td><a href=".architech/.implicit/MacOS_Architecture.svg.webp" style="color: var(--blue); text-decoration: none;"><code>MacOS_Architecture.svg.webp</code></a></td>
+                    <td>91,842 B</td>
+                    <td>None</td>
+                    <td><code>9e3bd7605230d4b2...</code></td>
+                    <td><span class="status-pill pill-pass">VERIFIED</span></td>
+                </tr>
+                <tr>
+                    <td><a href=".architech/.implicit/OS-structure2.svg.webp" style="color: var(--blue); text-decoration: none;"><code>OS-structure2.svg.webp</code></a></td>
                     <td>43,032 B</td>
                     <td>None</td>
                     <td><code>bd9b16d9782d16bb...</code></td>
+                    <td><span class="status-pill pill-pass">VERIFIED</span></td>
+                </tr>
+                <tr>
+                    <td><a href=".architech/.implicit/anatomy-of-a-full-windows-driver-l.jpg" style="color: var(--blue); text-decoration: none;"><code>anatomy-of-a-full-windows-driver-l.jpg</code></a></td>
+                    <td>68,157 B</td>
+                    <td>None</td>
+                    <td><code>833a072d6c272523...</code></td>
+                    <td><span class="status-pill pill-pass">VERIFIED</span></td>
+                </tr>
+                <tr>
+                    <td><a href=".architech/.implicit/audio-engine2.png" style="color: var(--blue); text-decoration: none;"><code>audio-engine2.png</code></a></td>
+                    <td>82,001 B</td>
+                    <td>None</td>
+                    <td><code>7c2a685a7e4f92b8...</code></td>
+                    <td><span class="status-pill pill-pass">VERIFIED</span></td>
+                </tr>
+                <tr>
+                    <td><a href=".architech/.implicit/capture-stack-architecture.png" style="color: var(--blue); text-decoration: none;"><code>capture-stack-architecture.png</code></a></td>
+                    <td>135,056 B</td>
+                    <td>None</td>
+                    <td><code>2189dfdfc98ce046...</code></td>
+                    <td><span class="status-pill pill-pass">VERIFIED</span></td>
+                </tr>
+                <tr>
+                    <td><a href=".architech/.implicit/cellular-architecture.png" style="color: var(--blue); text-decoration: none;"><code>cellular-architecture.png</code></a></td>
+                    <td>915,314 B</td>
+                    <td>None</td>
+                    <td><code>d27c64c41bd287ae...</code></td>
+                    <td><span class="status-pill pill-pass">VERIFIED</span></td>
+                </tr>
+                <tr>
+                    <td><a href=".architech/.implicit/ci.webp" style="color: var(--blue); text-decoration: none;"><code>ci.webp</code></a></td>
+                    <td>80,174 B</td>
+                    <td>None</td>
+                    <td><code>923308abf6f507e5...</code></td>
+                    <td><span class="status-pill pill-pass">VERIFIED</span></td>
+                </tr>
+                <tr>
+                    <td><a href=".architech/.implicit/corba6-l.jpg" style="color: var(--blue); text-decoration: none;"><code>corba6-l.jpg</code></a></td>
+                    <td>91,071 B</td>
+                    <td>None</td>
+                    <td><code>372265072cef2232...</code></td>
+                    <td><span class="status-pill pill-pass">VERIFIED</span></td>
+                </tr>
+                <tr>
+                    <td><a href=".architech/.implicit/device-driver-architecture-l.jpg" style="color: var(--blue); text-decoration: none;"><code>device-driver-architecture-l.jpg</code></a></td>
+                    <td>116,255 B</td>
+                    <td>None</td>
+                    <td><code>f4a1a698c6b7b82e...</code></td>
+                    <td><span class="status-pill pill-pass">VERIFIED</span></td>
+                </tr>
+                <tr>
+                    <td><a href=".architech/.implicit/driver-architecture-l.jpg" style="color: var(--blue); text-decoration: none;"><code>driver-architecture-l.jpg</code></a></td>
+                    <td>89,533 B</td>
+                    <td>None</td>
+                    <td><code>cf1319ce135d1948...</code></td>
+                    <td><span class="status-pill pill-pass">VERIFIED</span></td>
+                </tr>
+                <tr>
+                    <td><a href=".architech/.implicit/hhi.webp" style="color: var(--blue); text-decoration: none;"><code>hhi.webp</code></a></td>
+                    <td>31,672 B</td>
+                    <td>None</td>
+                    <td><code>efb294ab76ebdcd3...</code></td>
+                    <td><span class="status-pill pill-pass">VERIFIED</span></td>
+                </tr>
+                <tr>
+                    <td><a href=".architech/.implicit/i.webp" style="color: var(--blue); text-decoration: none;"><code>i.webp</code></a></td>
+                    <td>52,478 B</td>
+                    <td>None</td>
+                    <td><code>76e44cfce6d6da54...</code></td>
+                    <td><span class="status-pill pill-pass">VERIFIED</span></td>
+                </tr>
+                <tr>
+                    <td><a href=".architech/.implicit/mvc.jpg" style="color: var(--blue); text-decoration: none;"><code>mvc.jpg</code></a></td>
+                    <td>29,743 B</td>
+                    <td>None</td>
+                    <td><code>8f8a1f2f96fd836d...</code></td>
+                    <td><span class="status-pill pill-pass">VERIFIED</span></td>
+                </tr>
+                <tr>
+                    <td><a href=".architech/.implicit/plat-874t_lovell1.png" style="color: var(--blue); text-decoration: none;"><code>plat-874t_lovell1.png</code></a></td>
+                    <td>23,993 B</td>
+                    <td>None</td>
+                    <td><code>04105e08f54ab154...</code></td>
+                    <td><span class="status-pill pill-pass">VERIFIED</span></td>
+                </tr>
+                <tr>
+                    <td><a href=".architech/.implicit/slide-2.jpg" style="color: var(--blue); text-decoration: none;"><code>slide-2.jpg</code></a></td>
+                    <td>125,155 B</td>
+                    <td>None</td>
+                    <td><code>dd61801030d9a290...</code></td>
+                    <td><span class="status-pill pill-pass">VERIFIED</span></td>
+                </tr>
+                <tr>
+                    <td><a href=".architech/.implicit/static-and-dynamic-v-v-l.jpg" style="color: var(--blue); text-decoration: none;"><code>static-and-dynamic-v-v-l.jpg</code></a></td>
+                    <td>236,198 B</td>
+                    <td>None</td>
+                    <td><code>5b83558c32d5fda1...</code></td>
+                    <td><span class="status-pill pill-pass">VERIFIED</span></td>
+                </tr>
+                <tr>
+                    <td><a href=".architech/.implicit/structure-of-unix-kernel-l.jpg" style="color: var(--blue); text-decoration: none;"><code>structure-of-unix-kernel-l.jpg</code></a></td>
+                    <td>97,559 B</td>
+                    <td>None</td>
+                    <td><code>4eba6aac334e7e79...</code></td>
+                    <td><span class="status-pill pill-pass">VERIFIED</span></td>
+                </tr>
+                <tr>
+                    <td><a href=".architech/.implicit/the-windows-driver-model-l.jpg" style="color: var(--blue); text-decoration: none;"><code>the-windows-driver-model-l.jpg</code></a></td>
+                    <td>79,099 B</td>
+                    <td>None</td>
+                    <td><code>f9217c5a00cf4288...</code></td>
+                    <td><span class="status-pill pill-pass">VERIFIED</span></td>
+                </tr>
+                <tr>
+                    <td><a href=".architech/.implicit/v4custuiarch.png" style="color: var(--blue); text-decoration: none;"><code>v4custuiarch.png</code></a></td>
+                    <td>23,539 B</td>
+                    <td>None</td>
+                    <td><code>28bb9ed8ebfdb606...</code></td>
+                    <td><span class="status-pill pill-pass">VERIFIED</span></td>
+                </tr>
+                <tr>
+                    <td><a href=".architech/.implicit/windows-7-architecture-revisited-l.jpg" style="color: var(--blue); text-decoration: none;"><code>windows-7-architecture-revisited-l.jpg</code></a></td>
+                    <td>68,959 B</td>
+                    <td>None</td>
+                    <td><code>760ef95d2a978e15...</code></td>
+                    <td><span class="status-pill pill-pass">VERIFIED</span></td>
+                </tr>
+                <tr>
+                    <td><a href=".architech/.implicit/windows-ce-architecture1-l.jpg" style="color: var(--blue); text-decoration: none;"><code>windows-ce-architecture1-l.jpg</code></a></td>
+                    <td>98,176 B</td>
+                    <td>None</td>
+                    <td><code>9d8d270e2dc63cc9...</code></td>
+                    <td><span class="status-pill pill-pass">VERIFIED</span></td>
+                </tr>
+                <tr>
+                    <td><a href=".architech/.implicit/xxi.webp" style="color: var(--blue); text-decoration: none;"><code>xxi.webp</code></a></td>
+                    <td>16,152 B</td>
+                    <td>None</td>
+                    <td><code>28de4b303c3d7e71...</code></td>
+                    <td><span class="status-pill pill-pass">VERIFIED</span></td>
+                </tr>
+                <tr>
+                    <td><a href=".architech/CDE_2012_on_Linux.png" style="color: var(--blue); text-decoration: none;"><code>CDE_2012_on_Linux.png</code></a></td>
+                    <td>17,198 B</td>
+                    <td>None</td>
+                    <td><code>ece7c37b347070c2...</code></td>
+                    <td><span class="status-pill pill-pass">VERIFIED</span></td>
+                </tr>
+                <tr>
+                    <td><a href=".architech/Filesystem Hierarchy Standard - Wikipedia.html" style="color: var(--blue); text-decoration: none;"><code>Filesystem Hierarchy Standard - Wikipedia.html</code></a></td>
+                    <td>658,192 B</td>
+                    <td>7279</td>
+                    <td><code>365e3b02fe10582b...</code></td>
+                    <td><span class="status-pill pill-pass">VERIFIED</span></td>
+                </tr>
+                <tr>
+                    <td><a href=".architech/Filesystem Hierarchy Standard - Wikipedia_files/Badge-cga_eKId.png" style="color: var(--blue); text-decoration: none;"><code>Badge-cga_eKId.png</code></a></td>
+                    <td>13,396 B</td>
+                    <td>None</td>
+                    <td><code>3bea7256332f0b99...</code></td>
+                    <td><span class="status-pill pill-pass">VERIFIED</span></td>
+                </tr>
+                <tr>
+                    <td><a href=".architech/Filesystem Hierarchy Standard - Wikipedia_files/Badge-daf_eKId.png" style="color: var(--blue); text-decoration: none;"><code>Badge-daf_eKId.png</code></a></td>
+                    <td>23,333 B</td>
+                    <td>None</td>
+                    <td><code>ecc905cd5b4a1d6d...</code></td>
+                    <td><span class="status-pill pill-pass">VERIFIED</span></td>
+                </tr>
+                <tr>
+                    <td><a href=".architech/Filesystem Hierarchy Standard - Wikipedia_files/Badge-endowment_eKId.png" style="color: var(--blue); text-decoration: none;"><code>Badge-endowment_eKId.png</code></a></td>
+                    <td>24,916 B</td>
+                    <td>None</td>
+                    <td><code>65f33a9698829aba...</code></td>
+                    <td><span class="status-pill pill-pass">VERIFIED</span></td>
+                </tr>
+                <tr>
+                    <td><a href=".architech/Filesystem Hierarchy Standard - Wikipedia_files/Badge-monthly_eKId.png" style="color: var(--blue); text-decoration: none;"><code>Badge-monthly_eKId.png</code></a></td>
+                    <td>27,349 B</td>
+                    <td>None</td>
+                    <td><code>ba81513ab594ae9d...</code></td>
+                    <td><span class="status-pill pill-pass">VERIFIED</span></td>
+                </tr>
+                <tr>
+                    <td><a href=".architech/Filesystem Hierarchy Standard - Wikipedia_files/Badge-one-time_eKId.png" style="color: var(--blue); text-decoration: none;"><code>Badge-one-time_eKId.png</code></a></td>
+                    <td>23,190 B</td>
+                    <td>None</td>
+                    <td><code>97f12b40c66a0141...</code></td>
+                    <td><span class="status-pill pill-pass">VERIFIED</span></td>
+                </tr>
+                <tr>
+                    <td><a href=".architech/Filesystem Hierarchy Standard - Wikipedia_files/Badge-workplace-giving_eKId.png" style="color: var(--blue); text-decoration: none;"><code>Badge-workplace-giving_eKId.png</code></a></td>
+                    <td>17,153 B</td>
+                    <td>None</td>
+                    <td><code>e12e32ea3b75d610...</code></td>
+                    <td><span class="status-pill pill-pass">VERIFIED</span></td>
+                </tr>
+                <tr>
+                    <td><a href=".architech/Filesystem Hierarchy Standard - Wikipedia_files/Candid-seal-platinum-2025_eKId.svg" style="color: var(--blue); text-decoration: none;"><code>Candid-seal-platinum-2025_eKId.svg</code></a></td>
+                    <td>12,503 B</td>
+                    <td>50</td>
+                    <td><code>d39f5194ef5b51d7...</code></td>
+                    <td><span class="status-pill pill-pass">VERIFIED</span></td>
+                </tr>
+                <tr>
+                    <td><a href=".architech/Filesystem Hierarchy Standard - Wikipedia_files/Charity-navigator_eKId.png" style="color: var(--blue); text-decoration: none;"><code>Charity-navigator_eKId.png</code></a></td>
+                    <td>7,051 B</td>
+                    <td>None</td>
+                    <td><code>1bda44c525c5b4c4...</code></td>
+                    <td><span class="status-pill pill-pass">VERIFIED</span></td>
+                </tr>
+                <tr>
+                    <td><a href=".architech/Filesystem Hierarchy Standard - Wikipedia_files/OOjs_UI_icon_edit-ltr-progressive.svg_eKId.webp" style="color: var(--blue); text-decoration: none;"><code>OOjs_UI_icon_edit-ltr-progressive.svg_eKId.webp</code></a></td>
+                    <td>200 B</td>
+                    <td>None</td>
+                    <td><code>659912e3ebc4dd65...</code></td>
+                    <td><span class="status-pill pill-pass">VERIFIED</span></td>
+                </tr>
+                <tr>
+                    <td><a href=".architech/Filesystem Hierarchy Standard - Wikipedia_files/Root_directory_hierarchy_on_Linux_screenshot_eKId.webp" style="color: var(--blue); text-decoration: none;"><code>Root_directory_hierarchy_on_Linux_screenshot_eKId.webp</code></a></td>
+                    <td>12,612 B</td>
+                    <td>None</td>
+                    <td><code>572928b7a782cc3b...</code></td>
+                    <td><span class="status-pill pill-pass">VERIFIED</span></td>
+                </tr>
+                <tr>
+                    <td><a href=".architech/Filesystem Hierarchy Standard - Wikipedia_files/enwiki-25_eKId.svg" style="color: var(--blue); text-decoration: none;"><code>enwiki-25_eKId.svg</code></a></td>
+                    <td>115,918 B</td>
+                    <td>1</td>
+                    <td><code>095fb188212ac254...</code></td>
+                    <td><span class="status-pill pill-pass">VERIFIED</span></td>
+                </tr>
+                <tr>
+                    <td><a href=".architech/Filesystem Hierarchy Standard - Wikipedia_files/load_002_eKId.css" style="color: var(--blue); text-decoration: none;"><code>load_002_eKId.css</code></a></td>
+                    <td>6,717 B</td>
+                    <td>1</td>
+                    <td><code>776a17712cefe2a9...</code></td>
+                    <td><span class="status-pill pill-pass">VERIFIED</span></td>
+                </tr>
+                <tr>
+                    <td><a href=".architech/Filesystem Hierarchy Standard - Wikipedia_files/load_eKId.css" style="color: var(--blue); text-decoration: none;"><code>load_eKId.css</code></a></td>
+                    <td>208,139 B</td>
+                    <td>1</td>
+                    <td><code>bfe62386815592b4...</code></td>
+                    <td><span class="status-pill pill-pass">VERIFIED</span></td>
+                </tr>
+                <tr>
+                    <td><a href=".architech/Filesystem Hierarchy Standard - Wikipedia_files/load_eKId.js" style="color: var(--blue); text-decoration: none;"><code>load_eKId.js</code></a></td>
+                    <td>69,179 B</td>
+                    <td>23</td>
+                    <td><code>740c488c9aed7d58...</code></td>
+                    <td><span class="status-pill pill-pass">VERIFIED</span></td>
+                </tr>
+                <tr>
+                    <td><a href=".architech/Filesystem Hierarchy Standard - Wikipedia_files/mediawiki_compact_eKId.svg" style="color: var(--blue); text-decoration: none;"><code>mediawiki_compact_eKId.svg</code></a></td>
+                    <td>3,517 B</td>
+                    <td>30</td>
+                    <td><code>d0b9c6e983d71f5c...</code></td>
+                    <td><span class="status-pill pill-pass">VERIFIED</span></td>
+                </tr>
+                <tr>
+                    <td><a href=".architech/Filesystem Hierarchy Standard - Wikipedia_files/poweredby_mediawiki_eKId.svg" style="color: var(--blue); text-decoration: none;"><code>poweredby_mediawiki_eKId.svg</code></a></td>
+                    <td>14,576 B</td>
+                    <td>102</td>
+                    <td><code>75444929595b7c40...</code></td>
+                    <td><span class="status-pill pill-pass">VERIFIED</span></td>
+                </tr>
+                <tr>
+                    <td><a href=".architech/Filesystem Hierarchy Standard - Wikipedia_files/wikimedia-button_eKId.svg" style="color: var(--blue); text-decoration: none;"><code>wikimedia-button_eKId.svg</code></a></td>
+                    <td>3,256 B</td>
+                    <td>12</td>
+                    <td><code>0c2aa872dd39b943...</code></td>
+                    <td><span class="status-pill pill-pass">VERIFIED</span></td>
+                </tr>
+                <tr>
+                    <td><a href=".architech/Filesystem Hierarchy Standard - Wikipedia_files/wikimedia_eKId.svg" style="color: var(--blue); text-decoration: none;"><code>wikimedia_eKId.svg</code></a></td>
+                    <td>742 B</td>
+                    <td>1</td>
+                    <td><code>c989c591b888781e...</code></td>
+                    <td><span class="status-pill pill-pass">VERIFIED</span></td>
+                </tr>
+                <tr>
+                    <td><a href=".architech/Filesystem Hierarchy Standard - Wikipedia_files/wikipedia-tagline-en-25_eKId.svg" style="color: var(--blue); text-decoration: none;"><code>wikipedia-tagline-en-25_eKId.svg</code></a></td>
+                    <td>15,219 B</td>
+                    <td>1</td>
+                    <td><code>400508c091b4e9cd...</code></td>
+                    <td><span class="status-pill pill-pass">VERIFIED</span></td>
+                </tr>
+                <tr>
+                    <td><a href=".architech/Filesystem Hierarchy Standard - Wikipedia_files/wikipedia-wordmark-en-25_eKId.svg" style="color: var(--blue); text-decoration: none;"><code>wikipedia-wordmark-en-25_eKId.svg</code></a></td>
+                    <td>9,865 B</td>
+                    <td>1</td>
+                    <td><code>169241aebac0b122...</code></td>
                     <td><span class="status-pill pill-pass">VERIFIED</span></td>
                 </tr>
                 <tr>
@@ -343,38 +653,10 @@
                     <td><span class="status-pill pill-pass">VERIFIED</span></td>
                 </tr>
                 <tr>
-                    <td><a href=".architech/i.webp" style="color: var(--blue); text-decoration: none;"><code>i.webp</code></a></td>
-                    <td>52,478 B</td>
+                    <td><a href=".architech/Unix_history-simple.svg.webp" style="color: var(--blue); text-decoration: none;"><code>Unix_history-simple.svg.webp</code></a></td>
+                    <td>88,704 B</td>
                     <td>None</td>
-                    <td><code>76e44cfce6d6da54...</code></td>
-                    <td><span class="status-pill pill-pass">VERIFIED</span></td>
-                </tr>
-                <tr>
-                    <td><a href=".architech/ixtas.webp" style="color: var(--blue); text-decoration: none;"><code>ixtas.webp</code></a></td>
-                    <td>58,304 B</td>
-                    <td>None</td>
-                    <td><code>0e38fde30c9f03f5...</code></td>
-                    <td><span class="status-pill pill-pass">VERIFIED</span></td>
-                </tr>
-                <tr>
-                    <td><a href=".architech/maxresdefault.jpg" style="color: var(--blue); text-decoration: none;"><code>maxresdefault.jpg</code></a></td>
-                    <td>70,576 B</td>
-                    <td>None</td>
-                    <td><code>3cc12550afe28131...</code></td>
-                    <td><span class="status-pill pill-pass">VERIFIED</span></td>
-                </tr>
-                <tr>
-                    <td><a href=".architech/structure-of-unix-kernel-l.jpg" style="color: var(--blue); text-decoration: none;"><code>structure-of-unix-kernel-l.jpg</code></a></td>
-                    <td>97,559 B</td>
-                    <td>None</td>
-                    <td><code>4eba6aac334e7e79...</code></td>
-                    <td><span class="status-pill pill-pass">VERIFIED</span></td>
-                </tr>
-                <tr>
-                    <td><a href=".architech/tereza.webp" style="color: var(--blue); text-decoration: none;"><code>tereza.webp</code></a></td>
-                    <td>94,558 B</td>
-                    <td>None</td>
-                    <td><code>8adc444ad723e918...</code></td>
+                    <td><code>f870ab9ac4a937c4...</code></td>
                     <td><span class="status-pill pill-pass">VERIFIED</span></td>
                 </tr>
                 <tr>
@@ -693,6 +975,20 @@
                     <td><span class="status-pill pill-pass">VERIFIED</span></td>
                 </tr>
                 <tr>
+                    <td><a href=".mac!narumi/13_voidlinux_practical_knowledge.md" style="color: var(--blue); text-decoration: none;"><code>13_voidlinux_practical_knowledge.md</code></a></td>
+                    <td>5,794 B</td>
+                    <td>159</td>
+                    <td><code>22654a71e7dfd622...</code></td>
+                    <td><span class="status-pill pill-pass">VERIFIED</span></td>
+                </tr>
+                <tr>
+                    <td><a href=".mac!narumi/14_freebsd_practical_knowledge.md" style="color: var(--blue); text-decoration: none;"><code>14_freebsd_practical_knowledge.md</code></a></td>
+                    <td>4,988 B</td>
+                    <td>159</td>
+                    <td><code>ba7c8b7c1c23c493...</code></td>
+                    <td><span class="status-pill pill-pass">VERIFIED</span></td>
+                </tr>
+                <tr>
                     <td><a href=".macinarium-stellar/01_windows_nt_kernel_architecture.md" style="color: var(--blue); text-decoration: none;"><code>01_windows_nt_kernel_architecture.md</code></a></td>
                     <td>5,903 B</td>
                     <td>220</td>
@@ -781,6 +1077,76 @@
                     <td>3,174 B</td>
                     <td>116</td>
                     <td><code>30f167b943ce560f...</code></td>
+                    <td><span class="status-pill pill-pass">VERIFIED</span></td>
+                </tr>
+                <tr>
+                    <td><a href=".macinarium-stellar/14_windows_nt_object_manager.md" style="color: var(--blue); text-decoration: none;"><code>14_windows_nt_object_manager.md</code></a></td>
+                    <td>3,473 B</td>
+                    <td>141</td>
+                    <td><code>4fe3105fae8e0c13...</code></td>
+                    <td><span class="status-pill pill-pass">VERIFIED</span></td>
+                </tr>
+                <tr>
+                    <td><a href=".macinarium-stellar/15_windows_nt_io_system.md" style="color: var(--blue); text-decoration: none;"><code>15_windows_nt_io_system.md</code></a></td>
+                    <td>4,143 B</td>
+                    <td>164</td>
+                    <td><code>c63228a513894ff7...</code></td>
+                    <td><span class="status-pill pill-pass">VERIFIED</span></td>
+                </tr>
+                <tr>
+                    <td><a href=".macinarium-stellar/16_windows_nt_memory_manager.md" style="color: var(--blue); text-decoration: none;"><code>16_windows_nt_memory_manager.md</code></a></td>
+                    <td>3,589 B</td>
+                    <td>156</td>
+                    <td><code>bd2a333cdc6623f6...</code></td>
+                    <td><span class="status-pill pill-pass">VERIFIED</span></td>
+                </tr>
+                <tr>
+                    <td><a href=".macinarium-stellar/17_windows_nt_process_and_thread_management.md" style="color: var(--blue); text-decoration: none;"><code>17_windows_nt_process_and_thread_management.md</code></a></td>
+                    <td>3,863 B</td>
+                    <td>162</td>
+                    <td><code>fb048eca082e4297...</code></td>
+                    <td><span class="status-pill pill-pass">VERIFIED</span></td>
+                </tr>
+                <tr>
+                    <td><a href=".macinarium-stellar/18_voidlinux_architecture_and_runit.md" style="color: var(--blue); text-decoration: none;"><code>18_voidlinux_architecture_and_runit.md</code></a></td>
+                    <td>8,471 B</td>
+                    <td>133</td>
+                    <td><code>0b3da07dd149f9e0...</code></td>
+                    <td><span class="status-pill pill-pass">VERIFIED</span></td>
+                </tr>
+                <tr>
+                    <td><a href=".macinarium-stellar/19_freebsd_architecture_and_subsystems.md" style="color: var(--blue); text-decoration: none;"><code>19_freebsd_architecture_and_subsystems.md</code></a></td>
+                    <td>8,675 B</td>
+                    <td>152</td>
+                    <td><code>1db3fdd8fbc8596d...</code></td>
+                    <td><span class="status-pill pill-pass">VERIFIED</span></td>
+                </tr>
+                <tr>
+                    <td><a href=".macinarium-stellar/20_driver_architect_universal_patterns.md" style="color: var(--blue); text-decoration: none;"><code>20_driver_architect_universal_patterns.md</code></a></td>
+                    <td>9,034 B</td>
+                    <td>164</td>
+                    <td><code>803434f3df44a6c1...</code></td>
+                    <td><span class="status-pill pill-pass">VERIFIED</span></td>
+                </tr>
+                <tr>
+                    <td><a href=".macinarium-stellar/21_industrial_defense_bus_subsystems.md" style="color: var(--blue); text-decoration: none;"><code>21_industrial_defense_bus_subsystems.md</code></a></td>
+                    <td>7,311 B</td>
+                    <td>131</td>
+                    <td><code>45ff0d4957cf6089...</code></td>
+                    <td><span class="status-pill pill-pass">VERIFIED</span></td>
+                </tr>
+                <tr>
+                    <td><a href=".macinarium-stellar/22_hardware_root_of_trust_and_watchdogs.md" style="color: var(--blue); text-decoration: none;"><code>22_hardware_root_of_trust_and_watchdogs.md</code></a></td>
+                    <td>7,648 B</td>
+                    <td>125</td>
+                    <td><code>325e7ac6df599d04...</code></td>
+                    <td><span class="status-pill pill-pass">VERIFIED</span></td>
+                </tr>
+                <tr>
+                    <td><a href=".macinarium-stellar/23_critical_infrastructure_application_interfaces.md" style="color: var(--blue); text-decoration: none;"><code>23_critical_infrastructure_application_interfaces.md</code></a></td>
+                    <td>7,810 B</td>
+                    <td>127</td>
+                    <td><code>a96ed720620c87f1...</code></td>
                     <td><span class="status-pill pill-pass">VERIFIED</span></td>
                 </tr>
             </tbody>

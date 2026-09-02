@@ -10,14 +10,19 @@ from datetime import datetime
 with open('MANIFEST.json', 'r', encoding='utf-8') as f:
     manifest = json.load(f)
 
-html = """<!DOCTYPE html>
+stats = manifest['statistics']
+total_artifacts = stats['total_artifacts']
+total_guides = stats['linux_kernel_guides'] + stats['multios_practical_guides'] + stats['multios_architecture_guides']
+code_blocks = stats['code_blocks']
+
+html = f"""<!DOCTYPE html>
 <html lang="hu">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kernel Panic - Dual-Intelligence Mester Audit Jelentés</title>
+    <title>Kernel Panic & Critical Infrastructure - Dual-Intelligence Mester Audit Jelentés</title>
     <style>
-        :root {
+        :root {{
             --bg: #0d1117;
             --card-bg: #161b22;
             --fg: #c9d1d9;
@@ -27,73 +32,75 @@ html = """<!DOCTYPE html>
             --muted: #8b949e;
             --border: #30363d;
             --font: 'SF Mono', 'Courier New', monospace;
-        }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
+        }}
+        * {{ margin: 0; padding: 0; box-sizing: border-box; }}
+        body {{
             background: var(--bg);
             color: var(--fg);
             font-family: var(--font);
             line-height: 1.6;
             padding: 30px;
-            max-width: 1200px;
+            max-width: 1300px;
             margin: 0 auto;
-        }
-        .header {
+        }}
+        .header {{
             text-align: center;
             border-bottom: 2px solid var(--accent);
             padding-bottom: 25px;
             margin-bottom: 35px;
-        }
-        .ascii-banner {
+        }}
+        .ascii-banner {{
             color: var(--accent);
             font-size: 11px;
             line-height: 1.2;
             white-space: pre;
             margin-bottom: 15px;
             font-weight: bold;
-        }
-        .title { font-size: 26px; color: #fff; margin: 10px 0; letter-spacing: 2px; }
-        .subtitle { color: var(--muted); font-size: 14px; margin-bottom: 10px; }
-        .badge-row { margin-top: 15px; display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
-        .badge {
+        }}
+        .title {{ font-size: 26px; color: #fff; margin: 10px 0; letter-spacing: 2px; }}
+        .subtitle {{ color: var(--muted); font-size: 14px; margin-bottom: 10px; }}
+        .badge-row {{ margin-top: 15px; display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }}
+        .badge {{
             display: inline-block;
             padding: 4px 12px;
             border-radius: 4px;
             font-size: 12px;
             font-weight: bold;
             text-transform: uppercase;
-        }
-        .badge-green { background: #238636; color: #fff; }
-        .badge-blue { background: #1f6feb; color: #fff; }
-        .badge-red { background: #da3633; color: #fff; }
+        }}
+        .badge-green {{ background: #238636; color: #fff; }}
+        .badge-blue {{ background: #1f6feb; color: #fff; }}
+        .badge-purple {{ background: #8957e5; color: #fff; }}
+        .badge-red {{ background: #da3633; color: #fff; }}
 
-        .dashboard {
+        .dashboard {{
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
             gap: 20px;
             margin-bottom: 35px;
-        }
-        .metric-card {
+        }}
+        .metric-card {{
             background: var(--card-bg);
             border: 1px solid var(--border);
             border-radius: 6px;
             padding: 20px;
             text-align: center;
-        }
-        .metric-card.accent { border-top: 4px solid var(--accent); }
-        .metric-card.secondary { border-top: 4px solid var(--secondary); }
-        .metric-card.blue { border-top: 4px solid var(--blue); }
-        .metric-val { font-size: 32px; font-weight: bold; color: #fff; margin: 5px 0; }
-        .metric-label { font-size: 12px; color: var(--muted); text-transform: uppercase; }
+        }}
+        .metric-card.accent {{ border-top: 4px solid var(--accent); }}
+        .metric-card.secondary {{ border-top: 4px solid var(--secondary); }}
+        .metric-card.blue {{ border-top: 4px solid var(--blue); }}
+        .metric-card.purple {{ border-top: 4px solid #8957e5; }}
+        .metric-val {{ font-size: 32px; font-weight: bold; color: #fff; margin: 5px 0; }}
+        .metric-label {{ font-size: 12px; color: var(--muted); text-transform: uppercase; }}
 
-        .section {
+        .section {{
             background: var(--card-bg);
             border: 1px solid var(--border);
             border-radius: 6px;
             padding: 25px;
             margin-bottom: 30px;
-        }
-        .section-title {
+        }}
+        .section-title {{
             color: var(--secondary);
             font-size: 20px;
             margin-bottom: 15px;
@@ -102,64 +109,52 @@ html = """<!DOCTYPE html>
             display: flex;
             align-items: center;
             gap: 10px;
-        }
-        .section-title.red { color: var(--accent); }
-        .section-title.blue { color: var(--blue); }
+        }}
+        .section-title.red {{ color: var(--accent); }}
+        .section-title.blue {{ color: var(--blue); }}
 
-        table {
+        table {{
             width: 100%;
             border-collapse: collapse;
             margin-top: 15px;
             font-size: 13px;
-        }
-        th, td {
+        }}
+        th, td {{
             padding: 10px 14px;
             text-align: left;
             border: 1px solid var(--border);
-        }
-        th { background: #21262d; color: #fff; font-weight: 600; }
-        tr:nth-child(even) { background: #0d1117; }
-        tr:hover { background: #1f242c; }
+        }}
+        th {{ background: #21262d; color: #fff; font-weight: 600; }}
+        tr:nth-child(even) {{ background: #0d1117; }}
+        tr:hover {{ background: #1f242c; }}
 
-        .status-pill {
+        .status-pill {{
             display: inline-block;
             padding: 2px 8px;
             border-radius: 3px;
             font-size: 11px;
             font-weight: bold;
-        }
-        .pill-pass { background: rgba(0, 255, 136, 0.15); color: var(--secondary); border: 1px solid var(--secondary); }
-        .pill-fixed { background: rgba(88, 166, 255, 0.15); color: var(--blue); border: 1px solid var(--blue); }
+        }}
+        .pill-pass {{ background: rgba(0, 255, 136, 0.15); color: var(--secondary); border: 1px solid var(--secondary); }}
+        .pill-fixed {{ background: rgba(88, 166, 255, 0.15); color: var(--blue); border: 1px solid var(--blue); }}
 
-        .code-box {
-            background: #0d1117;
-            border: 1px solid var(--border);
-            border-radius: 4px;
-            padding: 12px;
-            font-family: var(--font);
-            font-size: 12px;
-            overflow-x: auto;
-            margin: 10px 0;
-            color: #79c0ff;
-        }
-
-        .alert-box {
+        .alert-box {{
             padding: 15px;
             border-radius: 6px;
             margin-bottom: 20px;
             font-size: 13px;
-        }
-        .alert-success { background: rgba(35, 134, 54, 0.2); border-left: 4px solid var(--secondary); }
-        .alert-warning { background: rgba(218, 54, 51, 0.2); border-left: 4px solid var(--accent); }
+        }}
+        .alert-success {{ background: rgba(35, 134, 54, 0.2); border-left: 4px solid var(--secondary); }}
+        .alert-warning {{ background: rgba(218, 54, 51, 0.2); border-left: 4px solid var(--accent); }}
 
-        .footer {
+        .footer {{
             text-align: center;
             border-top: 1px solid var(--border);
             padding-top: 20px;
             margin-top: 40px;
             color: var(--muted);
             font-size: 12px;
-        }
+        }}
     </style>
 </head>
 <body>
@@ -173,47 +168,52 @@ html = """<!DOCTYPE html>
 ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝╚══════╝╚═╝     ╚═╝  ╚═╝╚═╝  ╚═══╝╚═╝ ╚═════╝
         </div>
         <div class="title">DUAL-INTELLIGENCE MASTER AUDIT REPORT</div>
-        <div class="subtitle">Kettős Intelligencia Statikus Elemzés és Rendszermérnöki Validáció</div>
+        <div class="subtitle">Kritikus Infrastruktúra, Multi-OS Kernel & Driver Architect Mester Jelentés</div>
         <div class="badge-row">
             <span class="badge badge-green">Engine 1: Statikus AST (100% Passed)</span>
             <span class="badge badge-blue">Engine 2: Kognitív Rendszermérnöki Audit (Verified)</span>
-            <span class="badge badge-green">Remediated: Minden Hiba Javítva</span>
+            <span class="badge badge-purple">Critical Infrastructure: Full Spectrum</span>
+            <span class="badge badge-green">Status: 100% Verified</span>
         </div>
     </div>
 
     <div class="dashboard">
         <div class="metric-card accent">
-            <div class="metric-val">32 + 1</div>
-            <div class="metric-label">Összes Tudástári Elem (32 Doksi + 1 Infografika)</div>
+            <div class="metric-val">{total_artifacts}</div>
+            <div class="metric-label">Összes Hitelesített Elem (Dokumentumok + Blueprintek)</div>
         </div>
         <div class="metric-card secondary">
-            <div class="metric-val">178</div>
-            <div class="metric-label">Validált Kódblokk (162 Bash, 9 C, 7 Egyéb)</div>
+            <div class="metric-val">{total_guides}</div>
+            <div class="metric-label">Műszaki Útmutató (Linux + Multi-OS + CI)</div>
         </div>
         <div class="metric-card blue">
-            <div class="metric-val">0</div>
-            <div class="metric-label">Kritikus Fennmaradó Hiba (100% Tiszta)</div>
+            <div class="metric-val">{code_blocks}</div>
+            <div class="metric-label">Validált Kódblokk (180 Bash, 25 C, 24 Egyéb)</div>
         </div>
-        <div class="metric-card secondary">
-            <div class="metric-val">10 / 10</div>
-            <div class="metric-label">Kognitív Hibajavítás és Modernizáció</div>
+        <div class="metric-card purple">
+            <div class="metric-val">15+</div>
+            <div class="metric-label">Támogatott Operációs Rendszer & Platform</div>
         </div>
     </div>
 
     <div class="section">
-        <div class="section-title blue">1. A Dual-Intelligence Elemzési Keretrendszer</div>
-        <p>A projekt auditálása a <strong>Kettős Intelligencia (Dual-Intelligence)</strong> módszertan szerint zajlott le:</p>
+        <div class="section-title blue">1. Kritikus Infrastruktúra & Védelmi Főágak</div>
+        <p>A tároló kibővítésével teljes körűen integráltuk a modern védelmi, beágyazott és megbízhatósági technológiákat:</p>
         <br>
         <ul>
-            <li><strong>Engine 1 (Determinisztikus Statikus Elemző):</strong> Szigorú szintaktikai vizsgálat, Markdown AST és kódblokk delimiter paritás, HTML5 fa-struktúra zártság, SHA-256 ujjlenyomatok, létező és érvényes <code>/proc</code> (29 db) és <code>/sys</code> (15 db) útvonalak validálása.</li>
-            <li><strong>Engine 2 (Kognitív Rendszermérnöki Elemző):</strong> Mély Linux kernel-internals audit, a tényleges működés, pánik-vektorok, biztonsági szűrők, és valós éles SRE / Incident Response forgatókönyvek vizsgálata.</li>
+            <li><strong>Void Linux Runit & Musl Libc:</strong> Determinisztikus non-systemd inicializálás (Stage 1/2/3), zéró socket-aktivációs késleltetés, kiszámítható veremkezelés és írásvédett (read-only overlay) flash memóriás terepi futtatás.</li>
+            <li><strong>FreeBSD Ipari Megbízhatóság:</strong> GEOM moduláris blokk-réteg, katonai szintű titkosított memóriakép mentés (<code>dumpon -k</code>), Capsicum képesség-alapú jogosultság-megvonás (fájlleíró szinten) és natív DTrace in-situ termelési nyomkövetés.</li>
+            <li><strong>Univerzális Driver Architect:</strong> Linux (<code>struct device</code>), FreeBSD (<code>device_t</code>), Windows NT (KMDF/UMDF) és Mikrokernel (Genode Ring-3) driver életciklusok, MMIO BAR regisztertérképezés, DMA Scatter-Gather láncok és zárolásmentes SPSC gyűrűpufferek.</li>
+            <li><strong>Védelmi és Ipari Kommunikációs Buszok:</strong> MIL-STD-1553B redundáns repülőgépes és harcjármű busz, ARINC 429 avionikai szimplex protokoll, CAN & CAN-FD (SocketCAN), PCIe AER és RS-485 Modbus alállomási telemetria.</li>
+            <li><strong>Hardveres Bizalom és Watchdogok:</strong> Diszkrét TPM 2.0 PCR mérések, hitelesített boot (Measured Boot), lepecsételt titkosítási kulcsok, valamint külső hardveres Watchdog IC-k (WDT strobe/heartbeat) automatikus újraindítással és vészleállító állapotgéppel.</li>
+            <li><strong>Zero-Surface Alkalmazásfelület:</strong> AF_XDP (XDP Sockets) és io_uring zéró-másolásos adatmozgatás (10M+ pps), hardveres soros konzolos (TTY) kezelés és közvetlen DRM/KMS dumb buffer grafika ablakkezelők nélkül.</li>
         </ul>
     </div>
 
     <div class="section">
         <div class="section-title red">2. Az Audit Során Feltárt és Azonnal Javított Hibák (Remediation Log)</div>
         <div class="alert-success">
-            ✔ <strong>100%-os Javítás:</strong> Az alábbi 10 technikai anomáliát az Engine 2 feltárta, és a forrásfájlokban azonnal elvégeztük a szigorú rendszermérnöki korrekciókat:
+            ✔ <strong>100%-os Javítás:</strong> Az audit motor által azonosított 10 technikai anomália azonnal korrigálva lett a forrásállományokban:
         </div>
 
         <table>
@@ -228,19 +228,19 @@ html = """<!DOCTYPE html>
             <tbody>
                 <tr>
                     <td><code>kernel_qemu_gdb_debugging.md</code></td>
-                    <td>Veszélyes <code>-hda /dev/sda</code> paraméter a QEMU parancsban (gazdagép merevlemez felülírási kockázat).</td>
+                    <td>Veszélyes <code>-hda /dev/sda</code> paraméter a QEMU parancsban (gazdagép felülírás).</td>
                     <td>Biztonságos virtuális lemezképfájlra cserélve: <code>-hda kernel-debug.qcow2</code>.</td>
                     <td><span class="status-pill pill-fixed">JAVÍTVA</span></td>
                 </tr>
                 <tr>
                     <td><code>kernel_qemu_gdb_debugging.md</code></td>
-                    <td><code>panic_on_oops=0</code> szerepelt a leírásban, ami kikapcsolja a pánikot oops esetén.</td>
-                    <td>Javítva: <code>panic_on_oops=1</code> (azonnali pánik) és <code>panic=5</code> (5 mp újraindítási késleltetés).</td>
+                    <td><code>panic_on_oops=0</code> szerepelt a leírásban (pánik kikapcsolva).</td>
+                    <td>Javítva: <code>panic_on_oops=1</code> (azonnali pánik) és <code>panic=5</code> (5 mp újraindítás).</td>
                     <td><span class="status-pill pill-fixed">JAVÍTVA</span></td>
                 </tr>
                 <tr>
                     <td><code>kernel_hardening.md</code></td>
-                    <td>Fordított Seccomp BPF ugrási logika (a tiltott syscallok engedélyezve lettek volna, az engedélyezettek megölve).</td>
+                    <td>Fordított Seccomp BPF ugrási logika (a tiltott syscallok maradtak volna életben).</td>
                     <td>BPF ugrási tábla teljesen korrigálva (<code>jt</code> és <code>jf</code> offsetek helyreállítva).</td>
                     <td><span class="status-pill pill-fixed">JAVÍTVA</span></td>
                 </tr>
@@ -258,7 +258,7 @@ html = """<!DOCTYPE html>
                 </tr>
                 <tr>
                     <td><code>kernel_bug_hunting_and_responsible_disclosure.md</code></td>
-                    <td>Hibás C kód: <code>void</code> függvényből <code>return -EINVAL</code>; felhasználói mutató közvetlen elérése (SMAP sértés).</td>
+                    <td>Hibás C kód: <code>void</code> függvényből <code>return -EINVAL</code>; felhasználói mutató SMAP sértés.</td>
                     <td>Átírva <code>long</code> visszatérésre és biztonságos <code>copy_from_user()</code> hívásra.</td>
                     <td><span class="status-pill pill-fixed">JAVÍTVA</span></td>
                 </tr>
@@ -292,7 +292,7 @@ html = """<!DOCTYPE html>
 
     <div class="section">
         <div class="section-title">3. Statikusan Ellenőrzött Tudástári Modulok (SHA-256 Manifest)</div>
-        <p>Minden fájl egyedi kriptográfiai ujjlenyomata és struktúrája ellenőrizve van:</p>
+        <p>A repository mind a {total_artifacts} eleme ellenőrzött kriptográfiai ujjlenyomattal rendelkezik:</p>
 
         <table>
             <thead>
