@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kernel Panic - Operatív Területi Útmutató</title>
+    <style>
+        :root {
+            --bg: #0a0a0a;
+            --fg: #e0e0e0;
+            --accent: #ff3333;
+            --secondary: #00ff88;
+            --muted: #888;
+            --border: #333;
+            --font: 'Courier New', monospace;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: var(--bg);
+            color: var(--fg);
+            font-family: var(--font);
+            line-height: 1.6;
+            padding: 20px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .header {
+            text-align: center;
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        .ascii-art {
+            color: var(--accent);
+            font-size: 12px;
+            line-height: 1.2;
+            white-space: pre;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        .title {
+            font-size: 24px;
+            color: var(--fg);
+            margin: 10px 0;
+            letter-spacing: 2px;
+        }
+        .subtitle {
+            color: var(--muted);
+            font-size: 14px;
+        }
+        .version {
+            color: var(--secondary);
+            font-size: 12px;
+            margin-top: 5px;
+        }
+        .section {
+            margin-bottom: 25px;
+            padding: 15px;
+            border-left: 3px solid var(--accent);
+            background: #111;
+        }
+        .section-title {
+            color: var(--accent);
+            font-size: 18px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .subsection {
+            margin: 15px 0;
+            padding-left: 15px;
+            border-left: 1px solid var(--border);
+        }
+        .subsection-title {
+            color: var(--secondary);
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 10px 0;
+            font-size: 13px;
+        }
+        th, td {
+            border: 1px solid var(--border);
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background: #1a1a1a;
+            color: var(--accent);
+        }
+        code {
+            background: #1a1a1a;
+            padding: 2px 6px;
+            border-radius: 3px;
+            color: var(--secondary);
+            font-size: 12px;
+        }
+        .diagram {
+            background: #0d0d0d;
+            border: 1px dashed var(--border);
+            padding: 15px;
+            margin: 10px 0;
+            font-size: 11px;
+            line-height: 1.4;
+            white-space: pre;
+            overflow-x: auto;
+        }
+        .highlight {
+            color: var(--accent);
+            font-weight: bold;
+        }
+        .warning {
+            color: #ffaa00;
+            font-style: italic;
+        }
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            font-size: 11px;
+            color: var(--muted);
+        }
+        .audit {
+            color: var(--secondary);
+            margin-top: 5px;
+        }
+        ul {
+            margin-left: 20px;
+            margin-top: 5px;
+        }
+        li {
+            margin: 3px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <pre class="ascii-art">
+   ██╗  ██╗███████╗██████╗ 
+   ██║ ██╔╝██╔════╝██╔══██╗
+   █████╔╝ █████╗  ██████╔╝
+   ██╔═██╗ ██╔══╝  ██╔══██╗
+   ██║  ██╗███████╗██║  ██║
+   ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝
+        </pre>
+        <div class="title">KERNEL PANIC TAXONOMY</div>
+        <div class="subtitle">Operatív Területi Útmutató • Választható Szereplőknek</div>
+        <div class="version">Verzió: 1.0-stable | Build: 2026.09.02</div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">1. Mi öli meg a kernelt? (Panic Vektorok)</div>
+        <p>A kernel azért összeomlik, mert valami váratlan történik, amire nincs terve. Ezek a leggyakoribb okok:</p>
+        <table>
+            <tr>
+                <th>Vektor</th>
+                <th>Mi történik?</th>
+                <th>Hogyan észleljük?</th>
+                <th>Javítási kísérlet</th>
+            </tr>
+            <tr>
+                <td>NULL pointer</td>
+                <td>A kernel olyan memóriaterületet próbál elérni, aminek nincs értéke (üres cím).</td>
+                <td>Rendszernapló (dmesg) hibajelzést dob.</td>
+                <td>Újraindítás, vagy kernel javítása.</td>
+            </tr>
+            <tr>
+                <td>Memória elfogyása</td>
+                <td>A kernel túl sokat próbál futtatni egyszerre, nincs több hely.</td>
+                <td>A rendszer lelassul, majd összeomlik.</td>
+                <td>Beállítások módosítása, vagy több memória hozzáadása.</td>
+            </tr>
+            <tr>
+                <td>Hardver hiba</td>
+                <td>Az alkatrészek (memória, lemez, processzor) hibásak.</td>
+                <td>Rendszernaplóban hardver hibakódok jelennek meg.</td>
+                <td>Alkatrész csere, tesztelés.</td>
+            </tr>
+            <tr>
+                <td>Deadlock</td>
+                <td>Két vagy több folyamat egymásra vár, senki nem mozdul.</td>
+                <td>A rendszer befagy, nincs válasz.</td>
+                <td>Újraindítás, szoftveres javítás.</td>
+            </tr>
+        </table>
+        <p class="warning">Fontos: A kernel panic általában nem javítható futás közben – a rendszer újraindítása szükséges.</p>
+    </div>
+
+    <div class="section">
+        <div class="section-title">2. Mi a különbség a hibaüzenetek között?</div>
+        <div class="subsection">
+            <div class="subsection-title">Oops (Nem végzetes)</div>
+            <p>A kernel hibát észlel, de próbálja folytatni a futást. Gyakran látható, ha valami alkalmazás összeomlik.</p>
+        </div>
+        <div class="subsection">
+            <div class="subsection-title">BUG (Komoly hiba)</div>
+            <p>A kernel úgy dönt, hogy a hiba olyan súlyos, hogy nem folytatható. Leáll, de gyakran menti el a helyzetet.</p>
+        </div>
+        <div class="subsection">
+            <div class="subsection-title">Panic (Végzetes összeomlás)</div>
+            <p>A kernel teljesen leáll. A rendszer újraindul, vagy vár a beavatkozásra.</p>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">3. Hogyan olvassunk egy összeomlási naplót?</div>
+        <p>Amikor a kernel összeomlik, a napló így néz ki (egyszerűsített példa):</p>
+        <div class="diagram">
+[   12.345678] BUG: unable to handle kernel NULL pointer dereference
+[   12.345689] IP: ffffffff810a3b2a [ext4_find_entry+0x3a/0x1f0]
+[   12.345692] CPU: 0 PID: 1234 Comm: myprocess Tainted: G
+[   12.345693] RIP: 0010:ext4_find_entry+0x3a/0x1f0
+[   12.345694] RSP: 0018:ffffc90001ab3d88 EFLAGS: 00010246
+[   12.345695] RAX: 0000000000000000 RBX: ffff88801a1b8000
+[   12.345696] CR2: 0000000000000000 CR3: 0000000001a0a000 CR4: 00000000000006f0
+[   12.345697] Call Trace:
+[   12.345708]  ext4_lookup+0x8a/0x1b0
+[   12.345709]  __lookup_hash+0x25/0x40
+[   12.345710]  lookup_fast+0xa5/0x150
+        </div>
+        <p><strong>Gyors diagnózis:</strong></p>
+        <ul>
+            <li><span class="highlight">BUG: unable to handle kernel NULL pointer dereference</span> = NULL pointer hiba (az első sor a legfontosabb)</li>
+            <li><span class="highlight">IP: ffffffff810a3b2a</span> = a hivó pont a kernelben</li>
+            <li><span class="highlight">CR2: 0000000000000000</span> = a hibás memóriacím (NULL)</li>
+            <li><span class="highlight">ext4_find_entry+0x3a/0x1f0</span> = melyik programrész okozta a hibát</li>
+            <li><span class="highlight">PID: 1234 Comm: myprocess</span> = melyik felhasználói program indította el a hibát</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <div class="section-title">4. Alternatívák a klasszikus kernelen</div>
+        <p>A hagyományos kernel helyett más megközelítések is léteznek, amik stabilitást és biztonságot nyújtanak:</p>
+        <div class="subsection">
+            <div class="subsection-title">Mikrokernel (pl. seL4, Minix 3)</div>
+            <p>Csak a legszükségesebb dolgokat csinálja a kernel. Minden más (pl. eszközmeghajtók) külön fut, nem zavarja meg a rendszert, ha elromlik.</p>
+        </div>
+        <div class="subsection">
+            <div class="subsection-title">Unikernel (pl. MirageOS)</div>
+            <p>Egyetlen alkalmazásnak kész rendszer, nincs külön felhasználói és kernel mód. Nagyon gyors és biztonságos, de csak egy programot futtathat.</p>
+        </div>
+        <div class="subsection">
+            <div class="subsection-title">Exokernel</div>
+            <p>A kernel szinte csak a hardvert kezeli, az alkalmazások maguk döntik el, hogyan használják az erőforrásokat. Teljes kontroll, de bonyolultabb.</p>
+        </div>
+        <div class="subsection">
+            <div class="subsection-title">Hypervisor (Virtual Machine)</div>
+            <p>A teljes operációs rendszer egy virtuális gépben fut. Ha a kernel összeomlik, csak az adott VM áll le, a gazda rendszer működik tovább.</p>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">5. Host fájl + Binary Store + Driver modell</div>
+        <p>Egy újabb gondolatmenet: mi lenne, ha a helyi hálózati címeket egy egyszerű szöveges fájlban (hosts) tárolnánk, az eszközmeghajtókat pedig közvetlenül, kernel nélkül kezelné egy külön program?</p>
+        <div class="diagram">
+┌─────────────────────────────────────────┐
+│  Felhasználói alkalmazás (statikus)     │
+│  ┌─────────────┐  ┌─────────────┐       │
+│  │  Binary DB  │  │  Hosts fájl │       │
+│  │  (LMDB)     │  │  (név→cím)  │       │
+│  └──────┬──────┘  └──────┬──────┘       │
+│         │                │               │
+│  ┌──────▼────────────────▼──────┐       │
+│  │   Userspace Driver (VFIO)    │       │
+│  └──────────────┬───────────────┘       │
+├─────────────────┼───────────────────────┤
+│  Minimal kernel │  (interrupt, védelem) │
+└─────────────────┴───────────────────────┘
+        </div>
+        <p><strong>Előnyök:</strong></p>
+        <ul>
+            <li>Nincs kernel panic – a kernel minimális, nem férhető be.</li>
+            <li>Az alkalmazás saját maga kezeli a hardvert, nincs központi hibalehetőség.</li>
+            <li>A host fájl csak olvasható, nem módosul futás közben.</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <div class="section-title">6. Anti-cheat rendszerek korlátai</div>
+        <p>Ha ismert minden behatolási pont (minden hely, ahol a cheater belekabhat a rendszerbe), akkor miért nem lehet teljesen védekezni?</p>
+        <div class="subsection">
+            <div class="subsection-title">A bizalmi alap (TCB) probléma</div>
+            <p>A kernel nem tud mindent láthatni. A processzor, a BIOS, a hardvereszközök saját titkaik vannak. A cheater ezeket kihasználhatja anélkül, hogy a kernelt érintené.</p>
+        </div>
+        <div class="subsection">
+            <div class="subsection-title">Aszimmetrikus háború</div>
+            <p>A védőnek 100%-ot kell védenie. A támadónak csak egy rést kell találnia. A kernel forráskódja nyilvános – a cheater olvassa, a védő pedig patch-elni kell, mielőtt a cheater alkalmazza.</p>
+        </div>
+        <div class="subsection">
+            <div class="subsection-title">Szándék felismerése</div>
+            <p>A kernel látja, hogy egy program futtatja a <code>mmap</code> rendszerhívást, de nem tudja, hogy az játék kódja, vagy cheater kódja. Ehhez viselkedésfigyelés kell, de az nem 100%-ban pontos.</p>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">7. 9 programnyelv tanulmányozása – Hogyan kapcsolódik a kernelhez?</div>
+        <p>Minden nyelvben van olyan koncepció, ami segít megérteni a kernel működését:</p>
+        <table>
+            <tr>
+                <th>Nyelv</th>
+                <th>Kernel-kapcsolódó koncepció</th>
+                <th>Miért fontos?</th>
+            </tr>
+            <tr>
+                <td>C</td>
+                <td>Memóriakezelés, mutatók, struktúrák</td>
+                <td>A kernel szinte teljes egészében C-ben íródik. Alapok nélkül nincs értelme továbblépni.</td>
+            </tr>
+            <tr>
+                <td>Assembly</td>
+                <td>Verem, meghívási szabályok, megszakítások</td>
+                <td>Amikor a kernel összeomlik, a napló ezen a nyelven íródik. Nem szükséges kódírni, de olvasni kell.</td>
+            </tr>
+            <tr>
+                <td>Rust</td>
+                <td>Tulajdonjog, élettartam, biztonság</td>
+                <td>Új kernelyek (pl. Redox) Rust-ban íródnak, a hibák csökkenése érdekében.</td>
+            </tr>
+            <tr>
+                <td>Python</td>
+                <td>Dinamikus tömb, korutinok, GIL</td>
+                <td>A folyamatok ütemezésének és párhuzamosságának megértése.</td>
+            </tr>
+            <tr>
+                <td>Go</td>
+                <td>Gorutinok, csatornák, GC finomhangolás</td>
+                <td>Könnyű szálak, ütemezés – hasonló a kernel szálkezeléséhez.</td>
+            </tr>
+            <tr>
+                <td>Zig</td>
+                <td>Fordítási időben futó számítások, explicit kontroll</td>
+                <td>Nincsenek rejtett műveletek, mint a C-ben. A kernel megbízhatóságához hasonló elv.</td>
+            </tr>
+            <tr>
+                <td>Haskell</td>
+                <td>Tiszta függvények, állapot nélküli számítás</td>
+                <td>Formális bizonyíthatóság – a kernel hibáinak matematikai bizonyítása.</td>
+            </tr>
+            <tr>
+                <td>Lisp</td>
+                <td>Makrók, homoikonicitás, REPL</td>
+                <td>Meta-programozás – a kernel saját magát módosíthatja futás közben.</td>
+            </tr>
+            <tr>
+                <td>Prolog</td>
+                <td>Logikai programozás, egységesítés, visszalépés</td>
+                <td>A kernel lényegében egy nagyon hatékony, oldalsóhatásos Prolog értelmező.</td>
+            </tr>
+        </table>
+        <p class="warning">Megjegyzés: Nem kell minden nyelvet profi szinten tudni. Elég az alapok megértése, és a kapcsolat a kernel működésével.</p>
+    </div>
+
+    <div class="section">
+        <div class="section-title">8. A stabilitás titka – Miért nem omlik össze minden másodpercben?</div>
+        <p>A kernel úgy lett kialakítva, hogy megbízhatóan fusson:</p>
+        <ul>
+            <li><span class="highlight">Szigorú szabályok:</span> Minden kódot tesztelnek, mielőtt bekerül a kernelbe.</li>
+            <li><span class="highlight">Védelmek:</span> Memóriaszegélyek, jogosultságok – egy program nem láthatja a másik adatait.</li>
+            <li><span class="highlight">Determinisztikus viselkedés:</span> Ugyanaz a bemenet, ugyanaz a kimenet – nincsenek véletlenszerű hibák.</li>
+            <li><span class="highlight">Ön-helyreállítás:</span> Egyes rendszerek (pl. Minix 3) automatikusan újraindítják a hibás modulokat, anélkül, hogy az egész rendszer összeomlana.</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <div class="section-title">9. Gyakorlati lépések – Kezdő feladatok</div>
+        <p>Ha te is meg szeretnéd vizsgálni a kernel működését:</p>
+        <ol>
+            <li>Indíts egy Linuxot virtuális gépen (pl. VirtualBox, VMware).</li>
+            <li>Nézd meg a <code>dmesg</code> parancs kimenetét – ez a kernel napló.</li>
+            <li>Keress rá a <code>sysrq-trigger</code> fájlra – ezt használva szabályozott összeomlást idézhetsz elő (csak VM-ben!).</li>
+            <li>Olvassd el a <code>/proc/kallsyms</code> fájlt – ez a kernel belső függvényneveinek listája.</li>
+            <li>Írj egy egyszerű kernel modult (Hello World) és töltsd be – így meglátod, hogyan kommunikál a kernel a felhasználói programokkal.</li>
+        </ol>
+        <p class="warning">Figyelem: Valódi hardveren ne futtass kísérleteket! Mindig virtuális gépet használj, hogy ne veszítsd el az adataidat.</p>
+    </div>
+
+    <div class="footer">
+        <div>KILO OPERATIONAL SYSTEMS • UNICAGD-CORE BRANCH</div>
+        <div class="audit">Audit dátuma: 2026-09-02 | Forrás: DRG-INT | Licenc: MIT / Apache 2.0</div>
+        <div style="margin-top: 5px;">HACKER_CULTURA APPROVED • NEM KATONAI FELHASZNÁLÁSRA KÉSZÍTETT</div>
+        <div style="margin-top: 5px; font-size: 10px;">Ez a dokumentum általános ismereteket tartalmaz, nem tartalmaz forráskódot vagy bizalmas információt.</div>
+    </div>
+</body>
+</html>

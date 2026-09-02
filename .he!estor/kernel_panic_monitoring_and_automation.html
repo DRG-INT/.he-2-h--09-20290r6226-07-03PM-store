@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kernel Panic Monitorozás és Automatizálás</title>
+    <style>
+        :root {
+            --bg: #0a0a0a;
+            --fg: #e0e0e0;
+            --accent: #ff3333;
+            --secondary: #00ff88;
+            --muted: #888;
+            --border: #333;
+            --font: 'Courier New', monospace;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: var(--bg);
+            color: var(--fg);
+            font-family: var(--font);
+            line-height: 1.6;
+            padding: 20px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .header {
+            text-align: center;
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        .ascii-art {
+            color: var(--accent);
+            font-size: 12px;
+            line-height: 1.2;
+            white-space: pre;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        .title { font-size: 24px; color: var(--fg); margin: 10px 0; letter-spacing: 2px; }
+        .subtitle { color: var(--muted); font-size: 14px; }
+        .version { color: var(--secondary); font-size: 12px; margin-top: 5px; }
+        .section {
+            margin-bottom: 25px;
+            padding: 15px;
+            border-left: 3px solid var(--accent);
+            background: #111;
+        }
+        .section-title { color: var(--accent); font-size: 18px; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 1px; }
+        .subsection { margin: 15px 0; padding-left: 15px; border-left: 1px solid var(--border); }
+        .subsection-title { color: var(--secondary); font-size: 14px; margin-bottom: 5px; }
+        table { width: 100%; border-collapse: collapse; margin: 10px 0; font-size: 13px; }
+        th, td { border: 1px solid var(--border); padding: 8px; text-align: left; }
+        th { background: #1a1a1a; color: var(--accent); }
+        code { background: #1a1a1a; padding: 2px 6px; border-radius: 3px; color: var(--secondary); font-size: 12px; }
+        .diagram {
+            background: #0d0d0d;
+            border: 1px dashed var(--border);
+            padding: 15px;
+            margin: 10px 0;
+            font-size: 11px;
+            line-height: 1.4;
+            white-space: pre;
+            overflow-x: auto;
+        }
+        .highlight { color: var(--accent); font-weight: bold; }
+        .warning { color: #ffaa00; font-style: italic; }
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            font-size: 11px;
+            color: var(--muted);
+        }
+        .audit { color: var(--secondary); margin-top: 5px; }
+        ul { margin-left: 20px; margin-top: 5px; }
+        li { margin: 3px 0; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <pre class="ascii-art">
+   ██╗  ██╗███████╗██████╗ 
+   ██║ ██╔╝██╔════╝██╔══██╗
+   █████╔╝ █████╗  ██████╔╝
+   ██╔═██╗ ██╔══╝  ██╔══██╗
+   ██║  ██╗███████╗██║  ██║
+   ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝
+        </pre>
+        <div class="title">KERNEL PANIC MONITOROZÁS ÉS AUTOMATIZÁLÁS</div>
+        <div class="subtitle">Operatív Területi Útmutató • Választható Szereplőknek</div>
+        <div class="version">Verzió: 1.0-stable | Build: 2026.09.02</div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">1. Mi az a Kernel Panic Monitorozás?</div>
+        <p>A kernel panic monitorozás az a folyamat, amely során a rendszer folyamatosan figyeli a kernel állapotát, és észleli a hibákat, mielőtt azok teljes összeomlássá válnának.</p>
+        <table>
+            <tr>
+                <th>Monitorozási szint</th>
+                <th>Mit figyel?</th>
+                <th>Milyen eszköz?</th>
+                <th>Mikor aktiválódik?</th>
+            </tr>
+            <tr>
+                <td>Proaktív</td>
+                <td>CPU terhelés, memória nyomás, I/O várakozás</td>
+                <td>dmesg, /proc, netconsole</td>
+                <td>Folyamatosan</td>
+            </tr>
+            <tr>
+                <td>Reaktív</td>
+                <td>Kernel oops, BUG(), warn</td>
+                <td>kdump, crash kernel</td>
+                <td>Panic/Összeomlás</td>
+            </tr>
+            <tr>
+                <td>Automatizált</td>
+                <td>Ismert hibamintázatok, driver hibák</td>
+                <td>ELK, auditd, custom agent</td>
+                <td>Előre meghatározott szabályok</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="section">
+        <div class="section-title">2. Kernel Naplózási Rendszerek</div>
+        <div class="subsection">
+            <div class="subsection-title">printk és dmesg</div>
+            <p>A kernel alap naplózási mechanizmusa. A <code>printk()</code> függvény írja a naplóüzeneteket, amelyeket a <code>dmesg</code> parancs segítségével olvashatjuk.</p>
+            <code>dmesg -T | grep -i error</code>
+        </div>
+        <div class="subsection">
+            <div class="subsection-title">journald (systemd)</div>
+            <p>Strukturált, indexelt naplózás. Rendszeres naplórotáció, szűrés, keresés.</p>
+            <code>journalctl -k -p err</code>
+        </div>
+        <div class="subsection">
+            <div class="subsection-title">netconsole</div>
+            <p>A kernel naplókat hálózaton keresztül küldi egy távoli szervernek. Hasznos, ha a helyi naplózás nem elérhető.</p>
+            <code>modprobe netconsole netconsole=@/,@192.168.1.100/</code>
+        </div>
+        <div class="subsection">
+            <div class="subsection-title">serial console</div>
+            <p>A kernel kimenetet soros portra irányítja. Távollenőrzéshez és hibakereséshez hasznos.</p>
+            <code>console=ttyS0,115200n8</code>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">3. Kernel Crash Dump (kdump/kexec)</div>
+        <p>Amikor a kernel összeomlik, a <code>kdump</code> használatával egy második kernel indul el, amely elmenti az összeomlott kernel memóriatartalmát. Ezután ezt a dumpot elemzésre használhatjuk.</p>
+        <div class="diagram">
+┌─────────────────────────────────────────┐
+│  1. Kernel összeomlik (panic)            │
+│  2. kexec második kernelt betölti        │
+│  3. Crash dump mentése /var/crash/       │
+│  4. Rendszer újraindul vagy leáll        │
+│  5. Később: crash /usr/lib/debug/boot/  │
+│     vmlinux /var/crash/.../vmcore        │
+└─────────────────────────────────────────┘
+        </div>
+        <p><strong>Beállítás lépései:</strong></p>
+        <ul>
+            <li>Telepítsd a <code>kdump-tools</code> csomagot</li>
+            <li>Állítsd be a <code>crashkernel</code> boot paramétert</li>
+            <li>Indítsd el a <code>kdump</code> szolgáltatást</li>
+            <li>Teszteld: <code>echo c > /proc/sysrq-trigger</code> (csak VM-ben!)</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <div class="section-title">4. Kernel Live Patching (kpatch/kgraft)</div>
+        <p>A kernel live patching lehetővé teszi, hogy a futó kernelbe biztonsági javításokat alkalmazzunk újraindítás nélkül.</p>
+        <table>
+            <tr>
+                <th>Eszköz</th>
+                <th>Distro</th>
+                <th>Jellemző</th>
+            </tr>
+            <tr>
+                <td>kpatch</td>
+                <td>RHEL/CentOS</td>
+                <td>Red Hat által készített, ftrace alapú</td>
+            </tr>
+            <tr>
+                <td>kgraft</td>
+                <td>SUSE</td>
+                <td>Open Source, kpatch alternatíva</td>
+            </tr>
+            <tr>
+                <td>livepatch</td>
+                <td>Canonical/Ubuntu</td>
+                <td>Ubuntu kernel live patch service</td>
+            </tr>
+        </table>
+        <p class="warning">Fontos: A live patching csak kritikus biztonsági javításokra használandó, nem minden frissítésre.</p>
+    </div>
+
+    <div class="section">
+        <div class="section-title">5. Kernel Fuzzing és Bug Hunting</div>
+        <p>A kernel fuzzing az a módszer, amelynek során szándékosan rosszul formázott bemeneteket adunk a kernelnek, hogy hibákat és sérülékenységeket fedezünk fel.</p>
+        <div class="subsection">
+            <div class="subsection-title">Fuzzing típusok</div>
+            <ul>
+                <li><strong>Syzkaller:</strong> A legnépszerűbb kernel fuzzer, syscall fuzzing</li>
+                <li><strong>Trinity:</strong> Syscall fuzzer, régebbi, de hatékony</li>
+                <li><strong>kAFL:</strong> Hardware-assisted fuzzing (Intel PT)</li>
+                <li><strong>Bluetooth/USB fuzzer:</strong> Eszközspecifikus fuzzing</li>
+            </ul>
+        </div>
+        <div class="subsection">
+            <div class="subsection-title">Bug bounty és felelősségi nyilvántartás</div>
+            <p>A legtöbb nagy tech cég (Google, Microsoft, Apple) és szoftverprojekt (Linux kernel) folyamatosan fut bug bounty programokat. A felfedezett sérülékenységek jelentése után jutalmat adnak.</p>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">6. Gyakorlati Monitorozási Pipeline</div>
+        <p>Egy egyszerű, de hatékony monitorozási rendszer felépítése:</p>
+        <div class="diagram">
+┌──────────────┐     ┌──────────────┐     ┌──────────────┐
+│  Kernel      │────▶│  Log         │────▶│  Alert       │
+│  (dmesg)     │     │  aggregator  │     │  manager     │
+└──────────────┘     └──────────────┘     └──────────────┘
+        │                                     │
+        │                                     ▼
+        │                              ┌──────────────┐
+        │                              │  Human       │
+        │                              │  operator    │
+        │                              └──────────────┘
+        ▼
+┌──────────────┐
+│  Automated   │
+│  response    │
+│  (reboot,    │
+│  isolate)    │
+└──────────────┘
+        </div>
+        <p><strong>Példa eszközök:</strong></p>
+        <ul>
+            <li><code>systemd-journald</code> + <code>journalctl</code> naplógyűjtés</li>
+            <li><code>logwatch</code> vagy <code>swatch</code> szűrés</li>
+            <li><code>Prometheus</code> + <code>node_exporter</code> metrikák</li>
+            <li><code>Grafana</code> dashboard</li>
+            <li><code>Alertmanager</code> értesítések</li>
+            <li><code>Ansible</code> automatikus javítás</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <div class="section-title">7. Kernel Patch Management</div>
+        <p>A kernel patch-ek kezelése kritikus a biztonságért. Egy jól kialakított patch management folyamat:</p>
+        <ol>
+            <li><strong>Folyamatos figyelés:</strong> kernel mailing lists, CVE adatbázisok</li>
+            <li><strong>Kritikusság besorolás:</strong> CVSS pontszám, támadási felület</li>
+            <li><strong>Tesztelés:</strong> staging környezet, automatikus tesztek</li>
+            <li><strong>Ütemezés:</strong> rendszeres patch napok, karbantartási ablak</li>
+            <li><strong>Visszafejtés:</strong> ha a patch hibás, azonnali visszafejtés</li>
+            <li><strong> Dokumentáció:</strong> minden változtatás naplózása</li>
+        </ol>
+    </div>
+
+    <div class="section">
+        <div class="section-title">8. Összefoglalás</div>
+        <p>A kernel panic monitorozás és automatizálás nem csak a összeomlások utáni helyreállításról szól, hanem a hibák korai detektálásáról és a rendszer ön-helyreállításáról. A modern kernel rendszerekben elérhető eszközök (kdump, live patching, fuzzing) lehetővé teszik a proaktív biztonságot és a folyamatos elérhetőséget.</p>
+        <p class="warning">Fontos: Minden automatizálást tesztelj először, és mindig tartsd elérhetően a manuális beavatkozási lehetőséget.</p>
+    </div>
+
+    <div class="footer">
+        <div>KILO OPERATIONAL SYSTEMS • UNICAGD-CORE BRANCH</div>
+        <div class="audit">Audit dátuma: 2026-09-02 | Forrás: DRG-INT | Licenc: MIT / Apache 2.0</div>
+        <div style="margin-top: 5px;">HACKER_CULTURA APPROVED • NEM KATONAI FELHASZNÁLÁSRA KÉSZÍTETT</div>
+        <div style="margin-top: 5px; font-size: 10px;">Ez a dokumentum általános ismereteket tartalmaz, nem tartalmaz forráskódot vagy bizalmas információt.</div>
+    </div>
+</body>
+</html>
