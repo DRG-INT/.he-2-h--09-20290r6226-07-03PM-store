@@ -14,5 +14,11 @@ $(TARGET): $(SRCS)
 test: $(TARGET)
 	./$(TARGET)
 
+debug: CFLAGS += -g -DDEBUG
+debug: $(TARGET)
+	./$(TARGET)
+
 clean:
 	rm -rf bin $(OBJS)
+
+.PHONY: all test debug clean

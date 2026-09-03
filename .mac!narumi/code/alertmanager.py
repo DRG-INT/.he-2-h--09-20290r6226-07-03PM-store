@@ -1,26 +1,23 @@
 #!/usr/bin/env python3
 """
 Alert Manager
-Riasztásokat kezeli és továbbítja.
+ClickHouse backend-rel.
 """
 
 import requests
 import smtplib
 from email.mime.text import MIMEText
-from influxdb import InfluxDBClient
-from datetime import datetime
 import os
 import json
+import time
+from datetime import datetime
+
+CLICKHOUSE_HOST = "localhost"
+CLICKHOUSE_PORT = 8123
+CLICKHOUSE_DATABASE = "kernel_events"
 
 class AlertManager:
     def __init__(self):
-        self.influx_client = InfluxDBClient(
-            host=os.getenv('INFLUXDB_HOST', 'localhost'),
-            port=int(os.getenv('INFLUXDB_PORT', 8086))
-        )
-        self.influx_client.switch_database('kernel_events')
-        
-        # Konfiguráció
         self.slack_webhook = os.getenv('SLACK_WEBHOOK_URL', '')
         self.email_host = os.getenv('EMAIL_HOST', '')
         self.email_port = int(os.getenv('EMAIL_PORT', 587))
@@ -68,41 +65,42 @@ class AlertManager:
         except Exception as e:
             print(f"[!] Email error: {e}")
     
-    def save_to_influxdb(self, message: dict):
-        """Riasztás mentése InfluxDB-be"""
+    def save_to_clickhouse(self, message: dict):
+        """Riasztás mentése ClickHouse-ba"""
         try:
-            point = {
-                "measurement": "kernel_alerts",
-                "tags": {
-                    "alert_level": message['alert_level']
-                },
-                "fields": {
-                    "panic_probability": message['panic_probability'],
-                    "events_count": len(message['events'])
-                },
-                "time": message['timestamp']
-            }
-            self.influx_client.write_points([point])
+            query = f"""
+            INSERT INTO kernel_alerts 
+            (timestamp, alert_level, panic_probability, events_count, events) 
+            VALUES 
+            ('{message['timestamp']}', '{message['alert_level']}', {message['panic_probability']}, {len(message['events'])}, '{json.dumps(message['events'])}')
+            """
+            
+            response = requests.post(
+                f"http://{CLICKHOUSE_HOST}:{CLICKHOUSE_PORT}/",
+                params={"query": query},
+                timeout=5
+            )
+            
+            if response.status_code != 200:
+                print(f"[!] ClickHouse error: {response.text}")
         except Exception as e:
-            print(f"[!] InfluxDB error: {e}")
+            print(f"[!] ClickHouse error: {e}")
     
     def process_alert(self, message: dict):
         """Riasztás feldolgozása"""
         print(f"[!] ALERT: {message['alert_level']} - {message['panic_probability']:.2%}")
         
-        # Továbbítás
         self.send_slack(message)
         self.send_email(message)
-        self.save_to_influxdb(message)
+        self.save_to_clickhouse(message)
     
     def run(self):
-        """Futtatási ciklus - egyszerű példa"""
-        print("[*] Alert Manager started...")
+        """Futtatási ciklus"""
+        print("[*] Alert Manager started with ClickHouse...")
         
         while True:
             try:
-                # Itt valós időben kellene lekérdezni az InfluxDB-t
-                # Most csak példa üzenet
+                # Itt valós időben kellene lekérdezni a ClickHouse-t
                 message = {
                     "timestamp": datetime.utcnow().isoformat(),
                     "alert_level": "WARNING",
@@ -111,7 +109,7 @@ class AlertManager:
                 }
                 
                 self.process_alert(message)
-                time.sleep(60)  # 1 perc várakozás
+                time.sleep(60)
             except Exception as e:
                 print(f"[!] Error: {e}")
                 time.sleep(60)

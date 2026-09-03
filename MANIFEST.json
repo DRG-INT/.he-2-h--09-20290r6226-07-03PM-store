@@ -6,21 +6,21 @@
     "engine_2_domain_cognitive": "Audited & Remediated (Kernel Vectors, Void Linux, FreeBSD, Driver Architect, Defense Buses, TPM/WDT)"
   },
   "statistics": {
-    "total_artifacts": 173,
+    "total_artifacts": 174,
     "linux_kernel_guides": 32,
     "multios_practical_guides": 39,
-    "multios_architecture_guides": 45,
+    "multios_architecture_guides": 46,
     "architecture_visuals": 55,
-    "code_blocks": 518,
+    "code_blocks": 530,
     "languages": {
-      "unspecified": 39,
-      "bash": 217,
+      "unspecified": 40,
+      "bash": 227,
       "c": 115,
       "inf": 2,
       "cmd": 13,
       "python": 97,
       "json": 3,
-      "yaml": 13,
+      "yaml": 14,
       "dockerfile": 8,
       "text": 8,
       "ini": 1,
@@ -145,6 +145,7 @@
       ".macinarium-stellar/30_ebpf_collector_agent_implementation.md",
       ".macinarium-stellar/31_lstm_training_and_hyperparameter_optimization.md",
       ".macinarium-stellar/32_kernel_lstm_system_integration_and_deployment.md",
+      ".macinarium-stellar/33_kernel_lstm_application_system_design.md",
       ".macinarium-stellar/41_lstm_filesystem_and_project_topology.md",
       ".macinarium-stellar/42_lstm_freestanding_kernel_inference_engine.md",
       ".macinarium-stellar/43_unicagd_exokernel_puzzle_solution.md",
@@ -1169,6 +1170,12 @@
       "sha256": "0409689a119ab4ee795df5d7f527b850dc7a80f3be2f14ba5bd0cf9a3a76b9a1",
       "type": "markdown",
       "lines": 372
+    },
+    ".macinarium-stellar/33_kernel_lstm_application_system_design.md": {
+      "size_bytes": 3909,
+      "sha256": "891d45e95af93d2daa9c3f114597b18b6cb66ae86e2f8de570576ecd0fdf13ab",
+      "type": "markdown",
+      "lines": 197
     },
     ".macinarium-stellar/41_lstm_filesystem_and_project_topology.md": {
       "size_bytes": 10364,

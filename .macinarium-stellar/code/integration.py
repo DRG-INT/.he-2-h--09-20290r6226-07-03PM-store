@@ -1,33 +1,30 @@
 #!/usr/bin/env python3
 """
 Kernel-LSTM Integration Layer
-Összeköti a collector, processor, model és alert rendszereket.
+ClickHouse backend-rel.
 """
 
 import time
-import json
 import signal
 import sys
-from datetime import datetime
-from influxdb import InfluxDBClient
+import pandas as pd
 import torch
 import numpy as np
+import requests
 from models import LSTMPredictor, KernelLSTMTrainer
 from preprocessor import KernelEventPreprocessor
 
+CLICKHOUSE_HOST = "localhost"
+CLICKHOUSE_PORT = 8123
+CLICKHOUSE_DATABASE = "kernel_events"
+
 class KernelLSTMIntegration:
     def __init__(self):
-        self.influx_client = InfluxDBClient(
-            host='localhost',
-            port=8086
-        )
-        self.influx_client.switch_database('kernel_events')
         self.preprocessor = KernelEventPreprocessor()
         self.model = None
         self.device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
         self.running = True
         
-        # Signal handler
         signal.signal(signal.SIGINT, self.signal_handler)
         signal.signal(signal.SIGTERM, self.signal_handler)
     
@@ -55,25 +52,51 @@ class KernelLSTMIntegration:
         print(f"[+] Preprocessor loaded from {preprocessor_path}")
     
     def fetch_events(self, time_range: str = '1m') -> pd.DataFrame:
-        """Események lekérdezése InfluxDB-ből"""
+        """Események lekérdezése ClickHouse-ból"""
+        if isinstance(time_range, str) and time_range.endswith('m'):
+            interval_minutes = int(time_range[:-1] or 1)
+        else:
+            interval_minutes = int(time_range)
+
         query = f"""
-        SELECT * FROM kernel_events
-        WHERE time > now() - {time_range}
-        ORDER BY time ASC
+        SELECT timestamp, pid, tid, cpu, event_type, duration_ns, retval, comm 
+        FROM kernel_events 
+        WHERE timestamp > now() - INTERVAL {interval_minutes} MINUTE
+        ORDER BY timestamp ASC
         """
-        result = self.influx_client.query(query)
         
-        if result:
-            df = pd.DataFrame(list(result.get_points()))
+        response = requests.post(
+            f"http://{CLICKHOUSE_HOST}:{CLICKHOUSE_PORT}/",
+            params={"query": query},
+            timeout=30
+        )
+        
+        if response.status_code == 200:
+            lines = response.text.strip().split('\n')
+            data = []
+            for line in lines[1:]:
+                parts = line.split('\t')
+                if len(parts) >= 8:
+                    data.append(parts)
+            
+            df = pd.DataFrame(data, columns=['timestamp', 'pid', 'tid', 'cpu', 'event_type', 'duration_ns', 'retval', 'comm'])
+            df['timestamp'] = pd.to_datetime(df['timestamp'], errors='coerce')
+            df['duration_ns'] = pd.to_numeric(df['duration_ns'], errors='coerce')
+            df['pid'] = pd.to_numeric(df['pid'], errors='coerce')
+            df['tid'] = pd.to_numeric(df['tid'], errors='coerce')
+            df['cpu'] = pd.to_numeric(df['cpu'], errors='coerce')
+            df['retval'] = pd.to_numeric(df['retval'], errors='coerce')
+            df = df.dropna()
             return df
-        return pd.DataFrame()
+        else:
+            print(f"[!] ClickHouse query failed: {response.text}")
+            return pd.DataFrame()
     
     def build_sequence(self, df: pd.DataFrame, window_size: int = 50) -> torch.Tensor:
         """Szekvencia építése predikcióhoz"""
         if len(df) < window_size:
             return None
         
-        # Események kódolása
         event_types = df['event_type'].values
         encoded = []
         for event in event_types:
@@ -82,14 +105,13 @@ class KernelLSTMIntegration:
             except ValueError:
                 encoded.append(0)
         
-        # Utolsó window_size esemény
         seq = encoded[-window_size:]
         X = torch.tensor([seq], dtype=torch.float32)
         X = X.to(self.device)
         
         return X
     
-    def predict(self, X: torch.Tensor) -> Tuple[float, bool]:
+    def predict(self, X: torch.Tensor) -> tuple:
         """Predikció"""
         if self.model is None or X is None:
             return 0.0, False
@@ -106,21 +128,19 @@ class KernelLSTMIntegration:
         alert_level = "CRITICAL" if probability > 0.9 else "WARNING"
         
         message = {
-            "timestamp": datetime.utcnow().isoformat(),
+            "timestamp": pd.Timestamp.now().isoformat(),
             "alert_level": alert_level,
             "panic_probability": probability,
             "events": events[-10:] if len(events) > 10 else events
         }
         
-        # Itt küldheted email, Slack, PagerDuty, stb.
         print(f"[!] ALERT: {alert_level} - Panic probability: {probability:.2%}")
         print(f"    Events: {message['events']}")
     
     def run(self, config: dict):
         """Futtatási ciklus"""
-        print("[*] Starting Kernel-LSTM Integration...")
+        print("[*] Starting Kernel-LSTM Integration with ClickHouse...")
         
-        # Modell és előfeldolgozó betöltése
         self.load_model('best_model.pth', config)
         self.load_preprocessor('preprocessor.pkl')
         
@@ -128,22 +148,18 @@ class KernelLSTMIntegration:
         
         while self.running:
             try:
-                # Események lekérdezése
                 df = self.fetch_events(time_range='1m')
                 
                 if not df.empty:
-                    # Szekvencia építése
                     X = self.build_sequence(df, window_size=config['window_size'])
                     
                     if X is not None:
-                        # Predikció
                         probability, is_anomaly = self.predict(X)
                         
-                        # Riasztás szükséges?
                         if is_anomaly:
                             self.send_alert(probability, df['event_type'].tolist())
                 
-                time.sleep(10)  # 10 másodperc várakozás
+                time.sleep(10)
             except Exception as e:
                 print(f"[!] Error: {e}")
                 time.sleep(10)
@@ -151,9 +167,8 @@ class KernelLSTMIntegration:
         print("[*] Integration stopped")
 
 def main():
-    """Példa konfiguráció"""
     config = {
-        'input_dim': 100,
+        'input_dim': 1,
         'hidden_dim': 64,
         'num_layers': 2,
         'dropout': 0.2,

@@ -1,0 +1,146 @@
+version: '3.8'
+
+services:
+  clickhouse:
+    image: clickhouse/clickhouse-server:24.3
+    container_name: kernel-panic-clickhouse
+    ports:
+      - "8123:8123"
+      - "9000:9000"
+    volumes:
+      - ./data/clickhouse:/var/lib/clickhouse
+      - ./clickhouse_schema.sql:/docker-entrypoint-initdb.d/01-schema.sql
+    environment:
+      CLICKHOUSE_DEFAULT_ACCESS_MANAGEMENT: 1
+      CLICKHOUSE_USER: default
+      CLICKHOUSE_PASSWORD: ""
+    ulimits:
+      nofile:
+        soft: 262144
+        hard: 262144
+    restart: unless-stopped
+    networks:
+      - kernel-net
+
+  dashboard:
+    build:
+      context: .
+      dockerfile: Dockerfile.dashboard
+    container_name: kernel-panic-dashboard
+    ports:
+      - "5000:5000"
+    depends_on:
+      - clickhouse
+    environment:
+      CLICKHOUSE_HOST: clickhouse
+      CLICKHOUSE_PORT: 8123
+    restart: unless-stopped
+    networks:
+      - kernel-net
+
+  streamer:
+    build:
+      context: .
+      dockerfile: Dockerfile.streamer
+    container_name: kernel-panic-streamer
+    depends_on:
+      - clickhouse
+    environment:
+      CLICKHOUSE_HOST: clickhouse
+      CLICKHOUSE_PORT: 8123
+    privileged: true
+    restart: unless-stopped
+    networks:
+      - kernel-net
+
+  anomaly-detector:
+    build:
+      context: .
+      dockerfile: Dockerfile.anomaly
+    container_name: kernel-panic-anomaly
+    depends_on:
+      - clickhouse
+    environment:
+      CLICKHOUSE_HOST: clickhouse
+      CLICKHOUSE_PORT: 8123
+    restart: unless-stopped
+    networks:
+      - kernel-net
+
+  logger:
+    build:
+      context: .
+      dockerfile: Dockerfile.logger
+    container_name: kernel-panic-logger
+    depends_on:
+      - clickhouse
+    environment:
+      CLICKHOUSE_HOST: clickhouse
+      CLICKHOUSE_PORT: 8123
+    privileged: true
+    restart: unless-stopped
+    networks:
+      - kernel-net
+
+  trainer:
+    build:
+      context: .
+      dockerfile: Dockerfile.trainer
+    container_name: kernel-panic-trainer
+    depends_on:
+      - clickhouse
+    environment:
+      CLICKHOUSE_HOST: clickhouse
+      CLICKHOUSE_PORT: 8123
+    restart: unless-stopped
+    networks:
+      - kernel-net
+
+  dispatcher:
+    build:
+      context: .
+      dockerfile: Dockerfile.dispatcher
+    container_name: kernel-panic-dispatcher
+    depends_on:
+      - clickhouse
+    environment:
+      CLICKHOUSE_HOST: clickhouse
+      CLICKHOUSE_PORT: 8123
+    restart: unless-stopped
+    networks:
+      - kernel-net
+
+  exporter:
+    build:
+      context: .
+      dockerfile: Dockerfile.exporter
+    container_name: kernel-panic-exporter
+    depends_on:
+      - clickhouse
+    environment:
+      CLICKHOUSE_HOST: clickhouse
+      CLICKHOUSE_PORT: 8123
+    restart: unless-stopped
+    networks:
+      - kernel-net
+
+  reporter:
+    build:
+      context: .
+      dockerfile: Dockerfile.reporter
+    container_name: kernel-panic-reporter
+    depends_on:
+      - clickhouse
+    environment:
+      CLICKHOUSE_HOST: clickhouse
+      CLICKHOUSE_PORT: 8123
+    restart: unless-stopped
+    networks:
+      - kernel-net
+
+volumes:
+  clickhouse-data:
+
+networks:
+  kernel-net:
+    driver: bridge

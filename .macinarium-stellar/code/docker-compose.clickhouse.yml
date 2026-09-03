@@ -1,62 +1,46 @@
 version: '3.8'
 
 services:
-  # Kernel-LSTM Agent
+  # eBPF Agent - kernel események gyűjtése
   agent:
-    build:
-      context: .
-      dockerfile: Dockerfile.agent
+    build: ./agent
     privileged: true
     volumes:
       - /sys/kernel/debug:/sys/kernel/debug:ro
       - /proc:/proc:ro
       - /lib/modules:/lib/modules:ro
-      - ./logs:/app/logs
     environment:
       - CLICKHOUSE_HOST=clickhouse
       - CLICKHOUSE_PORT=8123
       - CLICKHOUSE_USER=default
       - CLICKHOUSE_PASSWORD=
       - CLICKHOUSE_DATABASE=kernel_events
-      - LOG_LEVEL=INFO
     depends_on:
       - clickhouse
     restart: unless-stopped
     networks:
       - kernel-lstm
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://clickhouse:8123/ping"]
-      interval: 30s
-      timeout: 10s
-      retries: 3
 
-  # Előfeldolgozó
+  # Előfeldolgozó - szekvenciák építése
   processor:
-    build:
-      context: .
-      dockerfile: Dockerfile.processor
+    build: ./processor
     volumes:
       - ./data:/data
-      - ./models:/models
     environment:
       - CLICKHOUSE_HOST=clickhouse
       - CLICKHOUSE_PORT=8123
       - CLICKHOUSE_USER=default
       - CLICKHOUSE_PASSWORD=
       - CLICKHOUSE_DATABASE=kernel_events
-      - WINDOW_SIZE=50
-      - TIME_STEP=10
     depends_on:
       - clickhouse
     restart: unless-stopped
     networks:
       - kernel-lstm
 
-  # LSTM Modell
+  # LSTM Modell - tanítás és predikció
   model:
-    build:
-      context: .
-      dockerfile: Dockerfile.model
+    build: ./model
     volumes:
       - ./models:/models
       - ./data:/data
@@ -66,10 +50,7 @@ services:
       - CLICKHOUSE_USER=default
       - CLICKHOUSE_PASSWORD=
       - CLICKHOUSE_DATABASE=kernel_events
-      - MODEL_PATH=/models/best_model.pth
-      - PREPROCESSOR_PATH=/models/preprocessor.pkl
       - DEVICE=cuda
-      - THRESHOLD_PERCENTILE=95
     depends_on:
       - clickhouse
     restart: unless-stopped
@@ -83,33 +64,7 @@ services:
               count: 1
               capabilities: [gpu]
 
-  # Alert Manager
-  alertmanager:
-    build:
-      context: .
-      dockerfile: Dockerfile.alertmanager
-    volumes:
-      - ./alertmanager:/etc/alertmanager
-    ports:
-      - "9093:9093"
-    environment:
-      - SLACK_WEBHOOK_URL=${SLACK_WEBHOOK_URL}
-      - EMAIL_HOST=${EMAIL_HOST}
-      - EMAIL_PORT=${EMAIL_PORT}
-      - EMAIL_USER=${EMAIL_USER}
-      - EMAIL_PASS=${EMAIL_PASS}
-      - CLICKHOUSE_HOST=clickhouse
-      - CLICKHOUSE_PORT=8123
-      - CLICKHOUSE_USER=default
-      - CLICKHOUSE_PASSWORD=
-      - CLICKHOUSE_DATABASE=kernel_events
-    depends_on:
-      - clickhouse
-    restart: unless-stopped
-    networks:
-      - kernel-lstm
-
-  # ClickHouse
+  # ClickHouse - idő sorozat adatbázis
   clickhouse:
     image: clickhouse/clickhouse-server:23.12
     ports:
@@ -132,7 +87,7 @@ services:
       timeout: 10s
       retries: 3
 
-  # Grafana Dashboard
+  # Grafana - dashboard
   grafana:
     image: grafana/grafana:10.0.0
     ports:
@@ -140,18 +95,16 @@ services:
     volumes:
       - grafana_data:/var/lib/grafana
       - ./grafana/provisioning:/etc/grafana/provisioning
-      - ./grafana/dashboards:/var/lib/grafana/dashboards
     environment:
       - GF_SECURITY_ADMIN_PASSWORD=admin123
-      - GF_INSTALL_PLUGINS=grafana-clock-panel,grafana-simple-json-datasource
-      - GF_DASHBOARDS_DEFAULT_HOME_DASHBOARD_PATH=/var/lib/grafana/dashboards/kernel_lstm.json
+      - GF_INSTALL_PLUGINS=grafana-clock-panel
     depends_on:
       - clickhouse
     restart: unless-stopped
     networks:
       - kernel-lstm
 
-  # Prometheus
+  # Prometheus - metrikák gyűjtése
   prometheus:
     image: prom/prometheus:v2.45.0
     ports:
@@ -166,7 +119,7 @@ services:
     networks:
       - kernel-lstm
 
-  # Node Exporter
+  # Node Exporter - rendszer metrikák
   node-exporter:
     image: prom/node-exporter:v1.6.0
     ports:
