@@ -6,21 +6,22 @@
     "engine_2_domain_cognitive": "Audited & Remediated (Kernel Vectors, Void Linux, FreeBSD, Driver Architect, Defense Buses, TPM/WDT)"
   },
   "statistics": {
-    "total_artifacts": 159,
+    "total_artifacts": 161,
     "linux_kernel_guides": 32,
-    "multios_practical_guides": 33,
-    "multios_architecture_guides": 39,
+    "multios_practical_guides": 34,
+    "multios_architecture_guides": 40,
     "architecture_visuals": 53,
-    "code_blocks": 407,
+    "code_blocks": 412,
     "languages": {
-      "unspecified": 33,
-      "bash": 200,
+      "unspecified": 34,
+      "bash": 202,
       "c": 110,
       "inf": 2,
       "cmd": 13,
       "python": 40,
       "json": 2,
-      "text": 7
+      "text": 8,
+      "ini": 1
     }
   },
   "categories": {
@@ -96,6 +97,7 @@
       ".mac!narumi/26_system_design_kernel_lstm_pipeline_practical.md",
       ".mac!narumi/27_limitations_and_boundaries_practical.md",
       ".mac!narumi/28_kernel_predecessors_and_stability_origins_practical.md",
+      ".mac!narumi/29_zero_noise_field_guide_practical.md",
       ".mac!narumi/31_voidlinux_practical_knowledge.md",
       ".mac!narumi/32_freebsd_practical_knowledge.md",
       ".mac!narumi/33_macos_practical_knowledge.md",
@@ -135,6 +137,7 @@
       ".macinarium-stellar/31_unicagd_exokernel_puzzle_solution.md",
       ".macinarium-stellar/31_voidlinux_architecture_and_runit.md",
       ".macinarium-stellar/32_freebsd_architecture_and_subsystems.md",
+      ".macinarium-stellar/32_zero_noise_application_surfaces.md",
       ".macinarium-stellar/33_driver_architect_universal_patterns.md",
       ".macinarium-stellar/34_industrial_defense_bus_subsystems.md",
       ".macinarium-stellar/35_hardware_root_of_trust_and_watchdogs.md",
@@ -887,6 +890,12 @@
       "type": "markdown",
       "lines": 194
     },
+    ".mac!narumi/29_zero_noise_field_guide_practical.md": {
+      "size_bytes": 1890,
+      "sha256": "929f405a60ce461f8459cec5be4b3cd503646db712d364a8d29c054e620d2d1e",
+      "type": "markdown",
+      "lines": 67
+    },
     ".mac!narumi/31_voidlinux_practical_knowledge.md": {
       "size_bytes": 5794,
       "sha256": "22654a71e7dfd622d5b52e4a935e25bd358755a8db4ca7a533b02b20fd82441c",
@@ -1108,6 +1117,12 @@
       "sha256": "1db3fdd8fbc8596d52bd3b3e2c46abb7aee9ca811d595682591d6ebf9be5739d",
       "type": "markdown",
       "lines": 152
+    },
+    ".macinarium-stellar/32_zero_noise_application_surfaces.md": {
+      "size_bytes": 4395,
+      "sha256": "f0accb2ad1db88b4c54632e197cd973f6e6babe32b8c3a39646f758300c1f6e8",
+      "type": "markdown",
+      "lines": 61
     },
     ".macinarium-stellar/33_driver_architect_universal_patterns.md": {
       "size_bytes": 9034,

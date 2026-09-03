@@ -63,7 +63,7 @@
 | [`kernel_performance_optimization.md`](.he!estor/kernel_performance_optimization.md) | 5,013 | 154 | `c6472e638fb5e3ff...` | markdown |
 | [`kernel_versioning_and_updates.md`](.he!estor/kernel_versioning_and_updates.md) | 4,183 | 117 | `12a19b51c2b1b21d...` | markdown |
 
-### Multi-OS Practical Knowledge & Field Manuals (.mac!narumi) (33 items)
+### Multi-OS Practical Knowledge & Field Manuals (.mac!narumi) (34 items)
 
 | Module / Artifact | Size (Bytes) | Lines | SHA-256 Checksum (Prefix) | Type |
 | :--- | :---: | :---: | :--- | :---: |
@@ -96,12 +96,13 @@
 | [`26_system_design_kernel_lstm_pipeline_practical.md`](.mac!narumi/26_system_design_kernel_lstm_pipeline_practical.md) | 3,116 | 144 | `4dfcf406342de230...` | markdown |
 | [`27_limitations_and_boundaries_practical.md`](.mac!narumi/27_limitations_and_boundaries_practical.md) | 2,690 | 96 | `4c0ed2a7da604bb8...` | markdown |
 | [`28_kernel_predecessors_and_stability_origins_practical.md`](.mac!narumi/28_kernel_predecessors_and_stability_origins_practical.md) | 10,116 | 194 | `0893c4cf78f856f3...` | markdown |
+| [`29_zero_noise_field_guide_practical.md`](.mac!narumi/29_zero_noise_field_guide_practical.md) | 1,890 | 67 | `929f405a60ce461f...` | markdown |
 | [`31_voidlinux_practical_knowledge.md`](.mac!narumi/31_voidlinux_practical_knowledge.md) | 5,794 | 159 | `22654a71e7dfd622...` | markdown |
 | [`32_freebsd_practical_knowledge.md`](.mac!narumi/32_freebsd_practical_knowledge.md) | 4,988 | 159 | `ba7c8b7c1c23c493...` | markdown |
 | [`33_macos_practical_knowledge.md`](.mac!narumi/33_macos_practical_knowledge.md) | 4,701 | 115 | `8e07858e759678ba...` | markdown |
 | [`34_macos_9_2_2_practical_knowledge.md`](.mac!narumi/34_macos_9_2_2_practical_knowledge.md) | 6,012 | 94 | `409b65fe04445109...` | markdown |
 
-### Multi-OS Deep Dive Architectures (.macinarium-stellar) (39 items)
+### Multi-OS Deep Dive Architectures (.macinarium-stellar) (40 items)
 
 | Module / Artifact | Size (Bytes) | Lines | SHA-256 Checksum (Prefix) | Type |
 | :--- | :---: | :---: | :--- | :---: |
@@ -138,6 +139,7 @@
 | [`31_unicagd_exokernel_puzzle_solution.md`](.macinarium-stellar/31_unicagd_exokernel_puzzle_solution.md) | 8,991 | 100 | `5d94720158e310ab...` | markdown |
 | [`31_voidlinux_architecture_and_runit.md`](.macinarium-stellar/31_voidlinux_architecture_and_runit.md) | 8,471 | 133 | `0b3da07dd149f9e0...` | markdown |
 | [`32_freebsd_architecture_and_subsystems.md`](.macinarium-stellar/32_freebsd_architecture_and_subsystems.md) | 8,675 | 152 | `1db3fdd8fbc8596d...` | markdown |
+| [`32_zero_noise_application_surfaces.md`](.macinarium-stellar/32_zero_noise_application_surfaces.md) | 4,395 | 61 | `f0accb2ad1db88b4...` | markdown |
 | [`33_driver_architect_universal_patterns.md`](.macinarium-stellar/33_driver_architect_universal_patterns.md) | 9,034 | 164 | `803434f3df44a6c1...` | markdown |
 | [`34_industrial_defense_bus_subsystems.md`](.macinarium-stellar/34_industrial_defense_bus_subsystems.md) | 7,311 | 131 | `45ff0d4957cf6089...` | markdown |
 | [`35_hardware_root_of_trust_and_watchdogs.md`](.macinarium-stellar/35_hardware_root_of_trust_and_watchdogs.md) | 7,648 | 125 | `325e7ac6df599d04...` | markdown |
@@ -215,8 +217,8 @@
 
 | Verification Layer | Scope | Engine | Result |
 | :--- | :--- | :---: | :---: |
-| **Cryptographic Integrity** | 159 Artifacts (SHA-256) | Engine 1 (Deterministic) | ✅ 100% Passed |
-| **Markdown AST & Delimiters** | 104 Documents, 407 Code Fences | Engine 1 (Deterministic) | ✅ 0 Broken Fences |
+| **Cryptographic Integrity** | 161 Artifacts (SHA-256) | Engine 1 (Deterministic) | ✅ 100% Passed |
+| **Markdown AST & Delimiters** | 106 Documents, 412 Code Fences | Engine 1 (Deterministic) | ✅ 0 Broken Fences |
 | **HTML5 Semantic Tree** | Interactive Field Guides | Engine 1 (Deterministic) | ✅ 0 Unclosed Tags |
 | **Graphics Magic Signatures** | Blueprints (PNG/JPEG/WEBP/SVG) | Engine 1 (Deterministic) | ✅ All Valid Headers |
 | **Procfs / Sysfs Paths** | 29 /proc & 15 /sys paths | Engine 1 (Deterministic) | ✅ Valid Linux Targets |
