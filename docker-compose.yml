@@ -1,0 +1,74 @@
+version: '3.8'
+
+services:
+  api-service:
+    build: 
+      context: .
+      dockerfile: Dockerfile.api
+    container_name: unicagd-api
+    ports:
+      - "8000:8000"
+      - "8089:8089"
+    volumes:
+      - ./storage:/app/storage
+      - ./var/log:/app/var/log
+      - ./trust_monitor/field/raw_storage:/app/trust_monitor/field/raw_storage:ro
+      - ./trust_monitor/output/matlab_artifacts:/app/trust_monitor/output/matlab_artifacts:ro
+    environment:
+      - EXECUTION_MODE=paper
+      - STORAGE_DIR=/app/storage
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/api/state')"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+    restart: unless-stopped
+
+  ui-service:
+    build:
+      context: .
+      dockerfile: Dockerfile.ui
+    container_name: unicagd-ui
+    ports:
+      - "8088:8088"
+    volumes:
+      - ./trust_monitor/bootstrap_app/bootstrap:/var/www/html
+      - ./atani_core/target/release/command-engine:/usr/local/bin/command-engine:ro
+    environment:
+      - API_URL=http://api-service:8000
+      - RUST_ENGINE=/usr/local/bin/command-engine
+    depends_on:
+      api-service:
+        condition: service_healthy
+    restart: unless-stopped
+
+  rust-engine:
+    build:
+      context: .
+      dockerfile: Dockerfile.rust
+    container_name: unicagd-rust-engine
+    ports:
+      - "8090:8090"
+    volumes:
+      - ./storage:/app/storage
+      - ./trust_monitor/field/raw_storage:/app/trust_monitor/field/raw_storage:ro
+    environment:
+      - PROJECT_ROOT=/app
+      - RUST_LOG=info
+    restart: unless-stopped
+
+  lance-search:
+    build:
+      context: .
+      dockerfile: Dockerfile.lance
+    container_name: unicagd-lance
+    ports:
+      - "8091:8091"
+    volumes:
+      - ./trust_monitor/field/raw_storage:/app/field/raw_storage
+    command: python agents/execution/lance_search_agent.py --serve --port 8091
+    restart: unless-stopped
+
+volumes:
+  storage:
+  logs:

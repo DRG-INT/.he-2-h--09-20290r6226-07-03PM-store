@@ -1,0 +1,62 @@
+[workspace]
+members = [
+    "command_engine",
+]
+resolver = "2"
+
+[package]
+name = "ucl_orchestrator"
+version = "2.5.0"
+edition = "2021"
+
+[dependencies]
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+reqwest = { version = "0.11", features = ["blocking", "json"] }
+tokio = { version = "1", features = ["full"] }
+metal = "0.29"
+objc = "0.2"
+rand = "0.8"
+prost = "0.12"
+questdb-rs = "3.0"
+chrono = "0.4.38"
+notify = "4.0"
+duckdb = { version = "1.1.1" }
+arrow = "53.0.0"
+parquet = "53.0.0"
+petgraph = "0.6"
+sha2 = "0.10"
+rust_decimal = { version = "1.30", features = ["macros"] }
+rust_decimal_macros = "1.30"
+num-rational = "0.4"
+hex = "0.4.3"
+lazy_static = "1.4"
+ratatui = "0.30.0"
+crossterm = "0.29.0"
+memmap2 = "0.9"
+tokio-tungstenite = { version = "0.21", features = ["native-tls"] }
+futures-util = "0.3"
+url = "2.5.8"
+tokio-socks = "0.5.2"
+libc = "0.2.185"
+redis = { version = "0.24", features = ["tokio-comp"] }
+
+[build-dependencies]
+cc = "1.0"
+prost-build = "0.12"
+
+[[bin]]
+name = "ucl_orchestrator"
+path = "src/ucl_orchestrator.rs"
+
+[[bin]]
+name = "ucl_tick_service"
+path = "src/ucl_tick_service.rs"
+
+[[bin]]
+name = "omega_terminal"
+path = "src/omega_terminal.rs"
+
+[[bin]]
+name = "kraken_ws_feed"
+path = "src/kraken_ws_feed.rs"

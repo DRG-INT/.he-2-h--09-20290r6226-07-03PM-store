@@ -1,0 +1,16 @@
+FROM php:8.3-cli
+
+WORKDIR /var/www/html
+
+# Install dependencies (PostgreSQL, PSR, Phalcon extensions)
+ADD https://github.com/mlocati/docker-php-extension-installer/releases/latest/download/install-php-extensions /usr/local/bin/
+RUN chmod +x /usr/local/bin/install-php-extensions && \
+    install-php-extensions pdo_pgsql psr phalcon
+
+COPY trust_monitor/bootstrap_app/bootstrap/ .
+COPY trust_monitor/phalcon_app/app/library/ /app/library/
+
+EXPOSE 8088
+
+# Using PHP built-in server for the Phalcon UI
+CMD ["php", "-S", "0.0.0.0:8088", "public/index.php"]

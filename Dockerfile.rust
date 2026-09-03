@@ -1,0 +1,33 @@
+FROM rust:1.75-slim
+
+WORKDIR /app
+
+# Install minimal dependencies
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    pkg-config \
+    libssl-dev \
+    && rm -rf /var/lib/apt/lists/*
+
+# Copy workspace
+COPY Cargo.toml Cargo.lock ./
+COPY atani_core/Cargo.toml ./atani_core/Cargo.toml
+COPY atani_core/command_engine/Cargo.toml ./atani_core/command_engine/Cargo.toml
+
+# Create dummy source files for dependency caching
+RUN mkdir -p atani_core/src atani_core/command_engine/src && \
+    echo "fn main() {}" > atani_core/src/main.rs && \
+    echo "fn main() {}" > atani_core/command_engine/src/main.rs
+
+# Build dependencies
+RUN cargo build --workspace --release || true
+
+# Copy actual source
+COPY atani_core/src ./atani_core/src
+COPY atani_core/command_engine/src ./atani_core/command_engine/src
+
+# Build
+RUN cargo build --workspace --release
+
+# Run command-engine in HTTP mode
+EXPOSE 8090
+CMD ["cargo", "run", "--release", "-p", "command-engine", "--", "http", "8090"]
