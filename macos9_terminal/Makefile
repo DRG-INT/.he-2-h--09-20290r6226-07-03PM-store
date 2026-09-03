@@ -15,7 +15,8 @@ clean:
 	rm -rf bin
 
 test: bin/macos9_terminal bin/pkg
-	./bin/macos9_terminal 3
-	./bin/pkg list
-	./bin/pkg install defense-telemetry
-	./bin/pkg verify defense-telemetry
+	./bin/pkg ports
+	./bin/pkg update
+	./bin/pkg search Sprocket
+	./bin/pkg install DrawSprocket
+	./bin/pkg benchmark

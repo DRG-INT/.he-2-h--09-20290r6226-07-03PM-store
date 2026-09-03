@@ -1,0 +1,193 @@
+version: '3.8'
+
+services:
+  # Kernel-LSTM Agent
+  agent:
+    build:
+      context: .
+      dockerfile: Dockerfile.agent
+    privileged: true
+    volumes:
+      - /sys/kernel/debug:/sys/kernel/debug:ro
+      - /proc:/proc:ro
+      - /lib/modules:/lib/modules:ro
+      - ./logs:/app/logs
+    environment:
+      - INFLUXDB_HOST=influxdb
+      - INFLUXDB_PORT=8086
+      - INFLUXDB_DATABASE=kernel_events
+      - LOG_LEVEL=INFO
+    depends_on:
+      - influxdb
+    restart: unless-stopped
+    networks:
+      - kernel-lstm
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8086/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # Előfeldolgozó
+  processor:
+    build:
+      context: .
+      dockerfile: Dockerfile.processor
+    volumes:
+      - ./data:/data
+      - ./models:/models
+    environment:
+      - INFLUXDB_HOST=influxdb
+      - INFLUXDB_PORT=8086
+      - INFLUXDB_DATABASE=kernel_events
+      - WINDOW_SIZE=50
+      - TIME_STEP=10
+    depends_on:
+      - influxdb
+    restart: unless-stopped
+    networks:
+      - kernel-lstm
+
+  # LSTM Modell
+  model:
+    build:
+      context: .
+      dockerfile: Dockerfile.model
+    volumes:
+      - ./models:/models
+      - ./data:/data
+    environment:
+      - INFLUXDB_HOST=influxdb
+      - INFLUXDB_PORT=8086
+      - INFLUXDB_DATABASE=kernel_events
+      - MODEL_PATH=/models/best_model.pth
+      - PREPROCESSOR_PATH=/models/preprocessor.pkl
+      - DEVICE=cuda
+      - THRESHOLD_PERCENTILE=95
+    depends_on:
+      - influxdb
+    restart: unless-stopped
+    networks:
+      - kernel-lstm
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+
+  # Alert Manager
+  alertmanager:
+    build:
+      context: .
+      dockerfile: Dockerfile.alertmanager
+    volumes:
+      - ./alertmanager:/etc/alertmanager
+    ports:
+      - "9093:9093"
+    environment:
+      - SLACK_WEBHOOK_URL=${SLACK_WEBHOOK_URL}
+      - EMAIL_HOST=${EMAIL_HOST}
+      - EMAIL_PORT=${EMAIL_PORT}
+      - EMAIL_USER=${EMAIL_USER}
+      - EMAIL_PASS=${EMAIL_PASS}
+    depends_on:
+      - influxdb
+    restart: unless-stopped
+    networks:
+      - kernel-lstm
+
+  # InfluxDB
+  influxdb:
+    image: influxdb:2.7
+    ports:
+      - "8086:8086"
+    volumes:
+      - influxdb_data:/var/lib/influxdb2
+      - ./influxdb/config:/etc/influxdb2
+    environment:
+      - DOCKER_INFLUXDB_INIT_MODE=setup
+      - DOCKER_INFLUXDB_INIT_USERNAME=admin
+      - DOCKER_INFLUXDB_INIT_PASSWORD=admin123
+      - DOCKER_INFLUXDB_INIT_ORG=kernel-lstm
+      - DOCKER_INFLUXDB_INIT_BUCKET=kernel_events
+      - DOCKER_INFLUXDB_INIT_ADMIN_TOKEN=my-super-secret-token
+    restart: unless-stopped
+    networks:
+      - kernel-lstm
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8086/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # Grafana Dashboard
+  grafana:
+    image: grafana/grafana:10.0.0
+    ports:
+      - "3000:3000"
+    volumes:
+      - grafana_data:/var/lib/grafana
+      - ./grafana/provisioning:/etc/grafana/provisioning
+      - ./grafana/dashboards:/var/lib/grafana/dashboards
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin123
+      - GF_INSTALL_PLUGINS=grafana-clock-panel,grafana-simple-json-datasource
+      - GF_DASHBOARDS_DEFAULT_HOME_DASHBOARD_PATH=/var/lib/grafana/dashboards/kernel_lstm.json
+    depends_on:
+      - influxdb
+    restart: unless-stopped
+    networks:
+      - kernel-lstm
+
+  # Prometheus
+  prometheus:
+    image: prom/prometheus:v2.45.0
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+      - prometheus_data:/prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--web.console.libraries=/etc/prometheus/console_libraries'
+      - '--web.console.templates=/etc/prometheus/consoles'
+    restart: unless-stopped
+    networks:
+      - kernel-lstm
+
+  # Node Exporter
+  node-exporter:
+    image: prom/node-exporter:v1.6.0
+    ports:
+      - "9100:9100"
+    pid: host
+    restart: unless-stopped
+    networks:
+      - kernel-lstm
+
+  # cAdvisor
+  cadvisor:
+    image: gcr.io/cadvisor/cadvisor:v0.47.0
+    ports:
+      - "8080:8080"
+    volumes:
+      - /:/rootfs:ro
+      - /var/run:/var/run:ro
+      - /sys:/sys:ro
+      - /var/lib/docker/:/var/lib/docker:ro
+      - /dev/disk/:/dev/disk:ro
+    restart: unless-stopped
+    networks:
+      - kernel-lstm
+
+volumes:
+  influxdb_data:
+  grafana_data:
+  prometheus_data:
+
+networks:
+  kernel-lstm:
+    driver: bridge

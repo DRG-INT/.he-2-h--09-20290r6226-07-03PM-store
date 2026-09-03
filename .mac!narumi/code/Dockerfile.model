@@ -1,0 +1,26 @@
+# Dockerfile.model
+FROM python:3.9-slim
+
+# CUDA támogatás (opcionális)
+# FROM nvidia/cuda:11.8.0-cudnn8-runtime-ubuntu20.04
+
+# Függőségek telepítése
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    && rm -rf /var/lib/apt/lists/*
+
+# Python csomagok telepítése
+RUN pip install --no-cache-dir \
+    torch \
+    pandas \
+    numpy \
+    scikit-learn \
+    influxdb-client \
+    joblib
+
+# Modellek másolása
+COPY models.py /app/
+WORKDIR /app
+
+# Indítás
+ENTRYPOINT ["python", "models.py"]

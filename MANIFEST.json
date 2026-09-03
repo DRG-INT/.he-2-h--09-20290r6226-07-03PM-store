@@ -6,11 +6,11 @@
     "engine_2_domain_cognitive": "Audited & Remediated (Kernel Vectors, Void Linux, FreeBSD, Driver Architect, Defense Buses, TPM/WDT)"
   },
   "statistics": {
-    "total_artifacts": 172,
+    "total_artifacts": 173,
     "linux_kernel_guides": 32,
     "multios_practical_guides": 39,
     "multios_architecture_guides": 45,
-    "architecture_visuals": 54,
+    "architecture_visuals": 55,
     "code_blocks": 518,
     "languages": {
       "unspecified": 39,
@@ -217,6 +217,7 @@
       ".architech/Filesystem Hierarchy Standard - Wikipedia_files/wikipedia-wordmark-en-25_eKId.svg",
       ".architech/The-Architecture-of-Panic-How-to-Spot-the-Gears-of-Modern-Fear-2060245017.png",
       ".architech/Unix_history-simple.svg.webp",
+      ".architech/apple_studio_display_sioux_benchmark.jpg",
       ".architech/macos9_sioux_terminal_screenshot.jpg"
     ]
   },
@@ -536,6 +537,12 @@
     ".architech/Unix_history-simple.svg.webp": {
       "size_bytes": 88704,
       "sha256": "f870ab9ac4a937c4aee723624dea6ac32e90501e23d35f22039d5c3c561f383b",
+      "type": "binary",
+      "lines": null
+    },
+    ".architech/apple_studio_display_sioux_benchmark.jpg": {
+      "size_bytes": 780914,
+      "sha256": "097237f1988a2ca355fee5468f8c56dc35320b104cd2b54bfa5748340a300ecb",
       "type": "binary",
       "lines": null
     },

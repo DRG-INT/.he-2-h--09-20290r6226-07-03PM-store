@@ -1,0 +1,23 @@
+# Dockerfile.processor
+FROM python:3.9-slim
+
+# Függőségek telepítése
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    && rm -rf /var/lib/apt/lists/*
+
+# Python csomagok telepítése
+RUN pip install --no-cache-dir \
+    torch \
+    pandas \
+    numpy \
+    scikit-learn \
+    influxdb-client \
+    joblib
+
+# Processor másolása
+COPY preprocessor.py /app/
+WORKDIR /app
+
+# Indítás
+ENTRYPOINT ["python", "preprocessor.py"]

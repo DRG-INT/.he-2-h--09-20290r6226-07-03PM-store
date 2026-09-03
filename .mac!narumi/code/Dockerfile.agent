@@ -1,0 +1,27 @@
+# Dockerfile.agent
+FROM python:3.9-slim
+
+# Függőségek telepítése
+RUN apt-get update && apt-get install -y \
+    linux-headers-$(uname -r) \
+    build-essential \
+    clang \
+    llvm \
+    libbpf-dev \
+    && rm -rf /var/lib/apt/lists/*
+
+# Python csomagok telepítése
+RUN pip install --no-cache-dir \
+    bcc \
+    torch \
+    pandas \
+    numpy \
+    scikit-learn \
+    influxdb-client
+
+# Agent másolása
+COPY agent.py /app/
+WORKDIR /app
+
+# Indítás
+ENTRYPOINT ["python", "agent.py"]

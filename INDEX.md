@@ -164,7 +164,7 @@
 | [`macrium_reflect_technical_specification_and_forensics.md`](Deepspace/.strategioc-intelligence/Copyrightd/2000s Macrium Reflect®/macrium_reflect_technical_specification_and_forensics.md) | 7,839 | 109 | `a95d99b578a62b49...` | markdown |
 | [`enterprise_disaster_recovery_and_imaging_architecture.md`](Deepspace/.strategioc-intelligence/Copyrightd/© Paramount Software UK Limited/enterprise_disaster_recovery_and_imaging_architecture.md) | 7,849 | 102 | `bd4b1fe4e18c269d...` | markdown |
 
-### Architecture Visual Blueprints & References (.architech) (54 items)
+### Architecture Visual Blueprints & References (.architech) (55 items)
 
 | Module / Artifact | Size (Bytes) | Lines | SHA-256 Checksum (Prefix) | Type |
 | :--- | :---: | :---: | :--- | :---: |
@@ -221,6 +221,7 @@
 | [`wikipedia-wordmark-en-25_eKId.svg`](.architech/Filesystem Hierarchy Standard - Wikipedia_files/wikipedia-wordmark-en-25_eKId.svg) | 9,865 | 1 | `169241aebac0b122...` | binary |
 | [`The-Architecture-of-Panic-How-to-Spot-the-Gears-of-Modern-Fear-2060245017.png`](.architech/The-Architecture-of-Panic-How-to-Spot-the-Gears-of-Modern-Fear-2060245017.png) | 6,365,188 | None | `cccc35930f3a9d59...` | binary |
 | [`Unix_history-simple.svg.webp`](.architech/Unix_history-simple.svg.webp) | 88,704 | None | `f870ab9ac4a937c4...` | binary |
+| [`apple_studio_display_sioux_benchmark.jpg`](.architech/apple_studio_display_sioux_benchmark.jpg) | 780,914 | None | `097237f1988a2ca3...` | binary |
 | [`macos9_sioux_terminal_screenshot.jpg`](.architech/macos9_sioux_terminal_screenshot.jpg) | 825,183 | None | `5f9d69cacf55ec7e...` | binary |
 
 ---
@@ -228,7 +229,7 @@
 
 | Verification Layer | Scope | Engine | Result |
 | :--- | :--- | :---: | :---: |
-| **Cryptographic Integrity** | 172 Artifacts (SHA-256) | Engine 1 (Deterministic) | ✅ 100% Passed |
+| **Cryptographic Integrity** | 173 Artifacts (SHA-256) | Engine 1 (Deterministic) | ✅ 100% Passed |
 | **Markdown AST & Delimiters** | 116 Documents, 518 Code Fences | Engine 1 (Deterministic) | ✅ 0 Broken Fences |
 | **HTML5 Semantic Tree** | Interactive Field Guides | Engine 1 (Deterministic) | ✅ 0 Unclosed Tags |
 | **Graphics Magic Signatures** | Blueprints (PNG/JPEG/WEBP/SVG) | Engine 1 (Deterministic) | ✅ All Valid Headers |

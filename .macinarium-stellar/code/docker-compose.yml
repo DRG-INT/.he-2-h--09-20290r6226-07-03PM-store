@@ -1,0 +1,122 @@
+version: '3.8'
+
+services:
+  # eBPF Agent - kernel események gyűjtése
+  agent:
+    build: ./agent
+    privileged: true
+    volumes:
+      - /sys/kernel/debug:/sys/kernel/debug:ro
+      - /proc:/proc:ro
+      - /lib/modules:/lib/modules:ro
+    environment:
+      - INFLUXDB_HOST=influxdb
+      - INFLUXDB_PORT=8086
+      - INFLUXDB_DATABASE=kernel_events
+    depends_on:
+      - influxdb
+    restart: unless-stopped
+    networks:
+      - kernel-lstm
+
+  # Előfeldolgozó - szekvenciák építése
+  processor:
+    build: ./processor
+    volumes:
+      - ./data:/data
+    environment:
+      - INFLUXDB_HOST=influxdb
+      - INFLUXDB_PORT=8086
+      - INFLUXDB_DATABASE=kernel_events
+    depends_on:
+      - influxdb
+    restart: unless-stopped
+    networks:
+      - kernel-lstm
+
+  # LSTM Modell - tanítás és predikció
+  model:
+    build: ./model
+    volumes:
+      - ./models:/models
+      - ./data:/data
+    environment:
+      - INFLUXDB_HOST=influxdb
+      - INFLUXDB_PORT=8086
+      - INFLUXDB_DATABASE=kernel_events
+      - DEVICE=cuda
+    depends_on:
+      - influxdb
+    restart: unless-stopped
+    networks:
+      - kernel-lstm
+
+  # InfluxDB - idő sorozat adatbázis
+  influxdb:
+    image: influxdb:2.7
+    ports:
+      - "8086:8086"
+    volumes:
+      - influxdb_data:/var/lib/influxdb2
+      - ./influxdb/config:/etc/influxdb2
+    environment:
+      - DOCKER_INFLUXDB_INIT_MODE=setup
+      - DOCKER_INFLUXDB_INIT_USERNAME=admin
+      - DOCKER_INFLUXDB_INIT_PASSWORD=admin123
+      - DOCKER_INFLUXDB_INIT_ORG=kernel-lstm
+      - DOCKER_INFLUXDB_INIT_BUCKET=kernel_events
+      - DOCKER_INFLUXDB_INIT_ADMIN_TOKEN=my-super-secret-token
+    restart: unless-stopped
+    networks:
+      - kernel-lstm
+
+  # Grafana - dashboard
+  grafana:
+    image: grafana/grafana:10.0.0
+    ports:
+      - "3000:3000"
+    volumes:
+      - grafana_data:/var/lib/grafana
+      - ./grafana/provisioning:/etc/grafana/provisioning
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin123
+      - GF_INSTALL_PLUGINS=grafana-clock-panel
+    depends_on:
+      - influxdb
+    restart: unless-stopped
+    networks:
+      - kernel-lstm
+
+  # Prometheus - metrikák gyűjtése
+  prometheus:
+    image: prom/prometheus:v2.45.0
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+      - prometheus_data:/prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+    restart: unless-stopped
+    networks:
+      - kernel-lstm
+
+  # Node Exporter - rendszer metrikák
+  node-exporter:
+    image: prom/node-exporter:v1.6.0
+    ports:
+      - "9100:9100"
+    pid: host
+    restart: unless-stopped
+    networks:
+      - kernel-lstm
+
+volumes:
+  influxdb_data:
+  grafana_data:
+  prometheus_data:
+
+networks:
+  kernel-lstm:
+    driver: bridge

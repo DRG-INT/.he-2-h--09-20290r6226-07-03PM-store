@@ -1,0 +1,20 @@
+# Dockerfile.alertmanager
+FROM python:3.9-slim
+
+# Függőségek telepítése
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    curl \
+    && rm -rf /var/lib/apt/lists/*
+
+# Python csomagok telepítése
+RUN pip install --no-cache-dir \
+    requests \
+    influxdb-client
+
+# Alertmanager másolása
+COPY alertmanager.py /app/
+WORKDIR /app
+
+# Indítás
+ENTRYPOINT ["python", "alertmanager.py"]
