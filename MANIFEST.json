@@ -6,22 +6,26 @@
     "engine_2_domain_cognitive": "Audited & Remediated (Kernel Vectors, Void Linux, FreeBSD, Driver Architect, Defense Buses, TPM/WDT)"
   },
   "statistics": {
-    "total_artifacts": 161,
+    "total_artifacts": 169,
     "linux_kernel_guides": 32,
-    "multios_practical_guides": 34,
-    "multios_architecture_guides": 40,
+    "multios_practical_guides": 37,
+    "multios_architecture_guides": 45,
     "architecture_visuals": 53,
-    "code_blocks": 412,
+    "code_blocks": 489,
     "languages": {
-      "unspecified": 34,
-      "bash": 202,
-      "c": 110,
+      "unspecified": 39,
+      "bash": 212,
+      "c": 115,
       "inf": 2,
       "cmd": 13,
-      "python": 40,
-      "json": 2,
+      "python": 81,
+      "json": 3,
+      "yaml": 8,
+      "dockerfile": 5,
       "text": 8,
-      "ini": 1
+      "ini": 1,
+      "applescript": 1,
+      "sql": 1
     }
   },
   "categories": {
@@ -97,11 +101,14 @@
       ".mac!narumi/26_system_design_kernel_lstm_pipeline_practical.md",
       ".mac!narumi/27_limitations_and_boundaries_practical.md",
       ".mac!narumi/28_kernel_predecessors_and_stability_origins_practical.md",
-      ".mac!narumi/29_zero_noise_field_guide_practical.md",
-      ".mac!narumi/31_voidlinux_practical_knowledge.md",
-      ".mac!narumi/32_freebsd_practical_knowledge.md",
-      ".mac!narumi/33_macos_practical_knowledge.md",
-      ".mac!narumi/34_macos_9_2_2_practical_knowledge.md"
+      ".mac!narumi/29_kernel_lstm_pipeline_implementation_practical.md",
+      ".mac!narumi/30_ebpf_collector_agent_implementation_practical.md",
+      ".mac!narumi/41_zero_noise_field_guide_practical.md",
+      ".mac!narumi/51_voidlinux_practical_knowledge.md",
+      ".mac!narumi/52_freebsd_practical_knowledge.md",
+      ".mac!narumi/53_macos_practical_knowledge.md",
+      ".mac!narumi/54_macos_9_2_2_practical_knowledge.md",
+      ".mac!narumi/55_classic_macos_9_terminal_practical_guide.md"
     ],
     "Multi-OS Deep Dive Architectures (.macinarium-stellar)": [
       ".macinarium-stellar/01_windows_nt_kernel_architecture.md",
@@ -132,18 +139,23 @@
       ".macinarium-stellar/26_ebpf_and_kprobes_based_data_collection.md",
       ".macinarium-stellar/27_system_design_kernel_lstm_pipeline.md",
       ".macinarium-stellar/28_kernel_predecessors_and_stability_origins.md",
-      ".macinarium-stellar/29_lstm_filesystem_and_project_topology.md",
-      ".macinarium-stellar/30_lstm_freestanding_kernel_inference_engine.md",
-      ".macinarium-stellar/31_unicagd_exokernel_puzzle_solution.md",
-      ".macinarium-stellar/31_voidlinux_architecture_and_runit.md",
-      ".macinarium-stellar/32_freebsd_architecture_and_subsystems.md",
-      ".macinarium-stellar/32_zero_noise_application_surfaces.md",
-      ".macinarium-stellar/33_driver_architect_universal_patterns.md",
-      ".macinarium-stellar/34_industrial_defense_bus_subsystems.md",
-      ".macinarium-stellar/35_hardware_root_of_trust_and_watchdogs.md",
-      ".macinarium-stellar/36_critical_infrastructure_application_interfaces.md",
-      ".macinarium-stellar/37_macos_xnu_kernel_architecture.md",
-      ".macinarium-stellar/38_classic_macos_9_2_2_architecture.md"
+      ".macinarium-stellar/29_kernel_lstm_pipeline_implementation.md",
+      ".macinarium-stellar/30_ebpf_collector_agent_implementation.md",
+      ".macinarium-stellar/31_lstm_training_and_hyperparameter_optimization.md",
+      ".macinarium-stellar/32_kernel_lstm_system_integration_and_deployment.md",
+      ".macinarium-stellar/41_lstm_filesystem_and_project_topology.md",
+      ".macinarium-stellar/42_lstm_freestanding_kernel_inference_engine.md",
+      ".macinarium-stellar/43_unicagd_exokernel_puzzle_solution.md",
+      ".macinarium-stellar/44_zero_noise_application_surfaces.md",
+      ".macinarium-stellar/51_voidlinux_architecture_and_runit.md",
+      ".macinarium-stellar/52_freebsd_architecture_and_subsystems.md",
+      ".macinarium-stellar/53_driver_architect_universal_patterns.md",
+      ".macinarium-stellar/54_industrial_defense_bus_subsystems.md",
+      ".macinarium-stellar/55_hardware_root_of_trust_and_watchdogs.md",
+      ".macinarium-stellar/56_critical_infrastructure_application_interfaces.md",
+      ".macinarium-stellar/57_macos_xnu_kernel_architecture.md",
+      ".macinarium-stellar/58_classic_macos_9_2_2_architecture.md",
+      ".macinarium-stellar/59_classic_macos_9_terminal_and_sioux_architecture.md"
     ],
     "Strategic Disaster Recovery & Bare-Metal Imaging (Deepspace Copyrightd)": [
       "Deepspace/.strategioc-intelligence/Copyrightd/2000s Macrium Reflect®/macrium_reflect_technical_specification_and_forensics.md",
@@ -890,35 +902,53 @@
       "type": "markdown",
       "lines": 194
     },
-    ".mac!narumi/29_zero_noise_field_guide_practical.md": {
+    ".mac!narumi/29_kernel_lstm_pipeline_implementation_practical.md": {
+      "size_bytes": 6718,
+      "sha256": "6ff87b6e5d1d720d3570bdfb0b9d759aab24ae33cd3b36bf18cf6526531442c7",
+      "type": "markdown",
+      "lines": 279
+    },
+    ".mac!narumi/30_ebpf_collector_agent_implementation_practical.md": {
+      "size_bytes": 6840,
+      "sha256": "9f94f5a5c03060e19126a89caa3388377a9bd07c8359b0ba8596d8c823e12b27",
+      "type": "markdown",
+      "lines": 292
+    },
+    ".mac!narumi/41_zero_noise_field_guide_practical.md": {
       "size_bytes": 1890,
       "sha256": "929f405a60ce461f8459cec5be4b3cd503646db712d364a8d29c054e620d2d1e",
       "type": "markdown",
       "lines": 67
     },
-    ".mac!narumi/31_voidlinux_practical_knowledge.md": {
+    ".mac!narumi/51_voidlinux_practical_knowledge.md": {
       "size_bytes": 5794,
       "sha256": "22654a71e7dfd622d5b52e4a935e25bd358755a8db4ca7a533b02b20fd82441c",
       "type": "markdown",
       "lines": 159
     },
-    ".mac!narumi/32_freebsd_practical_knowledge.md": {
+    ".mac!narumi/52_freebsd_practical_knowledge.md": {
       "size_bytes": 4988,
       "sha256": "ba7c8b7c1c23c49369dbc8bc8d8d3b9ab8706aa277f115840a128e568764cabd",
       "type": "markdown",
       "lines": 159
     },
-    ".mac!narumi/33_macos_practical_knowledge.md": {
+    ".mac!narumi/53_macos_practical_knowledge.md": {
       "size_bytes": 4701,
       "sha256": "8e07858e759678ba431d00dc0f5cbf1c18dbf0f2090a8c6ce80fbd642b65a3ca",
       "type": "markdown",
       "lines": 115
     },
-    ".mac!narumi/34_macos_9_2_2_practical_knowledge.md": {
+    ".mac!narumi/54_macos_9_2_2_practical_knowledge.md": {
       "size_bytes": 6012,
       "sha256": "409b65fe04445109b800c30222f1f0489c8d4d51fb1e8fecee36ac0d3e6aed9b",
       "type": "markdown",
       "lines": 94
+    },
+    ".mac!narumi/55_classic_macos_9_terminal_practical_guide.md": {
+      "size_bytes": 1859,
+      "sha256": "9417c038515203190bab4704aaa1bf34ba4aec32d387ca990d6f45573b86c912",
+      "type": "markdown",
+      "lines": 38
     },
     ".macinarium-stellar/01_windows_nt_kernel_architecture.md": {
       "size_bytes": 5903,
@@ -1088,77 +1118,107 @@
       "type": "markdown",
       "lines": 209
     },
-    ".macinarium-stellar/29_lstm_filesystem_and_project_topology.md": {
+    ".macinarium-stellar/29_kernel_lstm_pipeline_implementation.md": {
+      "size_bytes": 6413,
+      "sha256": "ffca7b7873e90b118bbbb31ab066fcd9bc4845bdf959c19aeb2d02f53c621945",
+      "type": "markdown",
+      "lines": 267
+    },
+    ".macinarium-stellar/30_ebpf_collector_agent_implementation.md": {
+      "size_bytes": 7215,
+      "sha256": "1561bb2c72c4cab94c8f3f2538ef11b6f736f15d55c968274f6b5abe00f54356",
+      "type": "markdown",
+      "lines": 309
+    },
+    ".macinarium-stellar/31_lstm_training_and_hyperparameter_optimization.md": {
+      "size_bytes": 8677,
+      "sha256": "4908ebe315968aedd4d7e12426a08d4b3b5cbc644aeac0ba9a41b037f8fbbbcb",
+      "type": "markdown",
+      "lines": 350
+    },
+    ".macinarium-stellar/32_kernel_lstm_system_integration_and_deployment.md": {
+      "size_bytes": 7387,
+      "sha256": "0409689a119ab4ee795df5d7f527b850dc7a80f3be2f14ba5bd0cf9a3a76b9a1",
+      "type": "markdown",
+      "lines": 372
+    },
+    ".macinarium-stellar/41_lstm_filesystem_and_project_topology.md": {
       "size_bytes": 10364,
       "sha256": "d5e2db70d7d5d66dc000c1c8055260766d4314e397e3e1906e2cb60b9781d6bd",
       "type": "markdown",
       "lines": 133
     },
-    ".macinarium-stellar/30_lstm_freestanding_kernel_inference_engine.md": {
+    ".macinarium-stellar/42_lstm_freestanding_kernel_inference_engine.md": {
       "size_bytes": 4374,
       "sha256": "eea2ce4b544de89fc18111ebe82da00c8adf7cbc17b0ab250be99a00f50d3120",
       "type": "markdown",
       "lines": 68
     },
-    ".macinarium-stellar/31_unicagd_exokernel_puzzle_solution.md": {
+    ".macinarium-stellar/43_unicagd_exokernel_puzzle_solution.md": {
       "size_bytes": 8991,
       "sha256": "5d94720158e310abfe2ab7dc8e58cb50195b0e1e8111d97984e9174772fee821",
       "type": "markdown",
       "lines": 100
     },
-    ".macinarium-stellar/31_voidlinux_architecture_and_runit.md": {
-      "size_bytes": 8471,
-      "sha256": "0b3da07dd149f9e08fc23e7acc3bdcb52f4c38bf9783ce5673bd9f5525e707e2",
-      "type": "markdown",
-      "lines": 133
-    },
-    ".macinarium-stellar/32_freebsd_architecture_and_subsystems.md": {
-      "size_bytes": 8675,
-      "sha256": "1db3fdd8fbc8596d52bd3b3e2c46abb7aee9ca811d595682591d6ebf9be5739d",
-      "type": "markdown",
-      "lines": 152
-    },
-    ".macinarium-stellar/32_zero_noise_application_surfaces.md": {
+    ".macinarium-stellar/44_zero_noise_application_surfaces.md": {
       "size_bytes": 4395,
       "sha256": "f0accb2ad1db88b4c54632e197cd973f6e6babe32b8c3a39646f758300c1f6e8",
       "type": "markdown",
       "lines": 61
     },
-    ".macinarium-stellar/33_driver_architect_universal_patterns.md": {
+    ".macinarium-stellar/51_voidlinux_architecture_and_runit.md": {
+      "size_bytes": 8471,
+      "sha256": "0b3da07dd149f9e08fc23e7acc3bdcb52f4c38bf9783ce5673bd9f5525e707e2",
+      "type": "markdown",
+      "lines": 133
+    },
+    ".macinarium-stellar/52_freebsd_architecture_and_subsystems.md": {
+      "size_bytes": 8675,
+      "sha256": "1db3fdd8fbc8596d52bd3b3e2c46abb7aee9ca811d595682591d6ebf9be5739d",
+      "type": "markdown",
+      "lines": 152
+    },
+    ".macinarium-stellar/53_driver_architect_universal_patterns.md": {
       "size_bytes": 9034,
       "sha256": "803434f3df44a6c1948df21b6fadef68ef069333e50823069df8a32813fad488",
       "type": "markdown",
       "lines": 164
     },
-    ".macinarium-stellar/34_industrial_defense_bus_subsystems.md": {
+    ".macinarium-stellar/54_industrial_defense_bus_subsystems.md": {
       "size_bytes": 7311,
       "sha256": "45ff0d4957cf6089a1750f8bd281a301affbfb9d88b493d794fa30827c8df065",
       "type": "markdown",
       "lines": 131
     },
-    ".macinarium-stellar/35_hardware_root_of_trust_and_watchdogs.md": {
+    ".macinarium-stellar/55_hardware_root_of_trust_and_watchdogs.md": {
       "size_bytes": 7648,
       "sha256": "325e7ac6df599d0441b49572dc1e18944806b91465be7a09f19c258919930d42",
       "type": "markdown",
       "lines": 125
     },
-    ".macinarium-stellar/36_critical_infrastructure_application_interfaces.md": {
+    ".macinarium-stellar/56_critical_infrastructure_application_interfaces.md": {
       "size_bytes": 7810,
       "sha256": "a96ed720620c87f1cf445eeeef6f11eec757ccef8ac211ded0e33cb2ef91726b",
       "type": "markdown",
       "lines": 127
     },
-    ".macinarium-stellar/37_macos_xnu_kernel_architecture.md": {
+    ".macinarium-stellar/57_macos_xnu_kernel_architecture.md": {
       "size_bytes": 7395,
       "sha256": "915fb338fa5949cff4d8ddd3f3fd91079f68f1e53416d08b29649f88dd4ff462",
       "type": "markdown",
       "lines": 118
     },
-    ".macinarium-stellar/38_classic_macos_9_2_2_architecture.md": {
+    ".macinarium-stellar/58_classic_macos_9_2_2_architecture.md": {
       "size_bytes": 8258,
       "sha256": "d4e9cbaf79b10cfcf135d183ce1330b9b7a017fa4d324bb9a122e40a1ae193ec",
       "type": "markdown",
       "lines": 124
+    },
+    ".macinarium-stellar/59_classic_macos_9_terminal_and_sioux_architecture.md": {
+      "size_bytes": 4669,
+      "sha256": "ebd8572d12476a7e422a796b06353ce329a42ae3292303507ac2ea35062a3d11",
+      "type": "markdown",
+      "lines": 68
     },
     "Deepspace/.strategioc-intelligence/Copyrightd/2000s Macrium Reflect®/macrium_reflect_technical_specification_and_forensics.md": {
       "size_bytes": 7839,
