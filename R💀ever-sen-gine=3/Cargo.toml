@@ -1,0 +1,13 @@
+[package]
+name = "revesz-engine"
+version = "3.0.0"
+edition = "2021"
+authors = ["UNICAGD-Core <milstrat@protonmail.com>"]
+description = "Révész Reverse Engine: Safe Kernel-to-User Boundary Ferryman & Panic Resilience"
+
+[lib]
+name = "revesz"
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+crc32fast = "1.3"
