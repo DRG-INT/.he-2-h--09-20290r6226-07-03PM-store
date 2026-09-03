@@ -6,19 +6,21 @@
     "engine_2_domain_cognitive": "Audited & Remediated (Kernel Vectors, Void Linux, FreeBSD, Driver Architect, Defense Buses, TPM/WDT)"
   },
   "statistics": {
-    "total_artifacts": 139,
+    "total_artifacts": 149,
     "linux_kernel_guides": 32,
-    "multios_practical_guides": 24,
-    "multios_architecture_guides": 28,
+    "multios_practical_guides": 26,
+    "multios_architecture_guides": 36,
     "architecture_visuals": 53,
-    "code_blocks": 350,
+    "code_blocks": 380,
     "languages": {
-      "unspecified": 27,
-      "bash": 194,
-      "c": 107,
+      "unspecified": 29,
+      "bash": 195,
+      "c": 108,
       "inf": 2,
       "cmd": 13,
-      "text": 7
+      "python": 25,
+      "text": 7,
+      "json": 1
     }
   },
   "categories": {
@@ -85,6 +87,8 @@
       ".mac!narumi/17_windows_nt_security_practical.md",
       ".mac!narumi/18_windows_nt_driver_development_practical.md",
       ".mac!narumi/19_windows_nt_debugging_and_networking_practical.md",
+      ".mac!narumi/20_macrium_reflect_practical_knowledge.md",
+      ".mac!narumi/21_lstm_and_deep_learning_practical_knowledge.md",
       ".mac!narumi/31_voidlinux_practical_knowledge.md",
       ".mac!narumi/32_freebsd_practical_knowledge.md",
       ".mac!narumi/33_macos_practical_knowledge.md",
@@ -111,6 +115,14 @@
       ".macinarium-stellar/18_windows_nt_security.md",
       ".macinarium-stellar/19_windows_nt_driver_development.md",
       ".macinarium-stellar/20_windows_nt_debugging_and_networking.md",
+      ".macinarium-stellar/21_macrium_reflect_architecture.md",
+      ".macinarium-stellar/22_lstm_and_deep_learning_basics.md",
+      ".macinarium-stellar/23_kernel_log_preprocessing_and_sequencing.md",
+      ".macinarium-stellar/24_lstm_autoencoder_anomaly_detection.md",
+      ".macinarium-stellar/25_kernel_panic_prediction_with_lstm.md",
+      ".macinarium-stellar/26_ebpf_and_kprobes_based_data_collection.md",
+      ".macinarium-stellar/27_system_design_kernel_lstm_pipeline.md",
+      ".macinarium-stellar/28_lstm_filesystem_and_project_topology.md",
       ".macinarium-stellar/31_voidlinux_architecture_and_runit.md",
       ".macinarium-stellar/32_freebsd_architecture_and_subsystems.md",
       ".macinarium-stellar/33_driver_architect_universal_patterns.md",
@@ -811,6 +823,18 @@
       "type": "markdown",
       "lines": 148
     },
+    ".mac!narumi/20_macrium_reflect_practical_knowledge.md": {
+      "size_bytes": 3407,
+      "sha256": "ce65189e88ce37846a7475c5f57b375509a395123a91605950ee96a5fabb1517",
+      "type": "markdown",
+      "lines": 105
+    },
+    ".mac!narumi/21_lstm_and_deep_learning_practical_knowledge.md": {
+      "size_bytes": 4547,
+      "sha256": "5e2525e0d7da53e755b260d51239a6ab9b2c03c668a7e3687619f87146f2af9f",
+      "type": "markdown",
+      "lines": 150
+    },
     ".mac!narumi/31_voidlinux_practical_knowledge.md": {
       "size_bytes": 5794,
       "sha256": "22654a71e7dfd622d5b52e4a935e25bd358755a8db4ca7a533b02b20fd82441c",
@@ -954,6 +978,54 @@
       "sha256": "95396e16af871baf30b7a11690d64a370f9c4892fa89e0cff09a735f20b555cf",
       "type": "markdown",
       "lines": 202
+    },
+    ".macinarium-stellar/21_macrium_reflect_architecture.md": {
+      "size_bytes": 4145,
+      "sha256": "e58c2e1ab23024cd80518bbbdfd78f94ba583b04a44c1d1e91631319fdf61deb",
+      "type": "markdown",
+      "lines": 133
+    },
+    ".macinarium-stellar/22_lstm_and_deep_learning_basics.md": {
+      "size_bytes": 4348,
+      "sha256": "55671dc6d75d2ea0e5e63b65e6d84ff31f6be6415d5192a1cd252e5296644608",
+      "type": "markdown",
+      "lines": 163
+    },
+    ".macinarium-stellar/23_kernel_log_preprocessing_and_sequencing.md": {
+      "size_bytes": 3831,
+      "sha256": "15856f95163ed8dc95f8e4eb3f43092580dadc1311edcd55739918e2ec96ebfe",
+      "type": "markdown",
+      "lines": 157
+    },
+    ".macinarium-stellar/24_lstm_autoencoder_anomaly_detection.md": {
+      "size_bytes": 4124,
+      "sha256": "293e661ad43dcfad2239d489ad6282de2006b1dbcbf19660f7a6be02fcc1f559",
+      "type": "markdown",
+      "lines": 176
+    },
+    ".macinarium-stellar/25_kernel_panic_prediction_with_lstm.md": {
+      "size_bytes": 4250,
+      "sha256": "ccd25d99f7043250a7614ac29ddeb75ee789081525554fa50478d7b4c40ce277",
+      "type": "markdown",
+      "lines": 172
+    },
+    ".macinarium-stellar/26_ebpf_and_kprobes_based_data_collection.md": {
+      "size_bytes": 4275,
+      "sha256": "cb32fa4bbba68d33c4f848d88b50aa47387e828264dc70a1d444d10d697349d1",
+      "type": "markdown",
+      "lines": 194
+    },
+    ".macinarium-stellar/27_system_design_kernel_lstm_pipeline.md": {
+      "size_bytes": 3147,
+      "sha256": "0a831c20ec81b38fdb1fec1c9271550fafc2f4612191fbeae9bfc790ae7d59e3",
+      "type": "markdown",
+      "lines": 149
+    },
+    ".macinarium-stellar/28_lstm_filesystem_and_project_topology.md": {
+      "size_bytes": 10364,
+      "sha256": "d5e2db70d7d5d66dc000c1c8055260766d4314e397e3e1906e2cb60b9781d6bd",
+      "type": "markdown",
+      "lines": 133
     },
     ".macinarium-stellar/31_voidlinux_architecture_and_runit.md": {
       "size_bytes": 8471,
