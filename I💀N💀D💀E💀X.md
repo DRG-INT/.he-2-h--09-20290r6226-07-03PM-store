@@ -101,7 +101,7 @@
 | [`33_macos_practical_knowledge.md`](.mac!narumi/33_macos_practical_knowledge.md) | 4,701 | 115 | `8e07858e759678ba...` | markdown |
 | [`34_macos_9_2_2_practical_knowledge.md`](.mac!narumi/34_macos_9_2_2_practical_knowledge.md) | 6,012 | 94 | `409b65fe04445109...` | markdown |
 
-### Multi-OS Deep Dive Architectures (.macinarium-stellar) (38 items)
+### Multi-OS Deep Dive Architectures (.macinarium-stellar) (39 items)
 
 | Module / Artifact | Size (Bytes) | Lines | SHA-256 Checksum (Prefix) | Type |
 | :--- | :---: | :---: | :--- | :---: |
@@ -135,6 +135,7 @@
 | [`28_kernel_predecessors_and_stability_origins.md`](.macinarium-stellar/28_kernel_predecessors_and_stability_origins.md) | 10,730 | 209 | `8b52bb2a549a9d92...` | markdown |
 | [`29_lstm_filesystem_and_project_topology.md`](.macinarium-stellar/29_lstm_filesystem_and_project_topology.md) | 10,364 | 133 | `d5e2db70d7d5d66d...` | markdown |
 | [`30_lstm_freestanding_kernel_inference_engine.md`](.macinarium-stellar/30_lstm_freestanding_kernel_inference_engine.md) | 4,374 | 68 | `eea2ce4b544de89f...` | markdown |
+| [`31_unicagd_exokernel_puzzle_solution.md`](.macinarium-stellar/31_unicagd_exokernel_puzzle_solution.md) | 8,991 | 100 | `5d94720158e310ab...` | markdown |
 | [`31_voidlinux_architecture_and_runit.md`](.macinarium-stellar/31_voidlinux_architecture_and_runit.md) | 8,471 | 133 | `0b3da07dd149f9e0...` | markdown |
 | [`32_freebsd_architecture_and_subsystems.md`](.macinarium-stellar/32_freebsd_architecture_and_subsystems.md) | 8,675 | 152 | `1db3fdd8fbc8596d...` | markdown |
 | [`33_driver_architect_universal_patterns.md`](.macinarium-stellar/33_driver_architect_universal_patterns.md) | 9,034 | 164 | `803434f3df44a6c1...` | markdown |
@@ -214,8 +215,8 @@
 
 | Verification Layer | Scope | Engine | Result |
 | :--- | :--- | :---: | :---: |
-| **Cryptographic Integrity** | 158 Artifacts (SHA-256) | Engine 1 (Deterministic) | ✅ 100% Passed |
-| **Markdown AST & Delimiters** | 103 Documents, 405 Code Fences | Engine 1 (Deterministic) | ✅ 0 Broken Fences |
+| **Cryptographic Integrity** | 159 Artifacts (SHA-256) | Engine 1 (Deterministic) | ✅ 100% Passed |
+| **Markdown AST & Delimiters** | 104 Documents, 407 Code Fences | Engine 1 (Deterministic) | ✅ 0 Broken Fences |
 | **HTML5 Semantic Tree** | Interactive Field Guides | Engine 1 (Deterministic) | ✅ 0 Unclosed Tags |
 | **Graphics Magic Signatures** | Blueprints (PNG/JPEG/WEBP/SVG) | Engine 1 (Deterministic) | ✅ All Valid Headers |
 | **Procfs / Sysfs Paths** | 29 /proc & 15 /sys paths | Engine 1 (Deterministic) | ✅ Valid Linux Targets |

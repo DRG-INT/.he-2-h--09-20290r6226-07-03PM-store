@@ -6,14 +6,14 @@
     "engine_2_domain_cognitive": "Audited & Remediated (Kernel Vectors, Void Linux, FreeBSD, Driver Architect, Defense Buses, TPM/WDT)"
   },
   "statistics": {
-    "total_artifacts": 158,
+    "total_artifacts": 159,
     "linux_kernel_guides": 32,
     "multios_practical_guides": 33,
-    "multios_architecture_guides": 38,
+    "multios_architecture_guides": 39,
     "architecture_visuals": 53,
-    "code_blocks": 405,
+    "code_blocks": 407,
     "languages": {
-      "unspecified": 31,
+      "unspecified": 33,
       "bash": 200,
       "c": 110,
       "inf": 2,
@@ -132,6 +132,7 @@
       ".macinarium-stellar/28_kernel_predecessors_and_stability_origins.md",
       ".macinarium-stellar/29_lstm_filesystem_and_project_topology.md",
       ".macinarium-stellar/30_lstm_freestanding_kernel_inference_engine.md",
+      ".macinarium-stellar/31_unicagd_exokernel_puzzle_solution.md",
       ".macinarium-stellar/31_voidlinux_architecture_and_runit.md",
       ".macinarium-stellar/32_freebsd_architecture_and_subsystems.md",
       ".macinarium-stellar/33_driver_architect_universal_patterns.md",
@@ -1089,6 +1090,12 @@
       "sha256": "eea2ce4b544de89fc18111ebe82da00c8adf7cbc17b0ab250be99a00f50d3120",
       "type": "markdown",
       "lines": 68
+    },
+    ".macinarium-stellar/31_unicagd_exokernel_puzzle_solution.md": {
+      "size_bytes": 8991,
+      "sha256": "5d94720158e310abfe2ab7dc8e58cb50195b0e1e8111d97984e9174772fee821",
+      "type": "markdown",
+      "lines": 100
     },
     ".macinarium-stellar/31_voidlinux_architecture_and_runit.md": {
       "size_bytes": 8471,
