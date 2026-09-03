@@ -63,7 +63,7 @@
 | [`kernel_performance_optimization.md`](.he!estor/kernel_performance_optimization.md) | 5,013 | 154 | `c6472e638fb5e3ff...` | markdown |
 | [`kernel_versioning_and_updates.md`](.he!estor/kernel_versioning_and_updates.md) | 4,183 | 117 | `12a19b51c2b1b21d...` | markdown |
 
-### Multi-OS Practical Knowledge & Field Manuals (.mac!narumi) (37 items)
+### Multi-OS Practical Knowledge & Field Manuals (.mac!narumi) (39 items)
 
 | Module / Artifact | Size (Bytes) | Lines | SHA-256 Checksum (Prefix) | Type |
 | :--- | :---: | :---: | :--- | :---: |
@@ -98,6 +98,8 @@
 | [`28_kernel_predecessors_and_stability_origins_practical.md`](.mac!narumi/28_kernel_predecessors_and_stability_origins_practical.md) | 10,116 | 194 | `0893c4cf78f856f3...` | markdown |
 | [`29_kernel_lstm_pipeline_implementation_practical.md`](.mac!narumi/29_kernel_lstm_pipeline_implementation_practical.md) | 6,718 | 279 | `6ff87b6e5d1d720d...` | markdown |
 | [`30_ebpf_collector_agent_implementation_practical.md`](.mac!narumi/30_ebpf_collector_agent_implementation_practical.md) | 6,840 | 292 | `9f94f5a5c03060e1...` | markdown |
+| [`31_lstm_training_and_hyperparameter_optimization_practical.md`](.mac!narumi/31_lstm_training_and_hyperparameter_optimization_practical.md) | 6,758 | 265 | `953450e1573ba51d...` | markdown |
+| [`32_kernel_lstm_system_integration_and_deployment_practical.md`](.mac!narumi/32_kernel_lstm_system_integration_and_deployment_practical.md) | 6,124 | 306 | `204376cb777aac06...` | markdown |
 | [`41_zero_noise_field_guide_practical.md`](.mac!narumi/41_zero_noise_field_guide_practical.md) | 1,890 | 67 | `929f405a60ce461f...` | markdown |
 | [`51_voidlinux_practical_knowledge.md`](.mac!narumi/51_voidlinux_practical_knowledge.md) | 5,794 | 159 | `22654a71e7dfd622...` | markdown |
 | [`52_freebsd_practical_knowledge.md`](.mac!narumi/52_freebsd_practical_knowledge.md) | 4,988 | 159 | `ba7c8b7c1c23c493...` | markdown |
@@ -162,7 +164,7 @@
 | [`macrium_reflect_technical_specification_and_forensics.md`](Deepspace/.strategioc-intelligence/Copyrightd/2000s Macrium Reflect®/macrium_reflect_technical_specification_and_forensics.md) | 7,839 | 109 | `a95d99b578a62b49...` | markdown |
 | [`enterprise_disaster_recovery_and_imaging_architecture.md`](Deepspace/.strategioc-intelligence/Copyrightd/© Paramount Software UK Limited/enterprise_disaster_recovery_and_imaging_architecture.md) | 7,849 | 102 | `bd4b1fe4e18c269d...` | markdown |
 
-### Architecture Visual Blueprints & References (.architech) (53 items)
+### Architecture Visual Blueprints & References (.architech) (54 items)
 
 | Module / Artifact | Size (Bytes) | Lines | SHA-256 Checksum (Prefix) | Type |
 | :--- | :---: | :---: | :--- | :---: |
@@ -219,14 +221,15 @@
 | [`wikipedia-wordmark-en-25_eKId.svg`](.architech/Filesystem Hierarchy Standard - Wikipedia_files/wikipedia-wordmark-en-25_eKId.svg) | 9,865 | 1 | `169241aebac0b122...` | binary |
 | [`The-Architecture-of-Panic-How-to-Spot-the-Gears-of-Modern-Fear-2060245017.png`](.architech/The-Architecture-of-Panic-How-to-Spot-the-Gears-of-Modern-Fear-2060245017.png) | 6,365,188 | None | `cccc35930f3a9d59...` | binary |
 | [`Unix_history-simple.svg.webp`](.architech/Unix_history-simple.svg.webp) | 88,704 | None | `f870ab9ac4a937c4...` | binary |
+| [`macos9_sioux_terminal_screenshot.jpg`](.architech/macos9_sioux_terminal_screenshot.jpg) | 825,183 | None | `5f9d69cacf55ec7e...` | binary |
 
 ---
 ## 🔍 Dual-Intelligence Verification Matrix
 
 | Verification Layer | Scope | Engine | Result |
 | :--- | :--- | :---: | :---: |
-| **Cryptographic Integrity** | 169 Artifacts (SHA-256) | Engine 1 (Deterministic) | ✅ 100% Passed |
-| **Markdown AST & Delimiters** | 114 Documents, 489 Code Fences | Engine 1 (Deterministic) | ✅ 0 Broken Fences |
+| **Cryptographic Integrity** | 172 Artifacts (SHA-256) | Engine 1 (Deterministic) | ✅ 100% Passed |
+| **Markdown AST & Delimiters** | 116 Documents, 518 Code Fences | Engine 1 (Deterministic) | ✅ 0 Broken Fences |
 | **HTML5 Semantic Tree** | Interactive Field Guides | Engine 1 (Deterministic) | ✅ 0 Unclosed Tags |
 | **Graphics Magic Signatures** | Blueprints (PNG/JPEG/WEBP/SVG) | Engine 1 (Deterministic) | ✅ All Valid Headers |
 | **Procfs / Sysfs Paths** | 29 /proc & 15 /sys paths | Engine 1 (Deterministic) | ✅ Valid Linux Targets |

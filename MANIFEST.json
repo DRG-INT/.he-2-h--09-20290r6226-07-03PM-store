@@ -6,22 +6,22 @@
     "engine_2_domain_cognitive": "Audited & Remediated (Kernel Vectors, Void Linux, FreeBSD, Driver Architect, Defense Buses, TPM/WDT)"
   },
   "statistics": {
-    "total_artifacts": 169,
+    "total_artifacts": 172,
     "linux_kernel_guides": 32,
-    "multios_practical_guides": 37,
+    "multios_practical_guides": 39,
     "multios_architecture_guides": 45,
-    "architecture_visuals": 53,
-    "code_blocks": 489,
+    "architecture_visuals": 54,
+    "code_blocks": 518,
     "languages": {
       "unspecified": 39,
-      "bash": 212,
+      "bash": 217,
       "c": 115,
       "inf": 2,
       "cmd": 13,
-      "python": 81,
+      "python": 97,
       "json": 3,
-      "yaml": 8,
-      "dockerfile": 5,
+      "yaml": 13,
+      "dockerfile": 8,
       "text": 8,
       "ini": 1,
       "applescript": 1,
@@ -103,6 +103,8 @@
       ".mac!narumi/28_kernel_predecessors_and_stability_origins_practical.md",
       ".mac!narumi/29_kernel_lstm_pipeline_implementation_practical.md",
       ".mac!narumi/30_ebpf_collector_agent_implementation_practical.md",
+      ".mac!narumi/31_lstm_training_and_hyperparameter_optimization_practical.md",
+      ".mac!narumi/32_kernel_lstm_system_integration_and_deployment_practical.md",
       ".mac!narumi/41_zero_noise_field_guide_practical.md",
       ".mac!narumi/51_voidlinux_practical_knowledge.md",
       ".mac!narumi/52_freebsd_practical_knowledge.md",
@@ -214,7 +216,8 @@
       ".architech/Filesystem Hierarchy Standard - Wikipedia_files/wikipedia-tagline-en-25_eKId.svg",
       ".architech/Filesystem Hierarchy Standard - Wikipedia_files/wikipedia-wordmark-en-25_eKId.svg",
       ".architech/The-Architecture-of-Panic-How-to-Spot-the-Gears-of-Modern-Fear-2060245017.png",
-      ".architech/Unix_history-simple.svg.webp"
+      ".architech/Unix_history-simple.svg.webp",
+      ".architech/macos9_sioux_terminal_screenshot.jpg"
     ]
   },
   "artifacts": {
@@ -533,6 +536,12 @@
     ".architech/Unix_history-simple.svg.webp": {
       "size_bytes": 88704,
       "sha256": "f870ab9ac4a937c4aee723624dea6ac32e90501e23d35f22039d5c3c561f383b",
+      "type": "binary",
+      "lines": null
+    },
+    ".architech/macos9_sioux_terminal_screenshot.jpg": {
+      "size_bytes": 825183,
+      "sha256": "5f9d69cacf55ec7e98a6fc5213a8d57e9874a240d95599aa22f23dc5f09d6a8d",
       "type": "binary",
       "lines": null
     },
@@ -913,6 +922,18 @@
       "sha256": "9f94f5a5c03060e19126a89caa3388377a9bd07c8359b0ba8596d8c823e12b27",
       "type": "markdown",
       "lines": 292
+    },
+    ".mac!narumi/31_lstm_training_and_hyperparameter_optimization_practical.md": {
+      "size_bytes": 6758,
+      "sha256": "953450e1573ba51d8920ab5c21b0f87616c609f97469a9312d1f786f9b1d9d7f",
+      "type": "markdown",
+      "lines": 265
+    },
+    ".mac!narumi/32_kernel_lstm_system_integration_and_deployment_practical.md": {
+      "size_bytes": 6124,
+      "sha256": "204376cb777aac061cb62697e6005c39d1d33b573d815ecde4de5727901b65c7",
+      "type": "markdown",
+      "lines": 306
     },
     ".mac!narumi/41_zero_noise_field_guide_practical.md": {
       "size_bytes": 1890,

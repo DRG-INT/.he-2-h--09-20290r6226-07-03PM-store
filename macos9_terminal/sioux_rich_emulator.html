@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Classic Mac OS 9.2.2 - SIOUX Terminal & pkg Emulator</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background-color: #5c7582;
+    background-image: radial-gradient(#6e8a99 15%, transparent 16%), radial-gradient(#6e8a99 15%, transparent 16%);
+    background-size: 16px 16px;
+    background-position: 0 0, 8px 8px;
+    font-family: -apple-system, BlinkMacSystemFont, "Lucida Grande", "Geneva", "Chicago", sans-serif;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    user-select: none;
+  }
+
+  /* Mac OS 9 Menu Bar */
+  .menubar {
+    height: 22px;
+    background: #e6e6e6;
+    border-bottom: 1px solid #7f7f7f;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    font-size: 12px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+  }
+  .menu-item {
+    margin-right: 14px;
+    color: #000;
+    cursor: default;
+  }
+  .menu-item.apple {
+    font-weight: bold;
+    font-size: 14px;
+  }
+  .menubar-right {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 11px;
+  }
+
+  /* Desktop Area */
+  .desktop {
+    flex: 1;
+    position: relative;
+    padding: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* SIOUX Platinum Window */
+  .sioux-window {
+    width: 820px;
+    height: 540px;
+    background: #fff;
+    border: 1px solid #4a4a4a;
+    border-radius: 4px;
+    box-shadow: 2px 4px 12px rgba(0,0,0,0.4);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  /* Titlebar Platinum Striped */
+  .titlebar {
+    height: 22px;
+    background: repeating-linear-gradient(
+      to bottom,
+      #f0f0f0,
+      #f0f0f0 1px,
+      #b8b8b8 2px,
+      #b8b8b8 3px
+    );
+    border-bottom: 1px solid #808080;
+    display: flex;
+    align-items: center;
+    padding: 0 6px;
+  }
+  .close-box, .zoom-box {
+    width: 12px;
+    height: 12px;
+    background: #e0e0e0;
+    border: 1px solid #666;
+    box-shadow: inset 1px 1px #fff;
+  }
+  .title-text {
+    flex: 1;
+    text-align: center;
+    background: #e6e6e6;
+    padding: 1px 12px;
+    margin: 0 8px;
+    font-size: 11px;
+    font-weight: bold;
+    color: #000;
+    border: 1px solid #999;
+  }
+
+  /* Terminal Body */
+  .terminal-body {
+    flex: 1;
+    background: #ffffff;
+    padding: 10px 14px;
+    font-family: "Monaco", "Courier New", monospace;
+    font-size: 11px;
+    line-height: 1.45;
+    color: #111;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .output {
+    white-space: pre-wrap;
+    margin-bottom: 8px;
+  }
+
+  .prompt-line {
+    display: flex;
+    align-items: center;
+  }
+  .prompt {
+    font-weight: bold;
+    margin-right: 6px;
+  }
+  .cmd-input {
+    flex: 1;
+    border: none;
+    outline: none;
+    font-family: "Monaco", "Courier New", monospace;
+    font-size: 11px;
+    color: #111;
+    background: transparent;
+  }
+
+  /* Scrollbar styling */
+  .terminal-body::-webkit-scrollbar {
+    width: 16px;
+    background: #e0e0e0;
+    border-left: 1px solid #999;
+  }
+  .terminal-body::-webkit-scrollbar-thumb {
+    background: #b0b0b0;
+    border: 1px solid #666;
+  }
+</style>
+</head>
+<body>
+
+<div class="menubar">
+  <div class="menu-item apple">&#63743;</div>
+  <div class="menu-item">File</div>
+  <div class="menu-item">Edit</div>
+  <div class="menu-item">View</div>
+  <div class="menu-item">Special</div>
+  <div class="menu-item">Help</div>
+  <div class="menubar-right">
+    <span>Finder 9.2</span>
+    <span id="clock">11:42 AM</span>
+  </div>
+</div>
+
+<div class="desktop">
+  <div class="sioux-window">
+    <div class="titlebar">
+      <div class="close-box"></div>
+      <div class="title-text">SIOUX Terminal - pkg v1.0 [Mac OS 9.2.2]</div>
+      <div class="zoom-box"></div>
+    </div>
+    <div class="terminal-body" id="termBody">
+      <div class="output" id="outputArea">SIOUX Terminal v1.0 (Metrowerks CodeWarrior Edition)
+Welcome to the Classic Mac OS 9.2.2 Console Environment.
+Type 'help' or 'pkg list' to see available commands.
+Autonomous Background Engine: READY.
+
+-- Autonomous Diagnostic Log [Mac OS 9.2.2 Moonlight] --
+Scanning System Folder...
+  /System Folder/Finder... [FOUND, v9.2]
+  /System Folder/System... [FOUND, v9.2.2]
+  /System Folder/Extensions/... [47 active INIT items]
+Scanning Memory Heap...
+  Application Heap: 16,384 KB | Largest Free Block: 12,272 KB
+  Handles: 1,894 | Non-relocatable Pointers: 312
+Status: 100% HEALTHY. Zero anomalies detected.
+</div>
+      <div class="prompt-line">
+        <span class="prompt">$</span>
+        <input type="text" id="cmdInput" class="cmd-input" autofocus />
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const outputArea = document.getElementById('outputArea');
+  const cmdInput = document.getElementById('cmdInput');
+  const termBody = document.getElementById('termBody');
+
+  const packages = {
+    "CarbonLib": { version: "1.6", status: "INSTALLED", desc: "Carbon API Runtime Library" },
+    "OpenTransport": { version: "2.7.9", status: "INSTALLED", desc: "TCP/IP & AppleTalk Stack" },
+    "defense-telemetry": { version: "3.0.1", status: "available", desc: "UNICAGD Critical Telemetry Sensor" },
+    "sioux-rich-tui": { version: "1.0", status: "available", desc: "SIOUX Terminal & TUI Engine" }
+  };
+
+  cmdInput.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') {
+      const line = cmdInput.value.trim();
+      cmdInput.value = '';
+      if (!line) return;
+
+      appendOutput("$ " + line);
+      executeCommand(line);
+      termBody.scrollTop = termBody.scrollHeight;
+    }
+  });
+
+  function appendOutput(text) {
+    outputArea.textContent += "\n" + text;
+  }
+
+  function executeCommand(line) {
+    const parts = line.split(/\s+/);
+    const cmd = parts[0].toLowerCase();
+    const arg = parts[1];
+
+    switch(cmd) {
+      case 'help':
+        appendOutput("Available commands:\n" +
+                     "  pkg list             List installed and available packages\n" +
+                     "  pkg install <name>   Install an extension or application\n" +
+                     "  pkg verify <name>    Verify cryptographic SHA-256 integrity\n" +
+                     "  sysinfo              Display Mac OS 9.2.2 hardware & heap partition\n" +
+                     "  clear                Clear the SIOUX console text buffer");
+        break;
+      case 'pkg':
+        if (arg === 'list') {
+          let s = "+--------------------+---------+------------+-----------------------------------+\n" +
+                  "| Package Name       | Version | Status     | Description                       |\n" +
+                  "+--------------------+---------+------------+-----------------------------------+\n";
+          for (let k in packages) {
+            s += `| ${k.padEnd(18)} | ${packages[k].version.padEnd(7)} | ${packages[k].status.padEnd(10)} | ${packages[k].desc.padEnd(33)} |\n`;
+          }
+          s += "+--------------------+---------+------------+-----------------------------------+";
+          appendOutput(s);
+        } else if (arg === 'install') {
+          const target = parts[2];
+          if (!target || !packages[target]) {
+            appendOutput("[pkg] Error: Package '" + target + "' not found.");
+          } else if (packages[target].status === "INSTALLED") {
+            appendOutput("[pkg] Package '" + target + "' is already installed.");
+          } else {
+            appendOutput("[pkg] Installing '" + target + "' (v" + packages[target].version + ")...\n" +
+                         "[pkg]   > Verifying SHA-256 signature: 9a7b5e... [OK]\n" +
+                         "[pkg]   > Copying to System Folder:Extensions:... [OK]\n" +
+                         "[pkg] Successfully installed '" + target + "'.");
+            packages[target].status = "INSTALLED";
+          }
+        } else if (arg === 'verify') {
+          const target = parts[2];
+          if (packages[target]) {
+            appendOutput("[pkg] Integrity check for '" + target + "': 100% VERIFIED (Clean SHA-256).");
+          } else {
+            appendOutput("[pkg] Error: Package '" + target + "' not found.");
+          }
+        } else {
+          appendOutput("[pkg] Usage: pkg [list | install <name> | verify <name>]");
+        }
+        break;
+      case 'sysinfo':
+        appendOutput("Hardware: PowerPC G4 7450 @ 867 MHz | L2 Cache: 256 KB | RAM: 512 MB\n" +
+                     "System: Mac OS 9.2.2 (Build 9.2.2 Moonlight)\n" +
+                     "QuickDraw: Acceleration Active | Open Transport: Offline Mode");
+        break;
+      case 'clear':
+        outputArea.textContent = "SIOUX Terminal cleared.";
+        break;
+      default:
+        appendOutput("Command not recognized: " + cmd + ". Type 'help' for command list.");
+    }
+  }
+
+  // Live clock
+  setInterval(() => {
+    const d = new Date();
+    document.getElementById('clock').textContent = d.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+  }, 1000);
+</script>
+</body>
+</html>
