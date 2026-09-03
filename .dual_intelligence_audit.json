@@ -1,0 +1,94 @@
+{
+  "timestamp": "2026-09-03T06:37:53.214410+00:00",
+  "root": "/Users/peter/Desktop/kernelpanic",
+  "stats": {
+    "total_files": 15,
+    "total_dirs": 0,
+    "total_bytes": 160107,
+    "md_files": 1,
+    "code_blocks": 6,
+    "rust_crates": 0,
+    "php_files": 0,
+    "python_files": 5,
+    "c_files": 7,
+    "docker_files": 0,
+    "json_files": 0
+  },
+  "artifacts": [
+    {
+      "path": "UNICAGD_EXOKERNEL/Makefile",
+      "sha256": "28845dfaf9fae766",
+      "size": 425
+    },
+    {
+      "path": "UNICAGD_EXOKERNEL/README.md",
+      "sha256": "40701601b1ba225c",
+      "size": 7886
+    },
+    {
+      "path": "UNICAGD_EXOKERNEL/bin/exokernel_demo",
+      "sha256": "05facf5cf9be4e9f",
+      "size": 52192
+    },
+    {
+      "path": "UNICAGD_EXOKERNEL/include/pattern_language.h",
+      "sha256": "f303c4c77638745f",
+      "size": 2633
+    },
+    {
+      "path": "UNICAGD_EXOKERNEL/include/exokernel.h",
+      "sha256": "419b5c0362d563b1",
+      "size": 3256
+    },
+    {
+      "path": "UNICAGD_EXOKERNEL/include/binary_store.h",
+      "sha256": "1518f80c3cb7dca8",
+      "size": 2387
+    },
+    {
+      "path": "UNICAGD_EXOKERNEL/src/binary_store.c",
+      "sha256": "a32906dca6e75372",
+      "size": 12675
+    },
+    {
+      "path": "UNICAGD_EXOKERNEL/src/main.c",
+      "sha256": "f001e9d1243c4a04",
+      "size": 12996
+    },
+    {
+      "path": "UNICAGD_EXOKERNEL/src/pattern_language.c",
+      "sha256": "f5ed45b9bf9eb030",
+      "size": 6732
+    },
+    {
+      "path": "UNICAGD_EXOKERNEL/src/exokernel_core.c",
+      "sha256": "e99ac01c157a87bc",
+      "size": 10916
+    },
+    {
+      "path": "tools/generate_index.py",
+      "sha256": "a0cf4bf023e90ce0",
+      "size": 3310
+    },
+    {
+      "path": "tools/generate_html_report.py",
+      "sha256": "fa8ac419ee370e22",
+      "size": 17468
+    },
+    {
+      "path": "tools/dual_intelligence_audit.py",
+      "sha256": "a3ccda6408f8d4e8",
+      "size": 9896
+    },
+    {
+      "path": "tools/audit_suite.py",
+      "sha256": "6aa49815fdc67ee9",
+      "size": 13093
+    },
+    {
+      "path": "tools/lstm_content_model.py",
+      "sha256": "a82e500645457b65",
+      "size": 4242
+    }
+  ]
+}
