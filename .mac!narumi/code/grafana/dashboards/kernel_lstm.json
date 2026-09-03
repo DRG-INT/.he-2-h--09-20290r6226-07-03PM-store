@@ -1,0 +1,57 @@
+{
+  "dashboard": {
+    "title": "Kernel-LSTM Pipeline",
+    "tags": ["kernel", "lstm", "monitoring"],
+    "timezone": "UTC",
+    "panels": [
+      {
+        "id": 1,
+        "title": "Kernel Events per Second",
+        "type": "graph",
+        "targets": [
+          {
+            "query": "SELECT count(\"event_type\") FROM \"kernel_events\" WHERE time > now() - 1m GROUP BY time(1s), \"event_type\"",
+            "refId": "A"
+          }
+        ],
+        "gridPos": {"x": 0, "y": 0, "w": 12, "h": 8}
+      },
+      {
+        "id": 2,
+        "title": "Anomaly Detection Rate",
+        "type": "graph",
+        "targets": [
+          {
+            "query": "SELECT count(\"panic_probability\") FROM \"kernel_alerts\" WHERE time > now() - 5m GROUP BY time(1m)",
+            "refId": "A"
+          }
+        ],
+        "gridPos": {"x": 12, "y": 0, "w": 12, "h": 8}
+      },
+      {
+        "id": 3,
+        "title": "CPU Usage",
+        "type": "graph",
+        "targets": [
+          {
+            "query": "SELECT usage_user + usage_system FROM \"node_cpu_seconds_total\" WHERE time > now() - 5m",
+            "refId": "A"
+          }
+        ],
+        "gridPos": {"x": 0, "y": 8, "w": 12, "h": 8}
+      },
+      {
+        "id": 4,
+        "title": "Memory Usage",
+        "type": "graph",
+        "targets": [
+          {
+            "query": "SELECT (total - free) / total * 100 FROM \"node_memory_MemTotal\" WHERE time > now() - 5m",
+            "refId": "A"
+          }
+        ],
+        "gridPos": {"x": 12, "y": 8, "w": 12, "h": 8}
+      }
+    ]
+  }
+}
